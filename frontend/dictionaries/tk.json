@@ -1,0 +1,36 @@
+{
+  "header": {
+    "search_placeholder": "Haryt gözle...",
+    "cart": "Sebet",
+    "wishlist": "Halanlarym",
+    "compare": "Deňeşdirmek",
+    "login": "Giriş",
+    "logo_tagline": "Kompýuter dükany"
+  },
+  "product_card": {
+    "add_to_cart": "Sebede goş",
+    "added": "Goşuldy",
+    "compare": "Deňeşdir",
+    "comparing": "Deňeşdirilýär",
+    "wishlist_add": "Halanlarma goş",
+    "wishlist_remove": "Halanlarymdan aýyr",
+    "zoom": "Suratyny ulalt",
+    "new_badge": "Täze",
+    "out_of_stock": "Stokda ýok"
+  },
+  "tabs": {
+    "recommended": "Maslahat edilýänler",
+    "new": "Täzeler",
+    "popular": "Meşhurlar"
+  },
+  "reviews": {
+    "title": "Müşderi teswirleri",
+    "write": "Teswir ýaz",
+    "out_of": "/ 5.0",
+    "count_suffix": "teswir"
+  },
+  "empty": {
+    "no_products": "Bu bölümde haryt ýok.",
+    "no_results": "Netije tapylmady."
+  }
+}

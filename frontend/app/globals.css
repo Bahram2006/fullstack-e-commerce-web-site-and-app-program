@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@theme {
+  /* Sümbär dizaýnynyň esasy reňkleri */
+  --color-sumbar-blue: #0056b3;
+  --color-sumbar-yellow: #ffc107;
+  --color-sumbar-dark: #004494;
+  --color-sumbar-bg: #f8f9fa;
+}
+
+@layer base {
+  body {
+    @apply bg-sumbar-bg text-slate-900 antialiased;
+  }
+}

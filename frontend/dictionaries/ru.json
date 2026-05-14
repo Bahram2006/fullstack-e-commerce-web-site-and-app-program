@@ -1,0 +1,36 @@
+{
+  "header": {
+    "search_placeholder": "Поиск товаров...",
+    "cart": "Корзина",
+    "wishlist": "Избранное",
+    "compare": "Сравнение",
+    "login": "Войти",
+    "logo_tagline": "Магазин компьютеров"
+  },
+  "product_card": {
+    "add_to_cart": "В корзину",
+    "added": "Добавлено",
+    "compare": "Сравнить",
+    "comparing": "В сравнении",
+    "wishlist_add": "В избранное",
+    "wishlist_remove": "Убрать из избранного",
+    "zoom": "Увеличить фото",
+    "new_badge": "Новинка",
+    "out_of_stock": "Нет в наличии"
+  },
+  "tabs": {
+    "recommended": "Рекомендуемые",
+    "new": "Новинки",
+    "popular": "Популярные"
+  },
+  "reviews": {
+    "title": "Отзывы о магазине",
+    "write": "Написать отзыв",
+    "out_of": "/ 5.0",
+    "count_suffix": "отзывов"
+  },
+  "empty": {
+    "no_products": "В этом разделе нет товаров.",
+    "no_results": "Ничего не найдено."
+  }
+}

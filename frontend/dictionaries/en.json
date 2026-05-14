@@ -1,0 +1,36 @@
+{
+  "header": {
+    "search_placeholder": "Search products...",
+    "cart": "Cart",
+    "wishlist": "Wishlist",
+    "compare": "Compare",
+    "login": "Sign In",
+    "logo_tagline": "Computer Store"
+  },
+  "product_card": {
+    "add_to_cart": "Add to Cart",
+    "added": "Added",
+    "compare": "Compare",
+    "comparing": "Comparing",
+    "wishlist_add": "Add to Wishlist",
+    "wishlist_remove": "Remove from Wishlist",
+    "zoom": "Zoom Image",
+    "new_badge": "New",
+    "out_of_stock": "Out of Stock"
+  },
+  "tabs": {
+    "recommended": "Recommended",
+    "new": "New Arrivals",
+    "popular": "Popular"
+  },
+  "reviews": {
+    "title": "Customer Reviews",
+    "write": "Write a Review",
+    "out_of": "/ 5.0",
+    "count_suffix": "reviews"
+  },
+  "empty": {
+    "no_products": "No products in this section.",
+    "no_results": "No results found."
+  }
+}
