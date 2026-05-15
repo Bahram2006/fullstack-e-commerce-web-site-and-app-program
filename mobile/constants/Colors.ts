@@ -1,9 +1,8 @@
 export const Colors = {
-  primary: '#EF4444',     // Sumbar Computer esasy gyzyl reňki
-  secondary: '#1E293B',   // Gara / Goýy çal (Tekstler we menular üçin)
-  background: '#F8FAFC',  // Sahypanyň arkasynyň arassa fony
-  card: '#FFFFFF',        // Kartlaryň ak fony
-  border: '#E2E8F0',      // Çyzyklar we araçäkler üçin çal
-  text: '#0F172A',        // Esasy gara tekst
-  textMuted: '#64748B',   // Öçük çal tekst
+  primary: '#CC0000',       // Siziň saýlan hakyky esasy gyzyl reňkiňiz
+  navBg: '#111111',         // Aşaky esasy goýy gara navbar fony
+  topBarBg: '#1A1A1A',      // Ýokarky inçe zolagyň azajyk açyk gara fony
+  textGray: '#A1B1C5',      // Terjime we habarlaşyň ýazgylarynyň professional çal reňki
+  background: '#F4F6F9',    // Sahypalaryň arassa çygyl ak fony
+  textMuted: '#64748B',
 };
