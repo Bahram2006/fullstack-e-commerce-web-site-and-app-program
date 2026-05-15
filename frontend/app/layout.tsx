@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Header     from "@/components/Header";
+import Header from "@/components/Header";
 import CompareBar from "@/components/CompareBar";
-import Footer     from "@/components/Footer";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Sumbar Computer",
@@ -21,7 +21,7 @@ export default function RootLayout({
           <CompareBar />
           <main>{children}</main>
         </div>
-        
+
         <Footer />
       </body>
     </html>

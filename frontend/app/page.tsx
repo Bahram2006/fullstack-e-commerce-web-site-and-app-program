@@ -1,19 +1,8 @@
-// app/page.tsx  — Server Component, "use client" ýok
-// ─────────────────────────────────────────────────────────────────────────────
-// ✅ getProducts()      — üýtgemedi
-// ✅ Product interfeysi — üýtgemedi
-// ✅ Supabase import    — üýtgemedi
-// ✅ HomeTabs layout    — üýtgemedi
-// 🆕 <aside>           — StoreReviews komponenti bilen çalşyldy
-// ─────────────────────────────────────────────────────────────────────────────
-
 import { supabase } from "@/lib/supabase";
 import HomeTabs from "@/components/HomeTabs";
 import Hero from "@/components/Hero";
 import StoreReviews from "@/components/StoreReviews";
 import SideBanners from "@/components/SideBanners";
-
-// ─── Product tipi (ProductCard + HomeTabs bu ýerden import edýär) ─────────────
 
 export interface Product {
   id: string;
@@ -24,8 +13,6 @@ export interface Product {
   discount_percent: number | null;
   is_new: boolean;
 }
-
-// ─── Server-side data fetch (üýtgemedi) ───────────────────────────────────────
 
 async function getProducts(): Promise<Product[]> {
   const { data, error } = await supabase
@@ -50,25 +37,19 @@ async function getProducts(): Promise<Product[]> {
   }));
 }
 
-// ─── Baş sahypa ───────────────────────────────────────────────────────────────
-
 export default async function HomePage() {
   const products = await getProducts();
 
   return (
     <div className="max-w-[1320px] mx-auto px-4 py-6">
-      {/* Hero bölümi */}
       <Hero />
 
-      {/* Ana layout: çep teswirler + sag harytlar */}
       <div className="flex flex-col lg:flex-row gap-6 items-start mt-6">
-        {/* ── Çep: Müşderi teswirleri ── */}
         <div className="w-full lg:w-[280px] shrink-0 flex flex-col space-y-6">
           <StoreReviews />
-          <SideBanners /> {/* Ine, täze banner komponentimiz şu ýere gelýär */}
+          <SideBanners />
         </div>
 
-        {/* ── Sag: Tab menýusy + Haryt grid-i ── */}
         <div className="flex-1 w-full min-w-0">
           <HomeTabs products={products} />
         </div>
