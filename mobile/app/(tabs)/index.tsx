@@ -9,7 +9,6 @@ export default function HomeScreen() {
     <View style={styles.safeContainer}>
       <StatusBar barStyle="light-content" backgroundColor="#1A1A1A" translucent={false} />
 
-      {/* 100/100 Klonlanan Navbar Dropdown-lary bilen */}
       <Header />
 
       <ScrollView
@@ -17,10 +16,9 @@ export default function HomeScreen() {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.scrollContent}
       >
-        {/* 🖼️ Hakyky Sumbar dizaýnyndaky uly aksiýa slideri */}
+
         {/* <Hero /> */}
         
-        {/* Indiki ädimlerde bärde kategoriýalar we harytlar durar */}
       </ScrollView>
     </View>
   );

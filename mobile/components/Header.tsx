@@ -178,7 +178,11 @@ export default function Header() {
             <Ionicons name="notifications-outline" size={21} color="#FFFFFF" />
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.iconButton} activeOpacity={0.7}>
+          <TouchableOpacity
+            style={styles.iconButton}
+            activeOpacity={0.7}
+            onPress={() => router.push("/cart")} // 🚀 Sebede geçiş logikasy şu taýda
+          >
             <SimpleLineIcons name="bag" size={18} color="#FFFFFF" />
           </TouchableOpacity>
 
