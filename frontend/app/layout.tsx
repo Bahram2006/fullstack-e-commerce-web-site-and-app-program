@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import CompareBar from "@/components/CompareBar";
 import Footer from "@/components/Footer";
+import ComplaintModal from "@/components/ComplaintModal";
 
 export const metadata: Metadata = {
   title: "Sumbar Computer",
@@ -19,6 +20,7 @@ export default function RootLayout({
         <div className="w-full flex-grow">
           <Header />
           <CompareBar />
+          <ComplaintModal />
           <main>{children}</main>
         </div>
 
