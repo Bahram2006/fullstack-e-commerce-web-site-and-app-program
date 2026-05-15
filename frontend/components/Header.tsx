@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import ProfileDropdown from "./ProfileDropdown";
 import MoreDropdown from "./MoreDropdown";
 import ContactDropdown from "./ContactDropdown";
 import { useComplaintModal } from "@/store/useComplaintModal";
@@ -248,7 +249,7 @@ function MainHeader() {
 
         {/* Right icons */}
         <div className="flex items-center gap-2">
-          <IconBtn href="/account" icon={User} label="Hasabym" />
+          <ProfileDropdown />
           <IconBtn
             href="/notifications"
             icon={Bell}
