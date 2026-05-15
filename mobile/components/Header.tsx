@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import AuthModal from "./AuthModal";
 import { useRouter } from "expo-router";
+import MenuDropdown from "./MenuDropdown";
 import {
   StyleSheet,
   View,
@@ -21,6 +22,7 @@ import { useLangStore } from "../store/useLangStore";
 import ProfileDropdown from "./ProfileDropdown";
 
 export default function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const router = useRouter();
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const { lang, setLang } = useLangStore();
@@ -186,8 +188,22 @@ export default function Header() {
             <SimpleLineIcons name="bag" size={18} color="#FFFFFF" />
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.iconButton} activeOpacity={0.7}>
-            <Feather name="menu" size={21} color="#FFFFFF" />
+          <TouchableOpacity
+            style={styles.iconButton}
+            activeOpacity={0.7}
+            onPress={() => {
+              setIsMenuOpen(!isMenuOpen);
+              setIsSearchOpen(false);
+              setIsProfileOpen(false);
+              setIsLangOpen(false);
+              setIsContactOpen(false);
+            }}
+          >
+            <Feather
+              name={isMenuOpen ? "x" : "menu"}
+              size={21}
+              color={isMenuOpen ? Colors.primary : "#FFFFFF"}
+            />
           </TouchableOpacity>
         </View>
 
@@ -199,6 +215,7 @@ export default function Header() {
             }}
           />
         )}
+        {isMenuOpen && <MenuDropdown onClose={() => setIsMenuOpen(false)} />}
       </View>
 
       {/* Gözleg Bar */}
