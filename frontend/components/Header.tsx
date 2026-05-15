@@ -1,8 +1,7 @@
 "use client";
 
-// Köne görnüşi: import { useState, useEffect } from "react";
-// Täze arassa görnüşi (Başyna 'React' sözüni goşuň):
 import React, { useState, useEffect } from "react";
+import MoreDropdown from "./MoreDropdown";
 import ContactDropdown from "./ContactDropdown";
 import { useComplaintModal } from "@/store/useComplaintModal";
 import Link from "next/link";
@@ -23,8 +22,6 @@ const TOP_LINKS = [
   { label: "Kepillilik", href: "/warranty" },
   { label: "Eltip bermek we töleg", href: "/delivery" },
   { label: "Teswirler", href: "/reviews" },
-
-  { label: "Has giriş", href: "/auth" },
 ];
 
 const LANGUAGES = ["Türkmen", "Русский", "English"];
@@ -37,7 +34,7 @@ const BADGE_CART = 2;
 function TopBar() {
   const [lang, setLang] = useState("Türkmen");
   const [langOpen, setLangOpen] = useState(false);
-  
+
   // 🆕 GOŞULDY: Zustand modal açyjy funksiýasyny çagyrýarys
   const openComplaint = useComplaintModal((s) => s.openModal);
 
@@ -48,7 +45,7 @@ function TopBar() {
 
         {/* Center nav links */}
         <nav className="hidden md:flex items-center">
-          {/* 🆕 ÜÝTGEDILDI: Sanawy aýlanym edip, indeksini (idx) alýarys */}
+          {/* Sanawy aýlanym edip elementleri we indeksleri (idx) tertipleýäris */}
           {TOP_LINKS.map((l, idx) => (
             <React.Fragment key={l.href}>
               <Link
@@ -57,15 +54,21 @@ function TopBar() {
               >
                 {l.label}
               </Link>
-              
-              {/* 🆕 GOŞULDY: 'Teswirler' (sanawda 4-nji indeks) linkinden soň Modal düwmesini goýýarys */}
+
+              {/* 'Teswirler' (sanawda 4-nji indeks) linkinden soň degişli düwmeleri tertipleýäris */}
               {idx === 4 && (
-                <button
-                  onClick={openComplaint}
-                  className="px-3 py-1 text-[11px] text-white/55 transition-colors hover:text-white cursor-pointer outline-none font-sans"
-                >
-                  Nägilelik bildirmek
-                </button>
+                <>
+                  {/* 1. Global Pop-up Modal gutusyny açýan düwme */}
+                  <button
+                    onClick={openComplaint}
+                    className="px-3 py-1 text-[11px] text-white/55 transition-colors hover:text-white cursor-pointer outline-none font-sans"
+                  >
+                    Nägilelik bildirmek
+                  </button>
+
+                  {/* 2. 🆕 GOŞULDY: Ak guty dropdown listini dökýän täze komponentimiz */}
+                  <MoreDropdown />
+                </>
               )}
             </React.Fragment>
           ))}
@@ -107,7 +110,6 @@ function TopBar() {
     </div>
   );
 }
-
 
 // ─── Logo ─────────────────────────────────────────────────────────────────────
 
