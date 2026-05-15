@@ -20,11 +20,9 @@ export default function AuthModal({ visible, onClose }: AuthModalProps) {
       visible={visible}
       onRequestClose={onClose}
     >
-      {/* Modalyň arkasyny garatmak */}
       <View style={styles.modalOverlay}>
         <View style={styles.modalContent}>
           
-          {/* Ýokarky Gözgany / Sözbaşy */}
           <View style={styles.modalHeader}>
             <Text style={styles.modalTitle}>HASABYMA GIR</Text>
             <TouchableOpacity onPress={onClose} activeOpacity={0.7}>
@@ -32,13 +30,11 @@ export default function AuthModal({ visible, onClose }: AuthModalProps) {
             </TouchableOpacity>
           </View>
 
-          {/* Telefon Belgi Zolagy */}
           <View style={styles.body}>
             <Text style={styles.inputLabel}>
               Telefon belgiňiz <Text style={styles.requiredStar}>*</Text>
             </Text>
             
-            {/* 100/100 Klonlanan Çetleri Gyzyl Çyzykly Input */}
             <View style={styles.inputWrapper}>
               <View style={styles.prefixBox}>
                 <Text style={styles.prefixText}>+993</Text>
@@ -63,13 +59,13 @@ export default function AuthModal({ visible, onClose }: AuthModalProps) {
 const styles = StyleSheet.create({
   modalOverlay: {
     flex: 1,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)', // Arkanyň garaňkylygy
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
     justifyContent: 'center',
     alignItems: 'center',
   },
   modalContent: {
     backgroundColor: '#FFFFFF',
-    width: width - 40, // Çepden-sagdan professional boşluk
+    width: width - 40,
     borderRadius: 4,
     overflow: 'hidden',
     shadowColor: '#000',
@@ -104,13 +100,13 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   requiredStar: {
-    color: Colors.primary, // #CC0000
+    color: Colors.primary, 
   },
   inputWrapper: {
     flexDirection: 'row',
     height: 42,
     borderWidth: 1,
-    borderColor: Colors.primary, // Siziň saýlan hakyky gyzyl reňkiňiz (#CC0000)
+    borderColor: Colors.primary,
     borderRadius: 4,
     overflow: 'hidden',
   },

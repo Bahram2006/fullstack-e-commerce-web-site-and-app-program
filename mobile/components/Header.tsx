@@ -39,7 +39,6 @@ export default function Header() {
 
   return (
     <View style={styles.container}>
-      {/* 1. Ýokarky Inçe Zolak */}
       <View style={styles.topBar}>
         <TouchableOpacity
           activeOpacity={0.7}
@@ -71,7 +70,6 @@ export default function Header() {
         </TouchableOpacity>
       </View>
 
-      {/* Dropdown-lar (Top Bar degişli bolanlar) */}
       {isContactOpen && (
         <View style={[styles.dropdownMenu, { left: 12 }]}>
           <TouchableOpacity
@@ -114,7 +112,6 @@ export default function Header() {
         </View>
       )}
 
-      {/* 2. Esasy Navbar */}
       <View style={styles.mainNavbar}>
         <View style={styles.logoContainer}>
           <View style={styles.logoIconGroup}>
@@ -176,18 +173,16 @@ export default function Header() {
           </TouchableOpacity>
         </View>
 
-        {/* 👥 Senior usuly: Profil dropdown-yny mainNavbar-yň göni içine goýduk, şunda durnuklylyk (relative-absolute) 100% dogry işleýär */}
         {isProfileOpen && (
           <ProfileDropdown
             onClose={() => {
               setIsProfileOpen(false);
-              setIsAuthModalOpen(true); // Profil sanawy ýapylanda modaly açýar
+              setIsAuthModalOpen(true);
             }}
           />
         )}
       </View>
 
-      {/* Gözleg Bar */}
       {isSearchOpen && (
         <View style={styles.searchBarWrapper}>
           <View style={styles.searchContainer}>

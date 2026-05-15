@@ -22,7 +22,6 @@ export default function ProfileDropdown({ onClose }: ProfileDropdownProps) {
         style={styles.dropdownItem}
         activeOpacity={0.7}
         onPress={() => {
-          // Bärde Supabase Login sahypasyna geçiş bolar
           onClose();
         }}
       >
@@ -36,8 +35,8 @@ export default function ProfileDropdown({ onClose }: ProfileDropdownProps) {
 const styles = StyleSheet.create({
   dropdownMenu: {
     position: "absolute",
-    top: 48, // Göni navbar-yň aşagyndan başlamagy üçin peseldildi
-    right: 110, // Profil ikonynyň göni aşagyna durnukly düşer ýaly sazlandy
+    top: 48,
+    right: 110,
     backgroundColor: "#FFFFFF",
     borderRadius: 4,
     width: 140,
