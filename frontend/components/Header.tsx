@@ -1,7 +1,10 @@
 "use client";
 
-import { useState } from "react";
+// Köne görnüşi: import { useState, useEffect } from "react";
+// Täze arassa görnüşi (Başyna 'React' sözüni goşuň):
+import React, { useState, useEffect } from "react";
 import ContactDropdown from "./ContactDropdown";
+import { useComplaintModal } from "@/store/useComplaintModal";
 import Link from "next/link";
 import {
   Search,
@@ -20,7 +23,7 @@ const TOP_LINKS = [
   { label: "Kepillilik", href: "/warranty" },
   { label: "Eltip bermek we töleg", href: "/delivery" },
   { label: "Teswirler", href: "/reviews" },
-  { label: "Nägilelik bildirmek", href: "/complaints" },
+
   { label: "Has giriş", href: "/auth" },
 ];
 
@@ -34,6 +37,9 @@ const BADGE_CART = 2;
 function TopBar() {
   const [lang, setLang] = useState("Türkmen");
   const [langOpen, setLangOpen] = useState(false);
+  
+  // 🆕 GOŞULDY: Zustand modal açyjy funksiýasyny çagyrýarys
+  const openComplaint = useComplaintModal((s) => s.openModal);
 
   return (
     <div className="w-full bg-[#111] border-b border-white/5">
@@ -42,14 +48,26 @@ function TopBar() {
 
         {/* Center nav links */}
         <nav className="hidden md:flex items-center">
-          {TOP_LINKS.map((l) => (
-            <Link
-              key={l.href} // Indi l.href arkaýyn tapylar we JSX-key ýalňyşlygy aýrylar
-              href={l.href}
-              className="px-3 py-1 text-[11px] text-white/55 transition-colors hover:text-white"
-            >
-              {l.label} {/* TypeScript indi bu ýerde hiç hili error bermez */}
-            </Link>
+          {/* 🆕 ÜÝTGEDILDI: Sanawy aýlanym edip, indeksini (idx) alýarys */}
+          {TOP_LINKS.map((l, idx) => (
+            <React.Fragment key={l.href}>
+              <Link
+                href={l.href}
+                className="px-3 py-1 text-[11px] text-white/55 transition-colors hover:text-white"
+              >
+                {l.label}
+              </Link>
+              
+              {/* 🆕 GOŞULDY: 'Teswirler' (sanawda 4-nji indeks) linkinden soň Modal düwmesini goýýarys */}
+              {idx === 4 && (
+                <button
+                  onClick={openComplaint}
+                  className="px-3 py-1 text-[11px] text-white/55 transition-colors hover:text-white cursor-pointer outline-none font-sans"
+                >
+                  Nägilelik bildirmek
+                </button>
+              )}
+            </React.Fragment>
           ))}
         </nav>
 
@@ -57,7 +75,7 @@ function TopBar() {
         <div className="relative">
           <button
             onClick={() => setLangOpen((o) => !o)}
-            className="flex items-center gap-1.5 rounded px-2 py-1 text-[11px] text-white/65 transition hover:text-white"
+            className="flex items-center gap-1.5 rounded px-2 py-1 text-[11px] text-white/65 transition hover:text-white cursor-pointer outline-none"
           >
             <Globe className="h-3.5 w-3.5" />
             {lang}
@@ -75,7 +93,7 @@ function TopBar() {
                     setLang(l);
                     setLangOpen(false);
                   }}
-                  className={`w-full px-3 py-1.5 text-left text-[11px] transition-colors hover:bg-white/5 ${
+                  className={`w-full px-3 py-1.5 text-left text-[11px] transition-colors hover:bg-white/5 cursor-pointer outline-none ${
                     lang === l ? "text-white font-semibold" : "text-white/55"
                   }`}
                 >
@@ -89,6 +107,7 @@ function TopBar() {
     </div>
   );
 }
+
 
 // ─── Logo ─────────────────────────────────────────────────────────────────────
 
@@ -249,6 +268,7 @@ function MainHeader() {
 // ─── Root Export ──────────────────────────────────────────────────────────────
 
 export default function Header() {
+  const openComplaint = useComplaintModal((s) => s.openModal);
   return (
     <header className="sticky top-0 z-40 shadow-2xl shadow-black/60">
       <TopBar />
