@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import AuthModal from "./AuthModal";
 import {
   StyleSheet,
   View,
@@ -19,6 +20,7 @@ import { useLangStore } from "../store/useLangStore";
 import ProfileDropdown from "./ProfileDropdown";
 
 export default function Header() {
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const { lang, setLang } = useLangStore();
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isLangOpen, setIsLangOpen] = useState(false);
@@ -176,7 +178,12 @@ export default function Header() {
 
         {/* 👥 Senior usuly: Profil dropdown-yny mainNavbar-yň göni içine goýduk, şunda durnuklylyk (relative-absolute) 100% dogry işleýär */}
         {isProfileOpen && (
-          <ProfileDropdown onClose={() => setIsProfileOpen(false)} />
+          <ProfileDropdown
+            onClose={() => {
+              setIsProfileOpen(false);
+              setIsAuthModalOpen(true); // Profil sanawy ýapylanda modaly açýar
+            }}
+          />
         )}
       </View>
 
@@ -201,6 +208,7 @@ export default function Header() {
           </View>
         </View>
       )}
+      <AuthModal visible={isAuthModalOpen} onClose={() => setIsAuthModalOpen(false)} />
     </View>
   );
 }
