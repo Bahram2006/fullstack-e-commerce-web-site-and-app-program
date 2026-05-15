@@ -7,21 +7,22 @@
 // 🆕 <aside>           — StoreReviews komponenti bilen çalşyldy
 // ─────────────────────────────────────────────────────────────────────────────
 
-import { supabase }     from "@/lib/supabase";
-import HomeTabs         from "@/components/HomeTabs";
-import Hero             from "@/components/Hero";
-import StoreReviews     from "@/components/StoreReviews";
+import { supabase } from "@/lib/supabase";
+import HomeTabs from "@/components/HomeTabs";
+import Hero from "@/components/Hero";
+import StoreReviews from "@/components/StoreReviews";
+import SideBanners from "@/components/SideBanners";
 
 // ─── Product tipi (ProductCard + HomeTabs bu ýerden import edýär) ─────────────
 
 export interface Product {
-  id:               string;
-  name:             string;
-  price:            number;
-  old_price:        number | null;
-  image_url:        string;
+  id: string;
+  name: string;
+  price: number;
+  old_price: number | null;
+  image_url: string;
   discount_percent: number | null;
-  is_new:           boolean;
+  is_new: boolean;
 }
 
 // ─── Server-side data fetch (üýtgemedi) ───────────────────────────────────────
@@ -39,13 +40,13 @@ async function getProducts(): Promise<Product[]> {
   }
 
   return (data ?? []).map((row) => ({
-    id:               row.id,
-    name:             row.name,
-    price:            row.price,
-    old_price:        row.old_price  ?? null,
-    image_url:        row.image_url  ?? "/placeholder.png",
-    discount_percent: row.discount   ?? null,
-    is_new:           row.is_new     ?? false,
+    id: row.id,
+    name: row.name,
+    price: row.price,
+    old_price: row.old_price ?? null,
+    image_url: row.image_url ?? "/placeholder.png",
+    discount_percent: row.discount ?? null,
+    is_new: row.is_new ?? false,
   }));
 }
 
@@ -61,15 +62,16 @@ export default async function HomePage() {
 
       {/* Ana layout: çep teswirler + sag harytlar */}
       <div className="flex flex-col lg:flex-row gap-6 items-start mt-6">
-
         {/* ── Çep: Müşderi teswirleri ── */}
-        <StoreReviews />
+        <div className="w-full lg:w-[280px] shrink-0 flex flex-col space-y-6">
+          <StoreReviews />
+          <SideBanners /> {/* Ine, täze banner komponentimiz şu ýere gelýär */}
+        </div>
 
         {/* ── Sag: Tab menýusy + Haryt grid-i ── */}
         <div className="flex-1 w-full min-w-0">
           <HomeTabs products={products} />
         </div>
-
       </div>
     </div>
   );
