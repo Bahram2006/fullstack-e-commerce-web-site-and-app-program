@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import CompareBar from "@/components/CompareBar";
 import Footer from "@/components/Footer";
 import ComplaintModal from "@/components/ComplaintModal";
+import AIChat from "@/components/AIChat";
 
 export const metadata: Metadata = {
   title: "Sumbar Computer",
@@ -21,6 +22,7 @@ export default function RootLayout({
           <Header />
           <CompareBar />
           <ComplaintModal />
+          <AIChat />
           <main>{children}</main>
         </div>
 
