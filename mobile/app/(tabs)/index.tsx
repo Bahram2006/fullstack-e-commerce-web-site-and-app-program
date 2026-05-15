@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, ScrollView, StatusBar } from 'react-native';
 import Header from '../../components/Header';
-// import Hero from '../../components/Hero'; // Slider komponentimiz
+// import Hero from '../../components/Hero';
 import { Colors } from '../../constants/Colors';
 
 export default function HomeScreen() {

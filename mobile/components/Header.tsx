@@ -41,13 +41,24 @@ export default function Header() {
 
   return (
     <View style={styles.container}>
+      {/* 1. Ýokarky Inçe Zolak */}
       <View style={styles.topBar}>
+        {/* 🛠️ Biziň bilen habarlaşyň ýazgysy hakyky ýerine yza döküldi */}
         <TouchableOpacity
-          style={styles.iconButton}
           activeOpacity={0.7}
-          onPress={() => router.push("/notifications")}
+          onPress={() => {
+            setIsContactOpen(!isContactOpen);
+            setIsLangOpen(false);
+            setIsProfileOpen(false);
+          }}
+          style={styles.topBarTrigger}
         >
-          <Ionicons name="notifications-outline" size={21} color="#FFFFFF" />
+          <Text style={styles.topBarText}>{contactText[lang]}</Text>
+          <FontAwesome
+            name={isContactOpen ? "caret-up" : "caret-down"}
+            size={10}
+            color="#94A3B8"
+          />
         </TouchableOpacity>
 
         <TouchableOpacity
@@ -64,6 +75,7 @@ export default function Header() {
         </TouchableOpacity>
       </View>
 
+      {/* Dropdown Listler */}
       {isContactOpen && (
         <View style={[styles.dropdownMenu, { left: 12 }]}>
           <TouchableOpacity
@@ -106,6 +118,7 @@ export default function Header() {
         </View>
       )}
 
+      {/* 2. Esasy Navbar */}
       <View style={styles.mainNavbar}>
         <View style={styles.logoContainer}>
           <View style={styles.logoIconGroup}>
@@ -156,12 +169,19 @@ export default function Header() {
             </View>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.iconButton} activeOpacity={0.7}>
+          {/* 🔔 Hakyky Işjeň Jaňjagaz Ikonymyz (Basylanda notifications sahypasyny açar) */}
+          <TouchableOpacity
+            style={styles.iconButton}
+            activeOpacity={0.7}
+            onPress={() => router.push("/notifications")}
+          >
             <Ionicons name="notifications-outline" size={21} color="#FFFFFF" />
           </TouchableOpacity>
+
           <TouchableOpacity style={styles.iconButton} activeOpacity={0.7}>
             <SimpleLineIcons name="bag" size={18} color="#FFFFFF" />
           </TouchableOpacity>
+
           <TouchableOpacity style={styles.iconButton} activeOpacity={0.7}>
             <Feather name="menu" size={21} color="#FFFFFF" />
           </TouchableOpacity>
@@ -177,6 +197,7 @@ export default function Header() {
         )}
       </View>
 
+      {/* Gözleg Bar */}
       {isSearchOpen && (
         <View style={styles.searchBarWrapper}>
           <View style={styles.searchContainer}>
@@ -197,6 +218,7 @@ export default function Header() {
           </View>
         </View>
       )}
+
       <AuthModal
         visible={isAuthModalOpen}
         onClose={() => setIsAuthModalOpen(false)}
@@ -207,8 +229,7 @@ export default function Header() {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: Colors.navBg,
-    paddingTop: 36,
+    // ❌ Artykmaç gara zolagy döredýän 'paddingTop' we 'backgroundColor' şu taýdan aýryldy!
     position: "relative",
     zIndex: 999,
   },
@@ -218,13 +239,21 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: 12,
     paddingVertical: 10,
-    backgroundColor: Colors.topBarBg,
+    backgroundColor: Colors.topBarBg, // #1A1A1A göni iň ýokardan başlar
   },
-  topBarTrigger: { flexDirection: "row", alignItems: "center", gap: 5 },
-  topBarText: { color: "#94A3B8", fontSize: 12, fontWeight: "400" },
+  topBarTrigger: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 5,
+  },
+  topBarText: {
+    color: "#94A3B8",
+    fontSize: 12,
+    fontWeight: "400",
+  },
   dropdownMenu: {
     position: "absolute",
-    top: 68,
+    top: 38, // Ýokarky topBar-yň täze ýerine laýyk sazlandy
     backgroundColor: "#FFFFFF",
     borderRadius: 4,
     width: 150,
@@ -236,7 +265,10 @@ const styles = StyleSheet.create({
     elevation: 6,
     zIndex: 1000,
   },
-  langDropdown: { right: 12, width: 140 },
+  langDropdown: {
+    right: 12,
+    width: 140,
+  },
   dropdownItem: {
     flexDirection: "row",
     alignItems: "center",
@@ -246,7 +278,10 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: "#F1F5F9",
   },
-  dropdownText: { color: "#1E293B", fontSize: 12 },
+  dropdownText: {
+    color: "#1E293B",
+    fontSize: 12,
+  },
   langItem: {
     flexDirection: "row",
     alignItems: "center",
@@ -254,19 +289,35 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 12,
   },
-  langLeft: { flexDirection: "row", alignItems: "center", gap: 8 },
-  flagEmoji: { fontSize: 15 },
-  langItemText: { fontSize: 13, color: "#334155" },
-  activeLangText: { color: "#CC0000", fontWeight: "500" },
+  langLeft: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
+  },
+  flagEmoji: {
+    fontSize: 15,
+  },
+  langItemText: {
+    fontSize: 13,
+    color: "#334155",
+  },
+  activeLangText: {
+    color: "#CC0000",
+    fontWeight: "500",
+  },
   mainNavbar: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
     paddingHorizontal: 12,
     paddingVertical: 14,
-    backgroundColor: Colors.navBg,
+    backgroundColor: Colors.navBg, // #111111
   },
-  logoContainer: { flexDirection: "row", alignItems: "center", gap: 8 },
+  logoContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
+  },
   logoIconGroup: {
     position: "relative",
     width: 28,
@@ -292,7 +343,9 @@ const styles = StyleSheet.create({
     bottom: -4,
     right: 0,
   },
-  logoTextCol: { justifyContent: "center" },
+  logoTextCol: {
+    justifyContent: "center",
+  },
   logoMainText: {
     color: "#FFFFFF",
     fontSize: 17,
@@ -308,7 +361,11 @@ const styles = StyleSheet.create({
     lineHeight: 8,
     marginTop: 2,
   },
-  actionsRow: { flexDirection: "row", alignItems: "center", gap: 14 },
+  actionsRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 14,
+  },
   iconButton: {
     justifyContent: "center",
     alignItems: "center",
@@ -331,7 +388,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  badgeX: { color: "#FFFFFF", fontSize: 8, fontWeight: "bold", lineHeight: 9 },
+  badgeX: {
+    color: "#FFFFFF",
+    fontSize: 8,
+    fontWeight: "bold",
+    lineHeight: 9,
+  },
   searchBarWrapper: {
     backgroundColor: Colors.navBg,
     paddingHorizontal: 12,
