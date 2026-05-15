@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import ContactDropdown from "./ContactDropdown";
 import Link from "next/link";
 import {
   Search,
@@ -14,7 +15,7 @@ import {
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
 const TOP_LINKS = [
-  { label: "Biz barada", href: "/about" },
+  { label: "Biz barada", href: "/about-us" },
   { label: "Tehniki hyzmat", href: "/service" },
   { label: "Kepillilik", href: "/warranty" },
   { label: "Eltip bermek we töleg", href: "/delivery" },
@@ -37,20 +38,17 @@ function TopBar() {
   return (
     <div className="w-full bg-[#111] border-b border-white/5">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2">
-        {/* Left promo text */}
-        <p className="text-[11px] text-white/45 tracking-wide">
-          Biziň bilen habarlaşyň…
-        </p>
+        <ContactDropdown />
 
         {/* Center nav links */}
         <nav className="hidden md:flex items-center">
           {TOP_LINKS.map((l) => (
             <Link
-              key={l.href}
+              key={l.href} // Indi l.href arkaýyn tapylar we JSX-key ýalňyşlygy aýrylar
               href={l.href}
               className="px-3 py-1 text-[11px] text-white/55 transition-colors hover:text-white"
             >
-              {l.label}
+              {l.label} {/* TypeScript indi bu ýerde hiç hili error bermez */}
             </Link>
           ))}
         </nav>
