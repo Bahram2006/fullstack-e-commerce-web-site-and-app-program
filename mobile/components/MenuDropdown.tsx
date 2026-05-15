@@ -109,6 +109,124 @@ export default function MenuDropdown({ onClose }: MenuDropdownProps) {
         { id: '3-13', name: 'Dok stansiyalar we HUB-lar', iconKey: '3-13' },
       ]
     },
+    {
+        id: '4',
+        name: 'TOPLAYJYLAR',
+        iconKey: '4',
+        subs: [
+        { id: '4-1', name: 'Dasky gaty diskler', iconKey: '4-1' },
+        { id: '4-2', name: 'Gaty diskler uçin stansiyalar we korpuslar', iconKey: '4-2' },
+        { id: '4-3', name: 'Fles toplayjy (USB)', iconKey: '4-3' },
+        { id: '4-4', name: 'Yat karty (SD)', iconKey: '4-4' },
+        { id: '4-5', name: 'Kartriderler', iconKey: '4-5' },
+        ]
+    },
+    {
+        id: '5',
+        name: 'MONOBLOK WE PK',
+        iconKey: '5',
+        subs: [
+        { id: '5-1', name: 'Monobloklar', iconKey: '5-1' },
+        { id: '5-2', name: 'Brend kompyuterler', iconKey: '5-2' },
+        ]
+    },
+    {
+        id: '6',
+        name: 'NOUTBUKLAR WE BEYLEKILER',
+        iconKey: '6',
+        subs: [
+        { id: '6-1', name: 'Noutbuklar', iconKey: '6-1' },
+        { id: '6-2', name: 'Sumkalar we ryukzaklar', iconKey: '6-2' },
+        { id: '6-3', name: 'Stendler we esbaplar', iconKey: '6-3' },
+        { id: '6-4', name: 'Batareyler', iconKey: '6-4' },
+        { id: '6-5', name: 'Zaryad berijiler', iconKey: '6-5' },
+        { id: '6-6', name: 'Yadyn moduly', iconKey: '6-6' },
+        { id: '6-7', name: 'Optiki toplayjylar DWD RW', iconKey: '6-7' },
+        { id: '6-8', name: 'Ekranlar', iconKey: '6-8' },
+        { id: '6-9', name: 'Klawiaturalar', iconKey: '6-9' },
+        { id: '6-10', name: 'Klawiatura uçin nakleykalar', iconKey: '6-10' },
+        ]
+    },
+    {
+        id: '7',
+        name: 'MOBIL PERIFERIYALARY',
+        iconKey: '7',
+        subs: [
+        { id: '7-1', name: 'Plansetler', iconKey: '7-1' },
+        { id: '7-2', name: 'Smart sagatlar', iconKey: '7-2' },
+        { id: '7-3', name: 'Telefon uçin zaryad berijiler', iconKey: '7-3' },
+        { id: '7-4', name: 'Telefon uçin kabeller', iconKey: '7-4' },
+        { id: '7-5', name: 'Portatiw batareyler', iconKey: '7-5' },
+        { id: '7-6', name: 'Podstawkalar we saklayjylar', iconKey: '7-6' },
+        { id: '7-7', name: 'Awtoulaglar uçin wideoregistratorlar', iconKey: '7-7' },
+        { id: '7-8', name: 'Sumkalar we keysler', iconKey: '7-8' },
+        { id: '7-9', name: 'Arassalayjy serisdeler', iconKey: '7-9' },
+        { id: '7-10', name: 'Durli mobil periferiyalary', iconKey: '7-10' },
+        ]
+    },
+    {
+        id: '8',
+        name: 'PRINTERLER WE BEYLEKILER',
+        iconKey: '8',
+        subs: [
+        { id: '8-1', name: 'Lazer printerler', iconKey: '8-1' },
+        { id: '8-2', name: 'Injekt printerler', iconKey: '8-2' },
+        { id: '8-3', name: 'Kopiya aparatlary', iconKey: '8-3' },
+        { id: '8-4', name: 'Skanerler', iconKey: '8-4' },
+        { id: '8-5', name: 'Oy we ofis ucin telefonlar', iconKey: '8-5' },
+        { id: '8-6', name: 'Proyektorlar we duzujiler', iconKey: '8-6' },
+        { id: '8-7', name: 'KAgyz uweyji', iconKey: '8-7' },
+        { id: '8-8', name: 'Laminatorlar', iconKey: '8-8' },
+        { id: '8-9', name: 'Kanselyariya', iconKey: '8-9' },
+        { id: '8-10', name: 'Sarp edilyan harytlar', iconKey: '8-10' },
+        ]
+    },
+    {
+        id: '9',
+        name: 'TOR ENJAMALRY',
+        iconKey: '9',
+        subs: [
+        { id: '9-1', name: 'Routerler', iconKey: '9-1' },
+        { id: '9-2', name: 'Simsiz guyclendirijiler', iconKey: '9-2' },
+        { id: '9-3', name: 'Tor adapteri we platalar', iconKey: '9-3' },
+        { id: '9-4', name: 'Swicler, konwerterler we beylekiler', iconKey: '9-4' },
+        { id: '9-5', name: 'Tor kabeli', iconKey: '9-5' },
+        { id: '9-6', name: 'Testerler we gurallar', iconKey: '9-6' },
+        ]
+    },
+    {
+        id: '10',
+        name: 'HOWPSUZLYK ULGAMY',
+        iconKey: '10',
+        subs: [
+        { id: '10-1', name: 'Gozegcilik kameralary', iconKey: '10-1' },
+        { id: '10-2', name: 'Elektron gulplar', iconKey: '10-2' },
+        ]
+    },
+    {
+        id: '11',
+        name: 'AWTOMATIZASIYA',
+        iconKey: '11',
+        subs: [
+        { id: '11-1', name: 'POS kompyuterleri we beylekiler', iconKey: '11-1' },
+        { id: '11-2', name: 'Barkod we cek printerler', iconKey: '11-2' },
+        { id: '11-3', name: 'Barkod skanerleri', iconKey: '11-3' },
+        { id: '11-4', name: 'Pul sanayjylar', iconKey: '11-4' },
+        { id: '11-5', name: 'Pul gutusy', iconKey: '11-5' },
+        { id: '11-6', name: 'Sarp edilyan harytlar', iconKey: '11-6' },
+        ]
+    },
+    {
+        id: '12',
+        name: 'TOK SAZLAYJYLAR WE UPS',
+        iconKey: '12',
+        subs: [
+        { id: '12-1', name: 'UPS', iconKey: '12-1' },
+        { id: '12-2', name: 'Tok sazlayjylar', iconKey: '12-2' },
+        { id: '12-3', name: 'UPS ucin batareyler', iconKey: '12-3' },
+        { id: '12-4', name: 'UPs ucin beylekiler', iconKey: '12-4' },
+        ]
+    },
   ];
 
   const handleToggleExpand = (id: string) => {
