@@ -1,90 +1,123 @@
-import React, { useState } from 'react';
-import { StyleSheet, View, Text, TouchableOpacity, Linking } from 'react-native';
-import { SimpleLineIcons, Feather, Ionicons, FontAwesome } from '@expo/vector-icons';
-import { Colors } from '../constants/Colors';
-import { useLangStore } from '../store/useLangStore';
+import React, { useState } from "react";
+import {
+  StyleSheet,
+  View,
+  Text,
+  TouchableOpacity,
+  Linking,
+  TextInput,
+} from "react-native";
+import {
+  SimpleLineIcons,
+  Feather,
+  Ionicons,
+  FontAwesome,
+  Entypo,
+} from "@expo/vector-icons";
+import { Colors } from "../constants/Colors";
+import { useLangStore } from "../store/useLangStore";
+import ProfileDropdown from "./ProfileDropdown";
 
 export default function Header() {
-  const { lang } = useLangStore();
-  // Sanawyň açyk ýa-da ýapykdygyny dolandyrýan ýagdaý (state)
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const { lang, setLang } = useLangStore();
+  const [isContactOpen, setIsContactOpen] = useState(false);
+  const [isLangOpen, setIsLangOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const [searchText, setSearchText] = useState("");
 
   const contactText = {
-    tk: 'Biziň bilen habarlaşyň...',
-    ru: 'Связаться с нами...',
-    en: 'Contact us...',
+    tk: "Biziň bilen habarlaşyň...",
+    ru: "Связаться с нами...",
+    en: "Contact us...",
   };
-
-  const langName = {
-    tk: 'Türkmen',
-    ru: 'Русский',
-    en: 'English',
-  };
-
-  // Telefon we email basylanda awtomatiki jaň etmek funksiýalary
-  const handlePressLink = (url: string) => {
-    Linking.openURL(url).catch((err) => console.error("Baglanyşyk açylmady:", err));
-  };
+  const langName = { tk: "Türkmen", ru: "Русский", en: "English" };
+  const placeholderText = { tk: "Gözleg", ru: "Поиск", en: "Search" };
+  const flags = { tk: "🇹🇲", ru: "🇷🇺", en: "🇬🇧" };
 
   return (
     <View style={styles.container}>
-      {/* 1. Ýokarky Inçe Zolak (Top Bar) */}
+      {/* 1. Ýokarky Inçe Zolak */}
       <View style={styles.topBar}>
-        <TouchableOpacity 
-          activeOpacity={0.7} 
-          onPress={() => setIsDropdownOpen(!isDropdownOpen)}
-          style={styles.contactTrigger}
+        <TouchableOpacity
+          activeOpacity={0.7}
+          onPress={() => {
+            setIsContactOpen(!isContactOpen);
+            setIsLangOpen(false);
+            setIsProfileOpen(false);
+          }}
+          style={styles.topBarTrigger}
         >
           <Text style={styles.topBarText}>{contactText[lang]}</Text>
-          <FontAwesome 
-            name={isDropdownOpen ? "caret-up" : "caret-down"} 
-            size={12} 
-            color="#94A3B8" 
+          <FontAwesome
+            name={isContactOpen ? "caret-up" : "caret-down"}
+            size={10}
+            color="#94A3B8"
           />
         </TouchableOpacity>
-        
-        <TouchableOpacity style={styles.langSelector} activeOpacity={0.7}>
-          <View style={styles.blueDot} />
-          <Text style={styles.langText}>{langName[lang]}</Text>
+        <TouchableOpacity
+          activeOpacity={0.7}
+          onPress={() => {
+            setIsLangOpen(!isLangOpen);
+            setIsContactOpen(false);
+            setIsProfileOpen(false);
+          }}
+          style={styles.topBarTrigger}
+        >
+          <Entypo name="globe" size={13} color="#94A3B8" />
+          <Text style={styles.topBarText}>{langName[lang]}</Text>
         </TouchableOpacity>
       </View>
 
-      {/* 📞 Hakyky Klonlanan Arassa Dropdown List */}
-      {isDropdownOpen && (
-        <View style={styles.dropdownMenu}>
-          <TouchableOpacity style={styles.dropdownItem} onPress={() => handlePressLink('tel:+99312492343')}>
-            <Feather name="phone" size={14} color="#1E293B" />
-            <Text style={styles.dropdownText}>+993 (12) 49-23-43 (Dükan)</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity style={styles.dropdownItem} onPress={() => handlePressLink('tel:+99312261369')}>
-            <Feather name="phone" size={14} color="#1E293B" />
-            <Text style={styles.dropdownText}>+993 (12) 26-13-69 (Dükan)</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity style={styles.dropdownItem} onPress={() => handlePressLink('tel:+99362708045')}>
-            <Feather name="smartphone" size={14} color="#1E293B" />
-            <Text style={styles.dropdownText}>+993 (62) 70-80-45 (Operator)</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity style={styles.dropdownItem} onPress={() => handlePressLink('tel:+99362233759')}>
-            <Feather name="smartphone" size={14} color="#1E293B" />
-            <Text style={styles.dropdownText}>+993 (62) 23-37-59 (Tehniki hyzmat)</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity style={[styles.dropdownItem, { borderBottomWidth: 0 }]} onPress={() => handlePressLink('mailto:sumbar.computer@gmail.com')}>
-            <Feather name="mail" size={14} color="#1E293B" />
-            <Text style={styles.dropdownText}>sumbar.computer@gmail.com</Text>
+      {/* Dropdown-lar (Top Bar degişli bolanlar) */}
+      {isContactOpen && (
+        <View style={[styles.dropdownMenu, { left: 12 }]}>
+          <TouchableOpacity
+            style={styles.dropdownItem}
+            onPress={() => Linking.openURL("tel:+99312492343")}
+          >
+            <Feather name="phone" size={13} color="#1E293B" />
+            <Text style={styles.dropdownText}>+993 (12) 49-23-43</Text>
           </TouchableOpacity>
         </View>
       )}
 
-      {/* 2. Aşaky Esasy Navbar (Main Navbar) */}
+      {isLangOpen && (
+        <View style={[styles.dropdownMenu, styles.langDropdown]}>
+          {(["tk", "ru", "en"] as const).map((item) => (
+            <TouchableOpacity
+              key={item}
+              style={styles.langItem}
+              onPress={() => {
+                setLang(item);
+                setIsLangOpen(false);
+              }}
+            >
+              <View style={styles.langLeft}>
+                <Text style={styles.flagEmoji}>{flags[item]}</Text>
+                <Text
+                  style={[
+                    styles.langItemText,
+                    lang === item && styles.activeLangText,
+                  ]}
+                >
+                  {langName[item]}
+                </Text>
+              </View>
+              {lang === item && (
+                <FontAwesome name="check" size={12} color="#CC0000" />
+              )}
+            </TouchableOpacity>
+          ))}
+        </View>
+      )}
+
+      {/* 2. Esasy Navbar */}
       <View style={styles.mainNavbar}>
         <View style={styles.logoContainer}>
-          <View style={styles.logoBadge}>
-            <Text style={styles.logoS}>S</Text>
-            <View style={styles.logoRedLines} />
+          <View style={styles.logoIconGroup}>
+            <Text style={styles.logoBigS}>S</Text>
+            <Text style={styles.logoSmallC}>C</Text>
           </View>
           <View style={styles.logoTextCol}>
             <Text style={styles.logoMainText}>SUMBAR</Text>
@@ -93,13 +126,37 @@ export default function Header() {
         </View>
 
         <View style={styles.actionsRow}>
-          <TouchableOpacity style={styles.iconButton} activeOpacity={0.7}>
-            <Feather name="search" size={18} color="#FFFFFF" />
+          <TouchableOpacity
+            style={styles.iconButton}
+            activeOpacity={0.7}
+            onPress={() => {
+              setIsSearchOpen(!isSearchOpen);
+              setIsProfileOpen(false);
+            }}
+          >
+            <Feather
+              name={isSearchOpen ? "x" : "search"}
+              size={20}
+              color={isSearchOpen ? Colors.primary : "#FFFFFF"}
+            />
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.iconButton} activeOpacity={0.7}>
+          <TouchableOpacity
+            style={styles.iconButton}
+            activeOpacity={0.7}
+            onPress={() => {
+              setIsProfileOpen(!isProfileOpen);
+              setIsSearchOpen(false);
+              setIsLangOpen(false);
+              setIsContactOpen(false);
+            }}
+          >
             <View style={styles.profileIconContainer}>
-              <SimpleLineIcons name="user" size={16} color="#3B82F6" />
+              <SimpleLineIcons
+                name="user"
+                size={18}
+                color={isProfileOpen ? Colors.primary : "#3B82F6"}
+              />
               <View style={styles.badgeRed}>
                 <Text style={styles.badgeX}>×</Text>
               </View>
@@ -107,18 +164,43 @@ export default function Header() {
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.iconButton} activeOpacity={0.7}>
-            <Ionicons name="notifications-outline" size={19} color="#FFFFFF" />
+            <Ionicons name="notifications-outline" size={21} color="#FFFFFF" />
           </TouchableOpacity>
-
           <TouchableOpacity style={styles.iconButton} activeOpacity={0.7}>
-            <SimpleLineIcons name="bag" size={16} color="#FFFFFF" />
+            <SimpleLineIcons name="bag" size={18} color="#FFFFFF" />
           </TouchableOpacity>
-
           <TouchableOpacity style={styles.iconButton} activeOpacity={0.7}>
-            <Feather name="menu" size={20} color="#FFFFFF" />
+            <Feather name="menu" size={21} color="#FFFFFF" />
           </TouchableOpacity>
         </View>
+
+        {/* 👥 Senior usuly: Profil dropdown-yny mainNavbar-yň göni içine goýduk, şunda durnuklylyk (relative-absolute) 100% dogry işleýär */}
+        {isProfileOpen && (
+          <ProfileDropdown onClose={() => setIsProfileOpen(false)} />
+        )}
       </View>
+
+      {/* Gözleg Bar */}
+      {isSearchOpen && (
+        <View style={styles.searchBarWrapper}>
+          <View style={styles.searchContainer}>
+            <TextInput
+              style={styles.searchInput}
+              placeholder={placeholderText[lang]}
+              placeholderTextColor="#94A3B8"
+              value={searchText}
+              onChangeText={setSearchText}
+              autoFocus={true}
+            />
+            <TouchableOpacity
+              style={styles.searchSubmitButton}
+              activeOpacity={0.8}
+            >
+              <Feather name="search" size={18} color="#FFFFFF" />
+            </TouchableOpacity>
+          </View>
+        </View>
+      )}
     </View>
   );
 }
@@ -127,157 +209,154 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.navBg,
     paddingTop: 36,
-    position: 'relative',
-    zIndex: 999, // Dropdown öňe çyksyn diýip
+    position: "relative",
+    zIndex: 999,
   },
   topBar: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     paddingHorizontal: 12,
-    paddingVertical: 8,
+    paddingVertical: 10,
     backgroundColor: Colors.topBarBg,
   },
-  contactTrigger: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 6,
-  },
-  topBarText: {
-    color: '#94A3B8',
-    fontSize: 12,
-    fontWeight: '400',
-  },
-  langSelector: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 6,
-  },
-  blueDot: {
-    width: 8,
-    height: 8,
-    borderRadius: 4,
-    backgroundColor: '#3B82F6',
-  },
-  langText: {
-    color: '#94A3B8',
-    fontSize: 12,
-    fontWeight: '400',
-  },
+  topBarTrigger: { flexDirection: "row", alignItems: "center", gap: 5 },
+  topBarText: { color: "#94A3B8", fontSize: 12, fontWeight: "400" },
   dropdownMenu: {
-    position: 'absolute',
-    top: 64, // Ýokarky top bar-dan aşakda durnukly ýeri
-    left: 12,
-    backgroundColor: '#FFFFFF',
-    borderRadius: 6,
-    width: 280,
+    position: "absolute",
+    top: 68,
+    backgroundColor: "#FFFFFF",
+    borderRadius: 4,
+    width: 150,
     paddingVertical: 4,
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.15,
-    shadowRadius: 6,
-    elevation: 5,
+    shadowOpacity: 0.2,
+    shadowRadius: 5,
+    elevation: 6,
     zIndex: 1000,
   },
+  langDropdown: { right: 12, width: 140 },
   dropdownItem: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 10,
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
     paddingVertical: 10,
     paddingHorizontal: 12,
     borderBottomWidth: 1,
-    borderBottomColor: '#F1F5F9',
+    borderBottomColor: "#F1F5F9",
   },
-  dropdownText: {
-    color: '#1E293B',
-    fontSize: 12,
-    fontWeight: '500',
-  },
-  mainNavbar: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+  dropdownText: { color: "#1E293B", fontSize: 12 },
+  langItem: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingVertical: 10,
     paddingHorizontal: 12,
-    paddingVertical: 12,
+  },
+  langLeft: { flexDirection: "row", alignItems: "center", gap: 8 },
+  flagEmoji: { fontSize: 15 },
+  langItemText: { fontSize: 13, color: "#334155" },
+  activeLangText: { color: "#CC0000", fontWeight: "500" },
+  mainNavbar: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingHorizontal: 12,
+    paddingVertical: 14,
     backgroundColor: Colors.navBg,
   },
-  logoContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
+  logoContainer: { flexDirection: "row", alignItems: "center", gap: 8 },
+  logoIconGroup: {
+    position: "relative",
+    width: 28,
+    height: 28,
+    justifyContent: "center",
+    alignItems: "center",
   },
-  logoBadge: {
-    position: 'relative',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: 24,
-    height: 24,
-  },
-  logoS: {
-    color: '#FFFFFF',
-    fontSize: 24,
-    fontWeight: '900',
-    transform: [{ skewX: '-15deg' }],
-  },
-  logoRedLines: {
-    position: 'absolute',
-    bottom: 0,
+  logoBigS: {
+    color: "#FFFFFF",
+    fontSize: 26,
+    fontWeight: "900",
+    fontStyle: "italic",
+    position: "absolute",
+    top: -4,
     left: 0,
+  },
+  logoSmallC: {
+    color: "#CC0000",
+    fontSize: 20,
+    fontWeight: "900",
+    fontStyle: "italic",
+    position: "absolute",
+    bottom: -4,
     right: 0,
-    height: 3,
-    backgroundColor: Colors.primary,
   },
-  logoTextCol: {
-    justifyContent: 'center',
-    marginLeft: 6,
-  },
+  logoTextCol: { justifyContent: "center" },
   logoMainText: {
-    color: '#FFFFFF',
-    fontSize: 16,
-    fontWeight: 'bold',
+    color: "#FFFFFF",
+    fontSize: 17,
+    fontWeight: "bold",
     letterSpacing: 0.5,
-    lineHeight: 16,
+    lineHeight: 17,
   },
   logoSubText: {
-    color: Colors.primary,
-    fontSize: 7,
-    fontWeight: '700',
-    letterSpacing: 1,
-    lineHeight: 7,
+    color: "#CC0000",
+    fontSize: 8,
+    fontWeight: "700",
+    letterSpacing: 1.5,
+    lineHeight: 8,
     marginTop: 2,
   },
-  actionsRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 12,
-  },
+  actionsRow: { flexDirection: "row", alignItems: "center", gap: 14 },
   iconButton: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: 32,
-    height: 32,
+    justifyContent: "center",
+    alignItems: "center",
+    width: 28,
+    height: 28,
   },
   profileIconContainer: {
-    position: 'relative',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: 24,
-    height: 24,
+    position: "relative",
+    justifyContent: "center",
+    alignItems: "center",
   },
   badgeRed: {
-    position: 'absolute',
+    position: "absolute",
     top: -4,
-    right: -4,
-    backgroundColor: Colors.primary,
+    right: -5,
+    backgroundColor: "#CC0000",
     width: 10,
     height: 10,
     borderRadius: 5,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
-  badgeX: {
-    color: '#FFFFFF',
-    fontSize: 8,
-    fontWeight: 'bold',
-    lineHeight: 9,
+  badgeX: { color: "#FFFFFF", fontSize: 8, fontWeight: "bold", lineHeight: 9 },
+  searchBarWrapper: {
+    backgroundColor: Colors.navBg,
+    paddingHorizontal: 12,
+    paddingBottom: 12,
+  },
+  searchContainer: {
+    flexDirection: "row",
+    backgroundColor: "#FFFFFF",
+    borderRadius: 4,
+    height: 40,
+    overflow: "hidden",
+    alignItems: "center",
+  },
+  searchInput: {
+    flex: 1,
+    height: "100%",
+    paddingHorizontal: 12,
+    fontSize: 14,
+    color: "#1E293B",
+  },
+  searchSubmitButton: {
+    backgroundColor: Colors.primary,
+    width: 44,
+    height: "100%",
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
