@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import AuthModal from "./AuthModal";
+import { useRouter } from "expo-router";
 import {
   StyleSheet,
   View,
@@ -20,6 +21,7 @@ import { useLangStore } from "../store/useLangStore";
 import ProfileDropdown from "./ProfileDropdown";
 
 export default function Header() {
+  const router = useRouter();
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const { lang, setLang } = useLangStore();
   const [isContactOpen, setIsContactOpen] = useState(false);
@@ -41,21 +43,13 @@ export default function Header() {
     <View style={styles.container}>
       <View style={styles.topBar}>
         <TouchableOpacity
+          style={styles.iconButton}
           activeOpacity={0.7}
-          onPress={() => {
-            setIsContactOpen(!isContactOpen);
-            setIsLangOpen(false);
-            setIsProfileOpen(false);
-          }}
-          style={styles.topBarTrigger}
+          onPress={() => router.push("/notifications")}
         >
-          <Text style={styles.topBarText}>{contactText[lang]}</Text>
-          <FontAwesome
-            name={isContactOpen ? "caret-up" : "caret-down"}
-            size={10}
-            color="#94A3B8"
-          />
+          <Ionicons name="notifications-outline" size={21} color="#FFFFFF" />
         </TouchableOpacity>
+
         <TouchableOpacity
           activeOpacity={0.7}
           onPress={() => {
@@ -203,7 +197,10 @@ export default function Header() {
           </View>
         </View>
       )}
-      <AuthModal visible={isAuthModalOpen} onClose={() => setIsAuthModalOpen(false)} />
+      <AuthModal
+        visible={isAuthModalOpen}
+        onClose={() => setIsAuthModalOpen(false)}
+      />
     </View>
   );
 }
