@@ -49,9 +49,7 @@ export default function NotificationsScreen() {
     <View style={styles.safeContainer}>
       <StatusBar barStyle="dark-content" backgroundColor="#FFFFFF" />
       
-      {/* Ýokarky Header Zolagy */}
       <View style={styles.header}>
-        {/* Hakyky AntDesign "left" ok ikony goýuldy */}
         <TouchableOpacity onPress={() => router.back()} activeOpacity={0.7} style={styles.backButton}>
           <AntDesign name="left" size={18} color="#1E293B" />
         </TouchableOpacity>
@@ -59,7 +57,6 @@ export default function NotificationsScreen() {
         <View style={styles.placeholder} />
       </View>
 
-      {/* Bildirişleriň Sanawy */}
       <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
         {notifications.map((item) => (
           <View key={item.id} style={styles.card}>
@@ -85,7 +82,7 @@ export default function NotificationsScreen() {
 const styles = StyleSheet.create({
   safeContainer: {
     flex: 1,
-    backgroundColor: '#F4F6F9', // Siziň saýlan arassa fonyňyz
+    backgroundColor: '#F4F6F9',
   },
   header: {
     flexDirection: 'row',

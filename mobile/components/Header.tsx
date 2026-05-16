@@ -171,7 +171,6 @@ export default function Header() {
             </View>
           </TouchableOpacity>
 
-          {/* 🔔 Hakyky Işjeň Jaňjagaz Ikonymyz (Basylanda notifications sahypasyny açar) */}
           <TouchableOpacity
             style={styles.iconButton}
             activeOpacity={0.7}
@@ -183,7 +182,7 @@ export default function Header() {
           <TouchableOpacity
             style={styles.iconButton}
             activeOpacity={0.7}
-            onPress={() => router.push("/cart")} // 🚀 Sebede geçiş logikasy şu taýda
+            onPress={() => router.push("/cart")} 
           >
             <SimpleLineIcons name="bag" size={18} color="#FFFFFF" />
           </TouchableOpacity>
@@ -218,7 +217,6 @@ export default function Header() {
         {isMenuOpen && <MenuDropdown onClose={() => setIsMenuOpen(false)} />}
       </View>
 
-      {/* Gözleg Bar */}
       {isSearchOpen && (
         <View style={styles.searchBarWrapper}>
           <View style={styles.searchContainer}>

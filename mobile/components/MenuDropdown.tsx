@@ -13,7 +13,6 @@ import { Colors } from "../constants/Colors";
 
 const { height } = Dimensions.get("window");
 
-// 🖼️ Geçiren hakyky suratlaryňyzy takyk birikdirýän Map ulgamy
 const iconMap: { [key: string]: any } = {
   "1": require("../assets/assets/1.png"),
   "1-2": require("../assets/assets/1-2.png"),
@@ -174,7 +173,6 @@ interface MenuDropdownProps {
 export default function MenuDropdown({ onClose }: MenuDropdownProps) {
   const [expandedCat, setExpandedCat] = useState<string | null>(null);
 
-  // 📝 Suratda duran hakyky Sumbar Kategoriýa atlary we suratlaryň takyk baglanyşygy
   const categories: Category[] = [
     {
       id: "1",
@@ -387,6 +385,11 @@ export default function MenuDropdown({ onClose }: MenuDropdownProps) {
           iconKey: "14-6",
         },
         { id: "14-7", name: "Yyladys enjamlary", iconKey: "14-7" },
+      
+      
+      
+      
+      
         { id: "14-8", name: "Ashana enjamlary we esbaplary", iconKey: "14-8" },
         { id: "14-9", name: "Ashana gap-gaclary", iconKey: "14-9" },
         { id: "14-10", name: "Caynekler", iconKey: "14-10" },
