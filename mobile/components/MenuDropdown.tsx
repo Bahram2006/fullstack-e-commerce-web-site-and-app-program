@@ -445,7 +445,7 @@ export default function MenuDropdown({ onClose }: MenuDropdownProps) {
 
   return (
     <View style={styles.dropdownContainer}>
-      {/* Gyzyl Başlyk */}
+      
       <View style={styles.redHeader}>
         <View style={styles.headerLeft}>
           <MaterialCommunityIcons name="menu" size={18} color="#FFFFFF" />
@@ -456,7 +456,7 @@ export default function MenuDropdown({ onClose }: MenuDropdownProps) {
         </TouchableOpacity>
       </View>
 
-      {/* Kategoriýa Scroll Sanawy */}
+      
       <ScrollView
         style={styles.listScroll}
         showsVerticalScrollIndicator={false}
@@ -475,7 +475,7 @@ export default function MenuDropdown({ onClose }: MenuDropdownProps) {
                 onPress={() => handleToggleExpand(cat.id)}
               >
                 <View style={styles.itemLeft}>
-                  {/* 🖼️ Siziň hakyky reňkli suratyňyz */}
+                  
                   <Image source={iconMap[cat.iconKey]} style={styles.catIcon} />
                   <Text
                     style={[
@@ -493,7 +493,7 @@ export default function MenuDropdown({ onClose }: MenuDropdownProps) {
                 />
               </TouchableOpacity>
 
-              {/* 📂 Açylýan Içki Sub-Kategoriýalar */}
+              
               {isExpanded && cat.subs.length > 0 && (
                 <View style={styles.subContainer}>
                   {cat.subs.map((sub) => (
@@ -502,7 +502,7 @@ export default function MenuDropdown({ onClose }: MenuDropdownProps) {
                       style={styles.subItem}
                       activeOpacity={0.7}
                     >
-                      {/* Sub-kategoriýanyň hakyky öz inçe suraty */}
+                      
                       <Image
                         source={iconMap[sub.iconKey]}
                         style={styles.subIcon}
@@ -528,7 +528,7 @@ const styles = StyleSheet.create({
     right: 12,
     backgroundColor: "#FFFFFF",
     borderRadius: 4,
-    // 🛠️ Esasy gabyň ölçegi kiçijik we durnukly edildi, ekrandan aşak asla geçmez
+    
     height: 380,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 6 },
@@ -537,7 +537,7 @@ const styles = StyleSheet.create({
     elevation: 10,
     borderWidth: 1,
     borderColor: "#E2E8F0",
-    overflow: "hidden", // Içindäki scroll-yň daşa çykmazlygy üçin
+    overflow: "hidden",
     zIndex: 9999,
   },
   redHeader: {
@@ -551,7 +551,6 @@ const styles = StyleSheet.create({
   headerLeft: { flexDirection: "row", alignItems: "center", gap: 8 },
   headerTitle: { color: "#FFFFFF", fontSize: 14, fontWeight: "bold" },
 
-  // 🛠️ Ak sanawyň öz içinden durnukly scroll bolmagyny üpjün edýän esasy meýdança
   listScroll: {
     flex: 1,
     backgroundColor: "#FFFFFF",
