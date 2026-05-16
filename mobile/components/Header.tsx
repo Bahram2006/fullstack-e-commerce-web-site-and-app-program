@@ -120,7 +120,6 @@ export default function Header() {
         </View>
       )}
 
-      {/* 2. Esasy Navbar */}
       <View style={styles.mainNavbar}>
         <View style={styles.logoContainer}>
           <View style={styles.logoIconGroup}>
@@ -248,7 +247,6 @@ export default function Header() {
 
 const styles = StyleSheet.create({
   container: {
-    // ❌ Artykmaç gara zolagy döredýän 'paddingTop' we 'backgroundColor' şu taýdan aýryldy!
     position: "relative",
     zIndex: 999,
   },
@@ -258,7 +256,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: 12,
     paddingVertical: 10,
-    backgroundColor: Colors.topBarBg, // #1A1A1A göni iň ýokardan başlar
+    backgroundColor: Colors.topBarBg, // #1A1A1A
   },
   topBarTrigger: {
     flexDirection: "row",
@@ -272,7 +270,7 @@ const styles = StyleSheet.create({
   },
   dropdownMenu: {
     position: "absolute",
-    top: 38, // Ýokarky topBar-yň täze ýerine laýyk sazlandy
+    top: 38,
     backgroundColor: "#FFFFFF",
     borderRadius: 4,
     width: 150,
