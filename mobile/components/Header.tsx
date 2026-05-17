@@ -328,7 +328,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: 12,
     paddingVertical: 14,
-    backgroundColor: Colors.navBg, // #111111
+    backgroundColor: Colors.navBg,
   },
   logoContainer: {
     flexDirection: "row",
