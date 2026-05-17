@@ -1,5 +1,15 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Text, ScrollView, Image, TouchableOpacity, TextInput, Linking, Dimensions } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Text,
+  ScrollView,
+  Image,
+  TouchableOpacity,
+  TextInput,
+  Linking,
+  Dimensions,
+} from "react-native";
 import { Feather, FontAwesome, Ionicons } from "@expo/vector-icons";
 
 const { width } = Dimensions.get("window");
@@ -27,16 +37,23 @@ const brandSliders = [
   require("../assets/assets/Footer_sliders/slider_20.png"),
 ];
 
-export default function Footer() {
+interface FooterProps {
+  onComplainPress?: () => void;
+}
+
+export default function Footer({
+  onComplainPress,
+}: {
+  onComplainPress?: () => void;
+}) {
   const [email, setEmail] = useState("");
 
   return (
     <View style={styles.container}>
-      
       {/* 1. BRENDLERIŇ SÜÝŞÝÄN SLIDERI */}
       <View style={styles.brandSliderWrapper}>
-        <ScrollView 
-          horizontal={true} 
+        <ScrollView
+          horizontal={true}
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={styles.brandScrollContent}
         >
@@ -50,7 +67,6 @@ export default function Footer() {
 
       {/* 2. ESASY GARA BÖLEK */}
       <View style={styles.mainFooterBody}>
-        
         {/* Sumbar Uly Logo */}
         <View style={styles.logoContainer}>
           <View style={styles.logoIconGroup}>
@@ -66,36 +82,56 @@ export default function Footer() {
         {/* Aragatnaşyk maglumatlary */}
         <View style={styles.contactsList}>
           <View style={styles.contactItem}>
-            <Ionicons name="location-outline" size={16} color="#94A3B8" style={styles.iconStyle} />
+            <Ionicons
+              name="location-outline"
+              size={16}
+              color="#94A3B8"
+              style={styles.iconStyle}
+            />
             <Text style={styles.contactText}>
               Türkmenistan, Aşgabat, köç. A.Nyýazow (Hudaýberdiýew), jaý 99
             </Text>
           </View>
 
-          <TouchableOpacity 
-            style={styles.contactItem} 
+          <TouchableOpacity
+            style={styles.contactItem}
             activeOpacity={0.7}
             onPress={() => Linking.openURL("mailto:sumbar.computer@gmail.com")}
           >
-            <Feather name="mail" size={14} color="#94A3B8" style={styles.iconStyle} />
+            <Feather
+              name="mail"
+              size={14}
+              color="#94A3B8"
+              style={styles.iconStyle}
+            />
             <Text style={styles.contactText}>sumbar.computer@gmail.com</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity 
-            style={styles.contactItem} 
+          <TouchableOpacity
+            style={styles.contactItem}
             activeOpacity={0.7}
             onPress={() => Linking.openURL("tel:+99312492343")}
           >
-            <Feather name="phone" size={14} color="#94A3B8" style={styles.iconStyle} />
+            <Feather
+              name="phone"
+              size={14}
+              color="#94A3B8"
+              style={styles.iconStyle}
+            />
             <Text style={styles.contactText}>+993 (12) 49-23-43</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity 
-            style={styles.contactItem} 
+          <TouchableOpacity
+            style={styles.contactItem}
             activeOpacity={0.7}
             onPress={() => Linking.openURL("tel:+99362708045")}
           >
-            <Feather name="smartphone" size={14} color="#94A3B8" style={styles.iconStyle} />
+            <Feather
+              name="smartphone"
+              size={14}
+              color="#94A3B8"
+              style={styles.iconStyle}
+            />
             <Text style={styles.contactText}>+993 (62) 70-80-45</Text>
           </TouchableOpacity>
 
@@ -106,14 +142,15 @@ export default function Footer() {
               <Text style={styles.socialText}>Instagram</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.socialItem} activeOpacity={0.7}>
-              <FontAwesome name="font" size={12} color="#94A3B8" /> 
+              <FontAwesome name="font" size={12} color="#94A3B8" />
               <Text style={styles.socialText}>TikTok</Text>
             </TouchableOpacity>
           </View>
         </View>
 
         <Text style={styles.aboutShortText}>
-          Sumbar Computer - Türkmenistanda kompýuter we periferiýa enjamlary dükany
+          Sumbar Computer - Türkmenistanda kompýuter we periferiýa enjamlary
+          dükany
         </Text>
 
         {/* Informatiw Baglanyşyklar */}
@@ -150,7 +187,7 @@ export default function Footer() {
         </View>
 
         {/* 🛠️ TÄZE GOŞULAN BÖLEKLER (BIREBIR GÖRSELŇIZE GÖRÄ) */}
-        
+
         {/* E-poçta Abuna Ulgamy */}
         <Text style={styles.sectionHeading}>Täzeliklere abuna boluň</Text>
         <TextInput
@@ -163,8 +200,14 @@ export default function Footer() {
         />
 
         {/* Nägilelik Bildirmek Düwmesi */}
-        <Text style={styles.sectionHeading}>Websaýty gowulaşdyrmaga kömek ediň</Text>
-        <TouchableOpacity style={styles.complainButton} activeOpacity={0.8}>
+        <Text style={styles.sectionHeading}>
+          Websaýty gowulaşdyrmaga kömek ediň
+        </Text>
+        <TouchableOpacity
+          style={styles.complainButton}
+          activeOpacity={0.8}
+          onPress={onComplainPress} // 🛠️ DIŇE ŞU SETIR GOŞULER!
+        >
           <Text style={styles.complainButtonText}>Nägilelik bildirmek</Text>
         </TouchableOpacity>
 
@@ -194,7 +237,6 @@ export default function Footer() {
         <View style={styles.footerDivider} />
         <Text style={styles.copyrightText}>© 2026 sumbar-computer.com</Text>
         <Text style={styles.copyrightTextSub}>Ähli hukuklary goraglydyr.</Text>
-
       </View>
     </View>
   );
@@ -233,23 +275,33 @@ const styles = StyleSheet.create({
     paddingTop: 24,
     paddingBottom: 24,
   },
-  logoContainer: { 
-    flexDirection: "row", 
-    alignItems: "center", 
+  logoContainer: {
+    flexDirection: "row",
+    alignItems: "center",
     gap: 8,
-    marginBottom: 20 
+    marginBottom: 20,
   },
-  logoIconGroup: { 
-    backgroundColor: "#CC0000", 
-    paddingHorizontal: 7, 
-    paddingVertical: 3, 
-    borderRadius: 2 
+  logoIconGroup: {
+    backgroundColor: "#CC0000",
+    paddingHorizontal: 7,
+    paddingVertical: 3,
+    borderRadius: 2,
   },
   logoBigS: { color: "#FFFFFF", fontSize: 18, fontWeight: "bold" },
   logoSmallC: { color: "#FFFFFF", fontSize: 11, alignSelf: "flex-end" },
   logoTextCol: { flexDirection: "column" },
-  logoMainText: { color: "#FFFFFF", fontSize: 16, fontWeight: "bold", letterSpacing: 1.2 },
-  logoSubText: { color: "#FFFFFF", fontSize: 9, letterSpacing: 0.5, marginTop: -2 },
+  logoMainText: {
+    color: "#FFFFFF",
+    fontSize: 16,
+    fontWeight: "bold",
+    letterSpacing: 1.2,
+  },
+  logoSubText: {
+    color: "#FFFFFF",
+    fontSize: 9,
+    letterSpacing: 0.5,
+    marginTop: -2,
+  },
   contactsList: {
     gap: 12,
     marginBottom: 20,

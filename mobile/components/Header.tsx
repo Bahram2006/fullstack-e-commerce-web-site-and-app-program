@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import AuthModal from "./AuthModal";
 import { useRouter } from "expo-router";
 import MenuDropdown from "./MenuDropdown";
+import AIChatModal from "./AIChatModal";
 import {
   StyleSheet,
   View,
@@ -31,6 +32,9 @@ export default function Header() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [searchText, setSearchText] = useState("");
+
+  // 🛠️ DIŇE ŞU GOŞMALY ÝERINDÄKI STATE GOŞULDI, BASHGA HIC ZAT ÜÝTGETMEDI:
+  const [isAiChatOpen, setIsAiChatOpen] = useState(false);
 
   const contactText = {
     tk: "Biziň bilen habarlaşyň...",
@@ -170,6 +174,25 @@ export default function Header() {
             </View>
           </TouchableOpacity>
 
+          {/* 🛠️ DIŇE TÄZE GOŞULAN AI CHAT DÜWMESI */}
+          <TouchableOpacity
+            style={styles.iconButton}
+            activeOpacity={0.7}
+            onPress={() => {
+              setIsAiChatOpen(true);
+              setIsSearchOpen(false);
+              setIsProfileOpen(false);
+              setIsLangOpen(false);
+              setIsContactOpen(false);
+            }}
+          >
+            <Ionicons
+              name="chatbubble-ellipses-outline"
+              size={21}
+              color="#FFFFFF"
+            />
+          </TouchableOpacity>
+
           <TouchableOpacity
             style={styles.iconButton}
             activeOpacity={0.7}
@@ -181,7 +204,7 @@ export default function Header() {
           <TouchableOpacity
             style={styles.iconButton}
             activeOpacity={0.7}
-            onPress={() => router.push("/cart")} 
+            onPress={() => router.push("/cart")}
           >
             <SimpleLineIcons name="bag" size={18} color="#FFFFFF" />
           </TouchableOpacity>
@@ -240,6 +263,12 @@ export default function Header() {
       <AuthModal
         visible={isAuthModalOpen}
         onClose={() => setIsAuthModalOpen(false)}
+      />
+
+      {/* 🛠️ DIŇE TÄZE GOŞULAN AI CHAT MODALY */}
+      <AIChatModal
+        visible={isAiChatOpen}
+        onClose={() => setIsAiChatOpen(false)}
       />
     </View>
   );

@@ -21,12 +21,16 @@ import QuickViewModal from "../../components/QuickViewModal";
 import AuthModal from "../../components/AuthModal";
 import ShopReviews from "../../components/ShopReviews";
 import Footer from "@/components/Footer";
+import ComplaintModal from "../../components/ComplaintModal"; // 🛠️ FIKS 1: ComplaintModal importy goşuldy
 import { supabase } from "@/lib/supabase";
 
 export default function HomeScreen() {
   const [products, setProducts] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [isAuthOpen, setIsAuthOpen] = useState(false);
+  
+  // 🛠️ FIKS 2: Nasazlyk beren we öçen arza modal state-i doly goşuldy!
+  const [isComplaintOpen, setIsComplaintOpen] = useState(false);
 
   const [showScrollTopBtn, setShowScrollTopBtn] = useState(false);
   const scrollRef = useRef<ScrollView>(null);
@@ -123,9 +127,11 @@ export default function HomeScreen() {
           </View>
         )}
 
-        {/* 🛠️ MÖHÜM ÝERLEŞIŞ: Haryt gridi gutaran badyna teswirler bölümi başlaýar */}
         <ShopReviews />
-        <Footer />
+        
+        <View style={{ zIndex: 1, position: "relative" }}>
+          <Footer onComplainPress={() => setIsComplaintOpen(true)} />
+        </View>
       </ScrollView>
 
       {showScrollTopBtn && (
@@ -141,6 +147,9 @@ export default function HomeScreen() {
       <CompareBar />
       <QuickViewModal />
       <AuthModal visible={isAuthOpen} onClose={() => setIsAuthOpen(false)} />
+      
+      {/* 🛠️ FIKS 3: ComplaintModal iň aşakda absolýut bökdençsiz goşuldy */}
+      <ComplaintModal visible={isComplaintOpen} onClose={() => setIsComplaintOpen(false)} />
     </View>
   );
 }
