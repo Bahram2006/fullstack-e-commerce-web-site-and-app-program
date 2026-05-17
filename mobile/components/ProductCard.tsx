@@ -1,16 +1,9 @@
 import React from "react";
-import {
-  StyleSheet,
-  View,
-  Text,
-  Image,
-  TouchableOpacity,
-  Dimensions,
-} from "react-native";
-import { AntDesign, Ionicons } from "@expo/vector-icons";
+import { StyleSheet, View, Text, Image, TouchableOpacity, Dimensions } from "react-native";
+import { Feather, Ionicons, FontAwesome } from "@expo/vector-icons";
+import { useCompareStore } from "../store/useCompareStore"; // 🛠️ Zustand goşuldy
 
 const { width } = Dimensions.get("window");
-// Ekran kenar boşlukları (12+12) ve ortadaki boşluğu (10) çıkarıp 2'ye bölüyoruz
 const cardWidth = (width - 34) / 2;
 
 interface ProductProps {
@@ -18,165 +11,83 @@ interface ProductProps {
   name: string;
   price: number;
   image_url?: string | null;
-  is_new?: boolean;
   onPress?: () => void;
   onAddToCart?: () => void;
 }
 
-export default function ProductCard({
-  name,
-  price,
-  image_url,
-  is_new,
-  onPress,
-  onAddToCart,
-}: ProductProps) {
+export default function ProductCard({ id, name, price, image_url, onPress, onAddToCart }: ProductProps) {
+  // 🛠️ Deňeşdirme saklaýjysyndan maglumatlary çekýäris
+  const { compareItems, toggleCompare } = useCompareStore();
+  const isCompared = compareItems.some((item) => item.id === id);
+
   return (
-    <TouchableOpacity
-      style={styles.cardContainer}
-      activeOpacity={0.9}
-      onPress={onPress}
-    >
-      {/* Üst İkonlar ve "TÄZE" Rozeti */}
-      <View style={styles.cardHeader}>
-        {is_new ? (
-          <View style={styles.badgeNew}>
-            <Text style={styles.badgeText}>TÄZE</Text>
-          </View>
-        ) : (
-          <View />
-        )}
-
-        {/* Sumbar Tarzı Sağ Üst İkonlar (Değiştirme ve Kalp) */}
-        <View style={styles.headerIcons}>
-          <TouchableOpacity style={styles.iconAction} activeOpacity={0.7}>
-            <Ionicons name="git-compare-outline" size={16} color="#64748B" />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.iconAction} activeOpacity={0.7}>
-            {/* 56-njy setirdäki öňki kod: <AntDesign name="hearto" size={16} color="#64748B" /> */}
-
-            <AntDesign name="heart" size={16} color="#64748B" />
-          </TouchableOpacity>
-        </View>
+    <TouchableOpacity style={styles.cardContainer} activeOpacity={0.95} onPress={onPress}>
+      
+      {/* 1. Sağ Üst Köşedeki 3'li İkon Topary */}
+      <View style={styles.headerIcons}>
+        
+        {/* 🛠️ Deňeşdirme Çek-gutujygy (Birebir Sumbar) */}
+        <TouchableOpacity 
+          style={styles.iconAction} 
+          activeOpacity={0.7}
+          onPress={() => toggleCompare({ id, name, image_url: image_url || null })}
+        >
+          {isCompared ? (
+            // Bellenen bolsa: Gyzyl içi doly galoçka guty
+            <FontAwesome name="check-square" size={16} color="#CC0000" />
+          ) : (
+            // Bellenmedik bolsa: Adaty inçe çal guty
+            <FontAwesome name="square-o" size={16} color="#94A3B8" />
+          )}
+        </TouchableOpacity>
+        
+        <TouchableOpacity style={styles.iconAction} activeOpacity={0.7}>
+          <Feather name="search" size={15} color="#94A3B8" />
+        </TouchableOpacity>
+        
+        <TouchableOpacity style={styles.iconAction} activeOpacity={0.7}>
+          <Ionicons name="heart-outline" size={17} color="#DC2626" />
+        </TouchableOpacity>
       </View>
 
-      {/* Önüm Suraty (Görüntü null ise Placeholder yüklenir) */}
+      {/* 2. Önüm Suraty */}
       <View style={styles.imageWrapper}>
         <Image
-          source={
-            image_url ? { uri: image_url } : require("../assets/assets/1.png") // Projenizdeki varsayılan haryt resmi
-          }
+          source={image_url ? { uri: image_url } : require("../assets/assets/1.png")}
           style={styles.productImage}
         />
       </View>
 
-      {/* Önüm Maglumatlary */}
+      {/* 3. Önüm Maglumatlary */}
       <View style={styles.infoContainer}>
-        <Text style={styles.productName} numberOfLines={2}>
-          {name}
-        </Text>
-
-        {/* Baha ve Sepet Dügmesi Satırı */}
+        <Text style={styles.productName} numberOfLines={3}>{name}</Text>
+        <View style={styles.redDivider} />
         <View style={styles.priceRow}>
-          <Text style={styles.productPrice}>{price} TMT</Text>
-
-          <TouchableOpacity
-            style={styles.cartButton}
-            activeOpacity={0.8}
-            onPress={onAddToCart}
-          >
-            <Ionicons name="basket-outline" size={16} color="#FFFFFF" />
-          </TouchableOpacity>
+          <Text style={styles.productPrice}>
+            {price.toFixed(2)} <Text style={styles.tmtText}>TMT</Text>
+          </Text>
         </View>
+        <TouchableOpacity style={styles.addToCartButton} activeOpacity={0.85} onPress={onAddToCart}>
+          <Text style={styles.addToCartText}>SEBEDE GOŞ</Text>
+        </TouchableOpacity>
       </View>
     </TouchableOpacity>
   );
 }
 
+// Stiller öňküsi ýaly galýar...
 const styles = StyleSheet.create({
-  cardContainer: {
-    width: cardWidth,
-    backgroundColor: "#FFFFFF",
-    borderRadius: 6,
-    marginBottom: 10,
-    borderWidth: 1,
-    borderColor: "#E2E8F0",
-    overflow: "hidden",
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.05,
-    shadowRadius: 2,
-    elevation: 2,
-  },
-  cardHeader: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    padding: 8,
-    position: "absolute",
-    top: 0,
-    left: 0,
-    right: 0,
-    zIndex: 10,
-  },
-  badgeNew: {
-    backgroundColor: "#CC0000",
-    paddingHorizontal: 6,
-    paddingVertical: 2,
-    borderRadius: 3,
-  },
-  badgeText: {
-    color: "#FFFFFF",
-    fontSize: 9,
-    fontWeight: "bold",
-  },
-  headerIcons: {
-    flexDirection: "row",
-    gap: 6,
-  },
-  iconAction: {
-    backgroundColor: "rgba(248, 250, 252, 0.8)",
-    padding: 4,
-    borderRadius: 12,
-  },
-  imageWrapper: {
-    width: "100%",
-    height: cardWidth * 0.9,
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 25,
-    padding: 10,
-  },
-  productImage: {
-    width: "100%",
-    height: "100%",
-    resizeMode: "contain",
-  },
-  infoContainer: {
-    padding: 10,
-    borderTopWidth: 1,
-    borderTopColor: "#F1F5F9",
-  },
-  productName: {
-    fontSize: 12,
-    fontWeight: "600",
-    color: "#1E293B",
-    height: 32, // İki satır için sabit yükseklik (Dizanı bozmamak için Senior kuralı)
-    marginBottom: 8,
-  },
-  priceRow: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-  productPrice: {
-    fontSize: 13,
-    fontWeight: "700",
-    color: "#CC0000", // Sumbar Kırmızısı
-  },
-  cartButton: {
-    backgroundColor: "#CC0000",
-    padding: 6,
-    borderRadius: 4,
-  },
+  cardContainer: { width: cardWidth, backgroundColor: "#FFFFFF", borderRadius: 4, marginBottom: 14, borderWidth: 1, borderColor: "#E2E8F0", position: "relative", paddingTop: 28 },
+  headerIcons: { position: "absolute", top: 8, right: 8, flexDirection: "row", alignItems: "center", gap: 8, zIndex: 20 },
+  iconAction: { padding: 2 },
+  imageWrapper: { width: "100%", height: cardWidth * 0.85, justifyContent: "center", alignItems: "center", paddingHorizontal: 12 },
+  productImage: { width: "100%", height: "100%", resizeMode: "contain" },
+  infoContainer: { paddingHorizontal: 12, paddingBottom: 12, alignItems: "center" },
+  productName: { fontSize: 12, fontWeight: "500", color: "#1E293B", textAlign: "center", lineHeight: 16, height: 48, marginBottom: 6 },
+  redDivider: { width: 40, height: 1.5, backgroundColor: "#CC0000", marginBottom: 10 },
+  priceRow: { marginBottom: 10 },
+  productPrice: { fontSize: 14, fontWeight: "bold", color: "#111827" },
+  tmtText: { fontSize: 11, fontWeight: "500", color: "#94A3B8" },
+  addToCartButton: { backgroundColor: "#CC0000", width: "100%", paddingVertical: 8, borderRadius: 20, justifyContent: "center", alignItems: "center" },
+  addToCartText: { color: "#FFFFFF", fontSize: 11, fontWeight: "bold", letterSpacing: 0.5 },
 });
