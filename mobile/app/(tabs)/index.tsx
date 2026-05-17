@@ -23,12 +23,14 @@ import ShopReviews from "../../components/ShopReviews";
 import Footer from "@/components/Footer";
 import ComplaintModal from "../../components/ComplaintModal"; // 🛠️ FIKS 1: ComplaintModal importy goşuldy
 import { supabase } from "@/lib/supabase";
+import RateAuthModal from "../../components/RateAuthModal";
 
 export default function HomeScreen() {
   const [products, setProducts] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [isAuthOpen, setIsAuthOpen] = useState(false);
-  
+  const [isRateAuthOpen, setIsRateAuthOpen] = useState(false);
+
   // 🛠️ FIKS 2: Nasazlyk beren we öçen arza modal state-i doly goşuldy!
   const [isComplaintOpen, setIsComplaintOpen] = useState(false);
 
@@ -127,8 +129,8 @@ export default function HomeScreen() {
           </View>
         )}
 
-        <ShopReviews />
-        
+        <ShopReviews onRatePress={() => setIsRateAuthOpen(true)} />
+
         <View style={{ zIndex: 1, position: "relative" }}>
           <Footer onComplainPress={() => setIsComplaintOpen(true)} />
         </View>
@@ -147,9 +149,17 @@ export default function HomeScreen() {
       <CompareBar />
       <QuickViewModal />
       <AuthModal visible={isAuthOpen} onClose={() => setIsAuthOpen(false)} />
-      
+
       {/* 🛠️ FIKS 3: ComplaintModal iň aşakda absolýut bökdençsiz goşuldy */}
-      <ComplaintModal visible={isComplaintOpen} onClose={() => setIsComplaintOpen(false)} />
+      <ComplaintModal
+        visible={isComplaintOpen}
+        onClose={() => setIsComplaintOpen(false)}
+      />
+      <RateAuthModal
+        visible={isRateAuthOpen}
+        onClose={() => setIsRateAuthOpen(false)}
+        onLoginPress={() => setIsAuthOpen(true)} // 🛠️ Basylanda hakyky "HASABYMA GIR" (telefon) modalyny açar!
+      />
     </View>
   );
 }

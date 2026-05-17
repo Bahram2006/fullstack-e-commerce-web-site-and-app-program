@@ -12,8 +12,11 @@ interface ReviewItem {
   is_real_customer: boolean;
 }
 
-export default function ShopReviews() {
-  // Suratyňyzdaky takyk hakyky maglumatlar (4 sany teswir)
+export default function ShopReviews({
+  onRatePress,
+}: {
+  onRatePress?: () => void;
+}) {
   const reviews: ReviewItem[] = [
     {
       id: "1",
@@ -21,7 +24,8 @@ export default function ShopReviews() {
       rating: 4,
       title: "Gowy",
       date: "27.04.2026",
-      comment: "Все хорошо, но все никак не привезут шире ассортимент коннекторов https://amazon.com...",
+      comment:
+        "Все хорошо, но все никак не привезут шире ассортимент коннекторов https://amazon.com...",
       is_real_customer: true,
     },
     {
@@ -30,7 +34,8 @@ export default function ShopReviews() {
       rating: 5,
       title: "Örän gowy",
       date: "22.04.2026",
-      comment: "Лучший магазин! Обменяли бракованные наушники, даже когда гарантия вышла paru дней назад. Не бросили in беде, поступили п...",
+      comment:
+        "Лучший магазин! Обменяли бракованные наушники, даже когда гарантия вышла paru дней назад. Не бросили in беде, поступили п...",
       is_real_customer: true,
     },
     {
@@ -39,7 +44,8 @@ export default function ShopReviews() {
       rating: 5,
       title: "Örän gowy",
       date: "31.03.2026",
-      comment: "Приобрел in этом магазине стол. Качество отличное, покупкой вполне доволен. Весь товар был идеально укомплектован.",
+      comment:
+        "Приобрел in этом магазине стол. Качество отличное, покупкой вполне доволен. Весь товар был идеально укомплектован.",
       is_real_customer: false,
     },
     {
@@ -48,7 +54,8 @@ export default function ShopReviews() {
       rating: 5,
       title: "Örän gowy",
       date: "16.03.2026",
-      comment: "Arman pulym azyrak, bolmasa gerek däl zatlara çenli alasym gelýä. Sebäp baha GOWY, hyzmat GOWY, ähli hyzmatlar ýuridiki...",
+      comment:
+        "Arman pulym azyrak, bolmasa gerek däl zatlara çenli alasym gelýä. Sebäp baha GOWY, hyzmat GOWY, ähli hyzmatlar ýuridiki...",
       is_real_customer: true,
     },
   ];
@@ -78,7 +85,11 @@ export default function ShopReviews() {
           <Text style={styles.totalReviewsText}>(193)</Text>
         </View>
 
-        <TouchableOpacity style={styles.rateButton} activeOpacity={0.7}>
+        <TouchableOpacity
+          style={styles.rateButton}
+          activeOpacity={0.7}
+          onPress={onRatePress}
+        >
           <Text style={styles.rateButtonText}>Baha beriň</Text>
         </TouchableOpacity>
       </View>
@@ -100,7 +111,7 @@ export default function ShopReviews() {
                 <FontAwesome name="user-circle-o" size={16} color="#94A3B8" />
               </View>
               <Text style={styles.userName}>{item.name}</Text>
-              
+
               {item.is_real_customer && (
                 <View style={styles.verifiedBadge}>
                   <MaterialIcons name="verified" size={12} color="#0EA5E9" />

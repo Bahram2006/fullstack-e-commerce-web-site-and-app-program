@@ -8,7 +8,6 @@ const { width } = Dimensions.get("window");
 
 export default function BonusScreen() {
   
-  // Ballary almagyň esasy düzgünleri
   const earningRules = [
     "Bal toplamak sistemasy şol sistemanyň täsir edýän harytlaryny satyn almak arkaly ballar toplanylýar.",
     "Satyn almak web sahypasyndan ýa-da programmadan edilmeli. Hasaplama diňe sargyt “Tamamlanan” statusyna eýe bolandan soň, ýagny “eltip bermek we tölemek” üçin ähli şertler ýerine ýetirilenden soň ýüze çykýar. Welaýatlara eltip bermek hyzmatynyň we kuryer gullugyndan pul serişdeleriniň gelip gowuşmagynyň belli bir wagt alýandygyny dykkatyňyza ýetirýäris. Şol sebäpli, ballar sargyt gowşurylan badyna däl-de, biraz wagtdan soňra hasaplanar.",
@@ -16,7 +15,6 @@ export default function BonusScreen() {
     "Bal toplamak ulgamy häzirki wagtda arzanladyş yglan edilen önümlere degişli däldir."
   ];
 
-  // Ballary ulanmagyň esasy düzgünleri
   const usingRules = [
     "Diňe v.1.2.0 ýa-da has ýokary wersiýa bolan programmadan satyn alanyňyzda bal sarp edip bilersiňiz (AppStore ýa-da GooglePlay-dan alyp bilersiňiz).",
     "Häzirki wagtda arzanladyşyň bardygyna ýa-da ýokdugyna garamazdan, islendik önüme bal sarp edip bilersiňiz.",
@@ -48,16 +46,13 @@ export default function BonusScreen() {
           
           <Text style={styles.pageTitle}>BAL TOPLAMAK ULGAMY</Text>
 
-          {/* Giriş Teksti */}
           <Text style={styles.paragraphText}>
             <Text style={styles.boldRedText}>Sumbar Computer</Text> onlaýn dükanynda hasaba alnan ulanyjylar üçin bal sistemasy hereket edýär. Haryt satyn alynanda, satyn alyja indiki satyn almak üçin sarp edip biljek bonus ballary berilýär.
           </Text>
 
-          {/* I. BALLARY ALMAGYŇ ESASY DÜZGÜNLERI */}
           <Text style={styles.subHeadingText}>Ballary almagyň esasy düzgünleri:</Text>
           <View style={styles.listWrapper}>{renderBulletList(earningRules)}</View>
 
-          {/* Bellik Gutusy */}
           <View style={styles.noteBox}>
             <Text style={styles.noteText}>
               <Text style={{ fontWeight: "bold" }}>Bellik:</Text> Bal toplamak programmasy ähli önümlere degişli däl! Satyn alyja satyn almak üçin ballar bilen üpjün edilen önümler, bahanyň gapdalynda degişli nyşan bilen bellik edilendir.
@@ -66,11 +61,9 @@ export default function BonusScreen() {
 
           <View style={styles.sectionDivider} />
 
-          {/* II. BALLARY ULANMAGYŇ ESASY DÜZGÜNLERI */}
           <Text style={styles.subHeadingText}>Ballary ulanmagyň esasy düzgünleri:</Text>
           <View style={styles.listWrapper}>{renderBulletList(usingRules)}</View>
 
-          {/* Hasaplama nusgasy */}
           <Text style={styles.subHeadingText}>Hasaplama nusgasy:</Text>
           <Text style={styles.paragraphText}>
             Meselem 100 bal topladyňyz we 100 manatlyk sargyt satyn almak isleýärsiňiz, 50 manadynyzy bal bilen ýapyp bilersiňiz, galanlary üçin nagt tölemeli bolarsyňyz.

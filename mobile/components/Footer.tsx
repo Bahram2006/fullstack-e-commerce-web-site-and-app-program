@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "expo-router";
 import {
   StyleSheet,
@@ -10,6 +10,7 @@ import {
   TextInput,
   Linking,
   Dimensions,
+  FlatList
 } from "react-native";
 import { Feather, FontAwesome, Ionicons } from "@expo/vector-icons";
 
@@ -43,6 +44,25 @@ interface FooterProps {
 }
 
 export default function Footer({ onComplainPress }: FooterProps) {
+    const [currentIndex, setCurrentIndex] = useState(0);
+  const flatListRef = useRef<FlatList>(null);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      let nextIndex = currentIndex + 2;
+      if (nextIndex >= brandSliders.length) {
+        nextIndex = 0;
+      }
+      flatListRef.current?.scrollToIndex({
+        index: nextIndex,
+        animated: true,
+      });
+      setCurrentIndex(nextIndex);
+    }, 2500);
+
+    return () => clearInterval(interval);
+  }, [currentIndex]);
+
   // 🛠️ MÖHÜM GÖRNÜŞ: router funksiýasy kemsiz çagyryldy we öňki onComplainPress hem 100% goraldy!
   const router = useRouter();
   const [email, setEmail] = useState("");
@@ -50,19 +70,27 @@ export default function Footer({ onComplainPress }: FooterProps) {
   return (
     <View style={styles.container}>
       {/* 1. BRENDLERIŇ SÜÝŞÝÄN SLIDERI */}
-      <View style={styles.brandSliderWrapper}>
-        <ScrollView
-          horizontal={true}
+            <View style={styles.brandSliderWrapper}>
+        <FlatList
+          ref={flatListRef}
+          data={brandSliders}
+          keyExtractor={(_, index) => index.toString()}
+          horizontal
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={styles.brandScrollContent}
-        >
-          {brandSliders.map((img, index) => (
-            <View key={index} style={styles.brandImageContainer}>
-              <Image source={img} style={styles.brandImage} />
+          getItemLayout={(_, index) => ({
+            length: 90,
+            offset: 90 * index,
+            index,
+          })}
+          renderItem={({ item }) => (
+            <View style={styles.brandImageContainer}>
+              <Image source={item} style={styles.brandImage} />
             </View>
-          ))}
-        </ScrollView>
+          )}
+        />
       </View>
+
 
       {/* 2. ESASY GARA BÖLEK */}
       <View style={styles.mainFooterBody}>
