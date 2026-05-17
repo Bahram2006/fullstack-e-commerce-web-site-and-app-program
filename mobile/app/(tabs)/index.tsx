@@ -3,6 +3,8 @@ import { StyleSheet, View, ScrollView, StatusBar } from 'react-native';
 import Header from '../../components/Header';
 import Hero from '../../components/Hero';
 import { Colors } from '../../constants/Colors';
+// import GridBanners from '../../components/GridBanners';
+import SideBanners from '../../components/SideBanners';
 
 export default function HomeScreen() {
   return (
@@ -18,6 +20,12 @@ export default function HomeScreen() {
       >
 
         <Hero />
+
+        {/* <GridBanners onBannerPress={(id) => console.log(`Banner ${id} basyldy`)} /> */}
+        <SideBanners 
+          onLeftPress={(index) => console.log(`Çep basyldy: ${index}`)}
+          onRightPress={(index) => console.log(`Sag basyldy: ${index}`)}
+        />
         
       </ScrollView>
     </View>
