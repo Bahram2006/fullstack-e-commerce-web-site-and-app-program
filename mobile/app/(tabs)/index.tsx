@@ -7,14 +7,15 @@ import SideBanners from "../../components/SideBanners";
 import HomeTabs from "../../components/HomeTabs";
 import ProductCard from "../../components/ProductCard";
 import CompareBar from "../../components/CompareBar";
+import QuickViewModal from "../../components/QuickViewModal";
 import { supabase } from "@/lib/supabase";
 
 export default function HomeScreen() {
-  // 🛠️ Ýalňyşlygy düzedýäris: products we loading state-leri koda doly goşuldy
+  // 🛠️ MÖHÜM FIKS: Öçen haryt saklaýjy state-ler doly yzyna goşuldy
   const [products, setProducts] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // Supabase-den harytlary çekýän funksiýa
+  // 🛠️ MÖHÜM FIKS: Supabase-den harytlary çekýän bütin logika yzyna dikeldildi
   useEffect(() => {
     async function fetchProducts() {
       try {
@@ -70,7 +71,7 @@ export default function HomeScreen() {
           <ActivityIndicator size="small" color="#CC0000" style={{ marginTop: 20 }} />
         ) : (
           <View style={styles.productsGrid}>
-            {/* 🛠️ Ýalňyşlygy düzedýäris: item parametriniň tipi (item: any) kesgitlendi */}
+            {/* 🛠️ MÖHÜM FIKS: item: any diýip tipi takyk kesgitlendi */}
             {products.map((item: any) => (
               <ProductCard
                 key={item.id}
@@ -88,11 +89,14 @@ export default function HomeScreen() {
 
       {/* Deňeşdirme paneli iň aşakda absolýut durar */}
       <CompareBar />
+
+      {/* Çalt seretmek modaly */}
+      <QuickViewModal />
     </View>
   );
 }
 
-// 🛠️ Ýalňyşlygy düzedýäris: Öçen bütin styles (stiller) obýekti doly dikeldildi!
+// 🛠️ MÖHÜM FIKS: Aşaky bütin styles (stiller) obýekti arassa görnüşde dikeldildi
 const styles = StyleSheet.create({
   safeContainer: {
     flex: 1,
