@@ -147,47 +147,83 @@ export default function Footer({ onComplainPress }: FooterProps) {
           </View>
         </View>
 
-        <Text style={styles.aboutShortText}>
-          Sumbar Computer - Türkmenistanda kompýuter we periferiýa enjamlary
-          dükany
+                <Text style={styles.aboutShortText}>
+          Sumbar Computer - Türkmenistanda kompýuter we periferiýa enjamlary dükany
         </Text>
 
-        {/* Informatiw Baglanyşyklar */}
+        {/* 🛠️ INFORMATIW BAGLANYŞYKLAR (Ähli düwmeler 100% kemsiz sazlandy) */}
         <View style={styles.linksGrid}>
+          {/* Çep Sütün */}
           <View style={styles.linksColumn}>
             <TouchableOpacity
               activeOpacity={0.7}
               style={styles.linkItemBtn}
-              onPress={() => router.push("/about")} // 🛠️ Basylanda /about sahypasyna göni böküp ugrukdyrar!
+              onPress={() => router.push("/about")}
             >
               <Text style={styles.linkItemText}>Biz barada</Text>
             </TouchableOpacity>
-            <TouchableOpacity activeOpacity={0.7} style={styles.linkItemBtn}>
+
+            <TouchableOpacity 
+              activeOpacity={0.7} 
+              style={styles.linkItemBtn}
+              onPress={() => router.push("/warranty")}
+            >
               <Text style={styles.linkItemText}>Kepillilik</Text>
             </TouchableOpacity>
-            <TouchableOpacity activeOpacity={0.7} style={styles.linkItemBtn}>
+
+            <TouchableOpacity 
+              activeOpacity={0.7} 
+              style={styles.linkItemBtn}
+              onPress={() => router.push("/gallery")}
+            >
               <Text style={styles.linkItemText}>Galereýa</Text>
             </TouchableOpacity>
-            <TouchableOpacity activeOpacity={0.7} style={styles.linkItemBtn}>
+
+            <TouchableOpacity 
+              activeOpacity={0.7} 
+              style={styles.linkItemBtn}
+              onPress={() => router.push("/privacy")}
+            >
               <Text style={styles.linkItemText}>Gizlinlik syýasaty</Text>
             </TouchableOpacity>
           </View>
 
+          {/* Sag Sütün */}
           <View style={styles.linksColumn}>
-            <TouchableOpacity activeOpacity={0.7} style={styles.linkItemBtn}>
+            <TouchableOpacity 
+              activeOpacity={0.7} 
+              style={styles.linkItemBtn}
+              onPress={() => router.push("/service")}
+            >
               <Text style={styles.linkItemText}>Tehniki hyzmat</Text>
             </TouchableOpacity>
-            <TouchableOpacity activeOpacity={0.7} style={styles.linkItemBtn}>
+
+            <TouchableOpacity 
+              activeOpacity={0.7} 
+              style={styles.linkItemBtn}
+              onPress={() => router.push("/delivery")}
+            >
               <Text style={styles.linkItemText}>Eltip bermek we töleg</Text>
             </TouchableOpacity>
-            <TouchableOpacity activeOpacity={0.7} style={styles.linkItemBtn}>
+
+            <TouchableOpacity 
+              activeOpacity={0.7} 
+              style={styles.linkItemBtn}
+              onPress={() => router.push("/brands")}
+            >
               <Text style={styles.linkItemText}>Brendler</Text>
             </TouchableOpacity>
-            <TouchableOpacity activeOpacity={0.7} style={styles.linkItemBtn}>
+
+            <TouchableOpacity 
+              activeOpacity={0.7} 
+              style={styles.linkItemBtn}
+              onPress={() => router.push("/bonus")}
+            >
               <Text style={styles.linkItemText}>Bal toplamak ulgamy</Text>
             </TouchableOpacity>
           </View>
         </View>
+
 
         {/* 🛠️ TÄZE GOŞULAN BÖLEKLER (BIREBIR GÖRSELŇIZE GÖRÄ) */}
 
