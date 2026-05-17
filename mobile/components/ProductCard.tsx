@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import { Feather, Ionicons, FontAwesome } from "@expo/vector-icons";
 import { useCompareStore } from "../store/useCompareStore";
-import { useQuickViewStore } from "../store/useQuickViewStore"; // 🛠️ Täze Zustand goşuldy
+import { useQuickViewStore } from "../store/useQuickViewStore";
 
 const { width } = Dimensions.get("window");
 const cardWidth = (width - 34) / 2;
@@ -21,6 +21,7 @@ interface ProductProps {
   image_url?: string | null;
   onPress?: () => void;
   onAddToCart?: () => void;
+  onHeartPress?: () => void;
 }
 
 export default function ProductCard({
@@ -30,9 +31,10 @@ export default function ProductCard({
   image_url,
   onPress,
   onAddToCart,
+  onHeartPress,
 }: ProductProps) {
   const { compareItems, toggleCompare } = useCompareStore();
-  const { openQuickView } = useQuickViewStore(); // 🛠️ Çalt seretmek funksiýasyny alýarys
+  const { openQuickView } = useQuickViewStore();
 
   const isCompared = compareItems.some((item) => item.id === id);
 
@@ -42,7 +44,9 @@ export default function ProductCard({
       activeOpacity={0.95}
       onPress={onPress}
     >
+      {/* 1. Ýokarky 3-li Ikon Topary */}
       <View style={styles.headerIcons}>
+        {/* Deňeşdirme Gutujygy */}
         <TouchableOpacity
           style={styles.iconAction}
           activeOpacity={0.7}
@@ -57,22 +61,28 @@ export default function ProductCard({
           )}
         </TouchableOpacity>
 
-        {/* 🛠️ BÜYÜTEÇ DÜWMESI JANLANDYRYLDY */}
+        {/* Çalt Seretmek Büyüteç Düwmesi */}
         <TouchableOpacity
           style={styles.iconAction}
           activeOpacity={0.7}
           onPress={() =>
             openQuickView({ id, name, image_url: image_url || null })
-          } // 🛠️ Basylanda açar
+          }
         >
           <Feather name="search" size={15} color="#94A3B8" />
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.iconAction} activeOpacity={0.7}>
+        {/* Halanlarym (Ýürekjik) Düwmesi */}
+        <TouchableOpacity
+          style={styles.iconAction}
+          activeOpacity={0.7}
+          onPress={onHeartPress} // 🛠️ FIKS: Ýürekjik düwmesi AuthModal açar ýaly kemsiz birikdirildi!
+        >
           <Ionicons name="heart-outline" size={17} color="#DC2626" />
         </TouchableOpacity>
       </View>
 
+      {/* 2. Önüm Suraty */}
       <View style={styles.imageWrapper}>
         <Image
           source={
@@ -82,16 +92,20 @@ export default function ProductCard({
         />
       </View>
 
+      {/* 3. Önüm Maglumatlary (Birebir Sumbar) */}
       <View style={styles.infoContainer}>
         <Text style={styles.productName} numberOfLines={3}>
           {name}
         </Text>
+
         <View style={styles.redDivider} />
+
         <View style={styles.priceRow}>
           <Text style={styles.productPrice}>
             {price.toFixed(2)} <Text style={styles.tmtText}>TMT</Text>
           </Text>
         </View>
+
         <TouchableOpacity
           style={styles.addToCartButton}
           activeOpacity={0.85}
@@ -104,7 +118,6 @@ export default function ProductCard({
   );
 }
 
-// Stiller öňküsi ýaly galýar...
 const styles = StyleSheet.create({
   cardContainer: {
     width: cardWidth,

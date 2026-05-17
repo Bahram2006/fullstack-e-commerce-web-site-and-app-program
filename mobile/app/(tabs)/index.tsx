@@ -1,5 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { StyleSheet, View, ScrollView, StatusBar, ActivityIndicator } from "react-native";
+import React, { useEffect, useState, useRef } from "react";
+import {
+  StyleSheet,
+  View,
+  ScrollView,
+  StatusBar,
+  ActivityIndicator,
+  TouchableOpacity,
+  NativeSyntheticEvent,
+  NativeScrollEvent,
+} from "react-native";
+import { AntDesign } from "@expo/vector-icons";
 import Header from "../../components/Header";
 import Hero from "../../components/Hero";
 import { Colors } from "../../constants/Colors";
@@ -8,22 +18,27 @@ import HomeTabs from "../../components/HomeTabs";
 import ProductCard from "../../components/ProductCard";
 import CompareBar from "../../components/CompareBar";
 import QuickViewModal from "../../components/QuickViewModal";
+import AuthModal from "../../components/AuthModal";
+import ShopReviews from "../../components/ShopReviews";
+import Footer from "@/components/Footer";
 import { supabase } from "@/lib/supabase";
 
 export default function HomeScreen() {
-  // 🛠️ MÖHÜM FIKS: Öçen haryt saklaýjy state-ler doly yzyna goşuldy
   const [products, setProducts] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [isAuthOpen, setIsAuthOpen] = useState(false);
 
-  // 🛠️ MÖHÜM FIKS: Supabase-den harytlary çekýän bütin logika yzyna dikeldildi
+  const [showScrollTopBtn, setShowScrollTopBtn] = useState(false);
+  const scrollRef = useRef<ScrollView>(null);
+
   useEffect(() => {
     async function fetchProducts() {
       try {
         setLoading(true);
         const { data, error } = await supabase
-          .from("products") 
+          .from("products")
           .select("*")
-          .limit(10); // Ilkinji 10 harydy çekýäris
+          .limit(10);
 
         if (error) {
           console.error("Supabase Error:", error.message);
@@ -40,6 +55,22 @@ export default function HomeScreen() {
     fetchProducts();
   }, []);
 
+  const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+    const offsetY = event.nativeEvent.contentOffset.y;
+    if (offsetY > 300) {
+      setShowScrollTopBtn(true);
+    } else {
+      setShowScrollTopBtn(false);
+    }
+  };
+
+  const scrollToTop = () => {
+    scrollRef.current?.scrollTo({
+      y: 0,
+      animated: true,
+    });
+  };
+
   return (
     <View style={styles.safeContainer}>
       <StatusBar
@@ -51,9 +82,12 @@ export default function HomeScreen() {
       <Header />
 
       <ScrollView
+        ref={scrollRef}
         style={styles.container}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.scrollContent}
+        onScroll={handleScroll}
+        scrollEventThrottle={16}
       >
         <Hero />
 
@@ -66,12 +100,14 @@ export default function HomeScreen() {
           onTabChange={(tab: string) => console.log(`Saýlanan bölüm: ${tab}`)}
         />
 
-        {/* 📦 Harytlar sanawy grid görnüşinde (2 sütünli) */}
         {loading ? (
-          <ActivityIndicator size="small" color="#CC0000" style={{ marginTop: 20 }} />
+          <ActivityIndicator
+            size="small"
+            color="#CC0000"
+            style={{ marginTop: 20 }}
+          />
         ) : (
           <View style={styles.productsGrid}>
-            {/* 🛠️ MÖHÜM FIKS: item: any diýip tipi takyk kesgitlendi */}
             {products.map((item: any) => (
               <ProductCard
                 key={item.id}
@@ -81,22 +117,34 @@ export default function HomeScreen() {
                 image_url={item.image_url}
                 onPress={() => console.log(`${item.name} jikme-jikligine git`)}
                 onAddToCart={() => console.log(`${item.name} sepete goşuldy`)}
+                onHeartPress={() => setIsAuthOpen(true)}
               />
             ))}
           </View>
         )}
+
+        {/* 🛠️ MÖHÜM ÝERLEŞIŞ: Haryt gridi gutaran badyna teswirler bölümi başlaýar */}
+        <ShopReviews />
+        <Footer />
       </ScrollView>
 
-      {/* Deňeşdirme paneli iň aşakda absolýut durar */}
-      <CompareBar />
+      {showScrollTopBtn && (
+        <TouchableOpacity
+          style={styles.scrollTopButton}
+          activeOpacity={0.85}
+          onPress={scrollToTop}
+        >
+          <AntDesign name="arrow-up" size={18} color="#FFFFFF" />
+        </TouchableOpacity>
+      )}
 
-      {/* Çalt seretmek modaly */}
+      <CompareBar />
       <QuickViewModal />
+      <AuthModal visible={isAuthOpen} onClose={() => setIsAuthOpen(false)} />
     </View>
   );
 }
 
-// 🛠️ MÖHÜM FIKS: Aşaky bütin styles (stiller) obýekti arassa görnüşde dikeldildi
 const styles = StyleSheet.create({
   safeContainer: {
     flex: 1,
@@ -114,5 +162,22 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     paddingHorizontal: 12,
     marginTop: 8,
+  },
+  scrollTopButton: {
+    position: "absolute",
+    bottom: 20,
+    right: 20,
+    backgroundColor: "#CC0000",
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    justifyContent: "center",
+    alignItems: "center",
+    zIndex: 999,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    elevation: 8,
   },
 });
