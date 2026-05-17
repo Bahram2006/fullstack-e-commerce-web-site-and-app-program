@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useRouter } from "expo-router";
 import {
   StyleSheet,
   View,
@@ -41,11 +42,9 @@ interface FooterProps {
   onComplainPress?: () => void;
 }
 
-export default function Footer({
-  onComplainPress,
-}: {
-  onComplainPress?: () => void;
-}) {
+export default function Footer({ onComplainPress }: FooterProps) {
+  // 🛠️ MÖHÜM GÖRNÜŞ: router funksiýasy kemsiz çagyryldy we öňki onComplainPress hem 100% goraldy!
+  const router = useRouter();
   const [email, setEmail] = useState("");
 
   return (
@@ -156,7 +155,11 @@ export default function Footer({
         {/* Informatiw Baglanyşyklar */}
         <View style={styles.linksGrid}>
           <View style={styles.linksColumn}>
-            <TouchableOpacity activeOpacity={0.7} style={styles.linkItemBtn}>
+            <TouchableOpacity
+              activeOpacity={0.7}
+              style={styles.linkItemBtn}
+              onPress={() => router.push("/about")} // 🛠️ Basylanda /about sahypasyna göni böküp ugrukdyrar!
+            >
               <Text style={styles.linkItemText}>Biz barada</Text>
             </TouchableOpacity>
             <TouchableOpacity activeOpacity={0.7} style={styles.linkItemBtn}>
