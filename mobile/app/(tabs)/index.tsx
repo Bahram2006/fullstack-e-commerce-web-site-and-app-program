@@ -1,12 +1,41 @@
-import React from 'react';
-import { StyleSheet, View, ScrollView, StatusBar } from 'react-native';
-import Header from '../../components/Header';
-import Hero from '../../components/Hero';
-import { Colors } from '../../constants/Colors';
-// import GridBanners from '../../components/GridBanners';
-import SideBanners from '../../components/SideBanners';
+import React, { useEffect, useState } from "react";
+import { StyleSheet, View, ScrollView, StatusBar, Text, ActivityIndicator } from "react-native";
+import Header from "../../components/Header";
+import Hero from "../../components/Hero";
+import { Colors } from "../../constants/Colors";
+import SideBanners from "../../components/SideBanners";
+import HomeTabs from "../../components/HomeTabs";
+import ProductCard from "../../components/ProductCard";
+import { supabase } from "@/lib/supabase";
 
 export default function HomeScreen() {
+  const [products, setProducts] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchProducts() {
+      try {
+        setLoading(true);
+        const { data, error } = await supabase
+          .from("products") 
+          .select("*")
+          .limit(10);
+
+        if (error) {
+          console.error("Supabase Error:", error.message);
+        } else if (data) {
+          setProducts(data);
+        }
+      } catch (err) {
+        console.error("Fetch Error:", err);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchProducts();
+  }, []);
+
   return (
     <View style={styles.safeContainer}>
       <StatusBar barStyle="light-content" backgroundColor="#1A1A1A" translucent={false} />
@@ -18,15 +47,35 @@ export default function HomeScreen() {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.scrollContent}
       >
-
         <Hero />
 
-        {/* <GridBanners onBannerPress={(id) => console.log(`Banner ${id} basyldy`)} /> */}
-        <SideBanners 
+        <SideBanners
           onLeftPress={(index) => console.log(`Çep basyldy: ${index}`)}
           onRightPress={(index) => console.log(`Sag basyldy: ${index}`)}
         />
-        
+
+        <HomeTabs
+          onTabChange={(tab) => console.log(`Saýlanan bölüm: ${tab}`)}
+        />
+
+        {loading ? (
+          <ActivityIndicator size="small" color="#CC0000" style={{ marginTop: 20 }} />
+        ) : (
+          <View style={styles.productsGrid}>
+            {products.map((item) => (
+              <ProductCard
+                key={item.id}
+                id={item.id}
+                name={item.name}
+                price={item.price}
+                image_url={item.image_url}
+                is_new={item.is_new}
+                onPress={() => console.log(`${item.name} detayına git`)}
+                onAddToCart={() => console.log(`${item.name} sepete eklendi`)}
+              />
+            ))}
+          </View>
+        )}
       </ScrollView>
     </View>
   );
@@ -35,12 +84,19 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   safeContainer: {
     flex: 1,
-    backgroundColor: Colors.background, // #F4F6F9
+    backgroundColor: Colors.background,
   },
   container: {
     flex: 1,
   },
   scrollContent: {
-    paddingBottom: 24,
+    paddingBottom: 30,
+  },
+  productsGrid: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "space-between",
+    paddingHorizontal: 12,
+    marginTop: 8,
   },
 });
