@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, ScrollView, StatusBar } from 'react-native';
 import Header from '../../components/Header';
-// import Hero from '../../components/Hero';
+import Hero from '../../components/Hero';
 import { Colors } from '../../constants/Colors';
 
 export default function HomeScreen() {
@@ -17,7 +17,7 @@ export default function HomeScreen() {
         contentContainerStyle={styles.scrollContent}
       >
 
-        {/* <Hero /> */}
+        <Hero />
         
       </ScrollView>
     </View>
