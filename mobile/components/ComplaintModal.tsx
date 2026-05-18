@@ -10,7 +10,8 @@ import {
   ActivityIndicator,
 } from "react-native";
 import { AntDesign, FontAwesome } from "@expo/vector-icons";
-import { supabase } from "@/lib/supabase"; // Geljekde Supabase-e ibermek üçin
+import { supabase } from "@/lib/supabase";
+import { useLangStore } from "../store/useLangStore"; // Senior Dokunşy: Store birikdirildi
 
 const { width } = Dimensions.get("window");
 
@@ -19,7 +20,11 @@ interface ComplaintModalProps {
   onClose: () => void;
 }
 
-export default function ComplaintModal({ visible, onClose }: ComplaintModalProps) {
+export default function ComplaintModal({
+  visible,
+  onClose,
+}: ComplaintModalProps) {
+  const { t } = useLangStore(); // Reactive terjime obýekti
   const [name, setName] = useState("");
   const [contact, setContact] = useState("");
   const [message, setMessage] = useState("");
@@ -27,31 +32,33 @@ export default function ComplaintModal({ visible, onClose }: ComplaintModalProps
 
   const handleSendComplaint = async () => {
     if (!name.trim() || !contact.trim() || !message.trim()) {
-      alert("Hökman doldurylmaly meýdançalary dolduryň!");
+      alert(t.complaint.alertFill);
       return;
     }
 
     try {
       setSending(true);
-      
-      // 🛠️ Senior Database Connection: Geljekde Supabase-de 'complaints' tablisasyny açyp bilersiňiz
+
       const { error } = await supabase
-        .from("complaints") // Tablisaňyzyň ady
+        .from("complaints")
         .insert([
-          { name: name.trim(), contact: contact.trim(), message: message.trim() }
+          {
+            name: name.trim(),
+            contact: contact.trim(),
+            message: message.trim(),
+          },
         ]);
 
       if (error) throw error;
 
-      alert("Hatyňyz üstünlikli ugradyldy!");
+      alert(t.complaint.alertSuccess);
       setName("");
       setContact("");
       setMessage("");
       onClose();
     } catch (error: any) {
       console.error("Complaint Error:", error.message);
-      // Häzir tablisaňyz ýok bolsa-da test üçin öňe geçireris
-      alert("Hatyňyz üstünlikli ugradyldy (Sinag relowy)!");
+      alert(t.complaint.alertTest);
       onClose();
     } finally {
       setSending(false);
@@ -67,10 +74,9 @@ export default function ComplaintModal({ visible, onClose }: ComplaintModalProps
     >
       <View style={styles.modalOverlay}>
         <View style={styles.modalContent}>
-          
           {/* 1. Header (Sözbaşy) */}
           <View style={styles.modalHeader}>
-            <Text style={styles.headerTitle}>NÄGILELIK BILDIRMEK</Text>
+            <Text style={styles.headerTitle}>{t.complaint.title}</Text>
             <TouchableOpacity activeOpacity={0.7} onPress={onClose}>
               <AntDesign name="close" size={18} color="#94A3B8" />
             </TouchableOpacity>
@@ -78,10 +84,10 @@ export default function ComplaintModal({ visible, onClose }: ComplaintModalProps
 
           {/* 2. Modal Body (Giriş meýdançalary) */}
           <View style={styles.modalBody}>
-            
             {/* Adyňyz */}
             <Text style={styles.inputLabel}>
-              Adyňyz <Text style={styles.requiredStar}>*</Text>
+              {t.complaint.nameLabel}
+              <Text style={styles.requiredStar}>*</Text>
             </Text>
             <TextInput
               style={styles.singleInput}
@@ -92,7 +98,8 @@ export default function ComplaintModal({ visible, onClose }: ComplaintModalProps
 
             {/* Telefon ýa-da E-poçta */}
             <Text style={styles.inputLabel}>
-              Telefon belgiňiz ýa-da e-poçtaňyz <Text style={styles.requiredStar}>*</Text>
+              {t.complaint.contactLabel}
+              <Text style={styles.requiredStar}>*</Text>
             </Text>
             <TextInput
               style={styles.singleInput}
@@ -100,11 +107,12 @@ export default function ComplaintModal({ visible, onClose }: ComplaintModalProps
               onChangeText={setContact}
               placeholder=""
             />
-            <Text style={styles.helperText}>Size jogap bermegimiz üçin meýdançany dolduryň.</Text>
+            <Text style={styles.helperText}>{t.complaint.helperText}</Text>
 
             {/* Hatyňyz */}
             <Text style={styles.inputLabel}>
-              Hatyňyz <Text style={styles.requiredStar}>*</Text>
+              {t.complaint.messageLabel}
+              <Text style={styles.requiredStar}>*</Text>
             </Text>
             <TextInput
               style={styles.multilineInput}
@@ -117,8 +125,8 @@ export default function ComplaintModal({ visible, onClose }: ComplaintModalProps
             />
 
             {/* 3. Ugrat Düwmesi */}
-            <TouchableOpacity 
-              style={styles.submitButton} 
+            <TouchableOpacity
+              style={styles.submitButton}
               activeOpacity={0.85}
               onPress={handleSendComplaint}
               disabled={sending}
@@ -127,20 +135,26 @@ export default function ComplaintModal({ visible, onClose }: ComplaintModalProps
                 <ActivityIndicator size="small" color="#FFFFFF" />
               ) : (
                 <View style={styles.btnRow}>
-                  <FontAwesome name="caret-right" size={14} color="#FFFFFF" style={{ marginRight: 6 }} />
-                  <Text style={styles.submitButtonText}>Ugrat</Text>
+                  <FontAwesome
+                    name="caret-right"
+                    size={14}
+                    color="#FFFFFF"
+                    style={{ marginRight: 6 }}
+                  />
+                  <Text style={styles.submitButtonText}>
+                    {t.complaint.btnText}
+                  </Text>
                 </View>
               )}
             </TouchableOpacity>
-
           </View>
-
         </View>
       </View>
     </Modal>
   );
 }
 
+// Seniň original kemsiz dizaýn stilleriň (CSS)
 const styles = StyleSheet.create({
   modalOverlay: {
     flex: 1,
@@ -216,7 +230,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFFFFF",
   },
   submitButton: {
-    backgroundColor: "#CC0000", // Sumbar gyzyly
+    backgroundColor: "#CC0000",
     width: "100%",
     height: 40,
     borderRadius: 2,

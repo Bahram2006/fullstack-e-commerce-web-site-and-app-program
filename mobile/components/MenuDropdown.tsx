@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import { AntDesign, MaterialCommunityIcons } from "@expo/vector-icons";
 import { Colors } from "../constants/Colors";
+import { useLangStore } from "../store/useLangStore";
 
 const { height } = Dimensions.get("window");
 
@@ -172,6 +173,10 @@ interface MenuDropdownProps {
 
 export default function MenuDropdown({ onClose }: MenuDropdownProps) {
   const [expandedCat, setExpandedCat] = useState<string | null>(null);
+  const { t } = useLangStore() as any;
+  const getTranslatedName = (originalName: string) => {
+    return t?.categories_list?.[originalName] || originalName;
+  };
 
   const categories: Category[] = [
     {
@@ -385,11 +390,7 @@ export default function MenuDropdown({ onClose }: MenuDropdownProps) {
           iconKey: "14-6",
         },
         { id: "14-7", name: "Yyladys enjamlary", iconKey: "14-7" },
-      
-      
-      
-      
-      
+
         { id: "14-8", name: "Ashana enjamlary we esbaplary", iconKey: "14-8" },
         { id: "14-9", name: "Ashana gap-gaclary", iconKey: "14-9" },
         { id: "14-10", name: "Caynekler", iconKey: "14-10" },
@@ -448,18 +449,19 @@ export default function MenuDropdown({ onClose }: MenuDropdownProps) {
 
   return (
     <View style={styles.dropdownContainer}>
-      
       <View style={styles.redHeader}>
         <View style={styles.headerLeft}>
           <MaterialCommunityIcons name="menu" size={18} color="#FFFFFF" />
-          <Text style={styles.headerTitle}>ÄHLI HARYTLAR</Text>
+          {/* Senior Dokunşy: Dynamic Uly Sözbaşy */}
+          <Text style={styles.headerTitle}>
+            {t.categories_list.allProducts}
+          </Text>
         </View>
         <TouchableOpacity onPress={onClose} activeOpacity={0.7}>
           <AntDesign name="close" size={18} color="#FFFFFF" />
         </TouchableOpacity>
       </View>
 
-      
       <ScrollView
         style={styles.listScroll}
         showsVerticalScrollIndicator={false}
@@ -478,7 +480,6 @@ export default function MenuDropdown({ onClose }: MenuDropdownProps) {
                 onPress={() => handleToggleExpand(cat.id)}
               >
                 <View style={styles.itemLeft}>
-                  
                   <Image source={iconMap[cat.iconKey]} style={styles.catIcon} />
                   <Text
                     style={[
@@ -486,7 +487,8 @@ export default function MenuDropdown({ onClose }: MenuDropdownProps) {
                       isExpanded && styles.activeItemText,
                     ]}
                   >
-                    {cat.name}
+                    {/* Senior Dokunşy: Dynamic Uly Kategoriýa Ady */}
+                    {getTranslatedName(cat.name)}
                   </Text>
                 </View>
                 <AntDesign
@@ -496,7 +498,6 @@ export default function MenuDropdown({ onClose }: MenuDropdownProps) {
                 />
               </TouchableOpacity>
 
-              
               {isExpanded && cat.subs.length > 0 && (
                 <View style={styles.subContainer}>
                   {cat.subs.map((sub) => (
@@ -505,12 +506,14 @@ export default function MenuDropdown({ onClose }: MenuDropdownProps) {
                       style={styles.subItem}
                       activeOpacity={0.7}
                     >
-                      
                       <Image
                         source={iconMap[sub.iconKey]}
                         style={styles.subIcon}
                       />
-                      <Text style={styles.subItemText}>{sub.name}</Text>
+                      {/* Senior Dokunşy: Dynamic Sub-kategoriýa Ady */}
+                      <Text style={styles.subItemText}>
+                        {getTranslatedName(sub.name)}
+                      </Text>
                     </TouchableOpacity>
                   ))}
                 </View>
@@ -531,7 +534,7 @@ const styles = StyleSheet.create({
     right: 12,
     backgroundColor: "#FFFFFF",
     borderRadius: 4,
-    
+
     height: 380,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 6 },
@@ -589,4 +592,3 @@ const styles = StyleSheet.create({
   subIcon: { width: 18, height: 18, resizeMode: "contain" },
   subItemText: { fontSize: 12, color: "#475569", fontWeight: "500", flex: 1 },
 });
-

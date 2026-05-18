@@ -8,16 +8,23 @@ import {
   Dimensions,
 } from "react-native";
 import { AntDesign, FontAwesome } from "@expo/vector-icons";
+import { useLangStore } from "../store/useLangStore"; // Senior Dokunşy: Store birikdirildi
 
 const { width } = Dimensions.get("window");
 
 interface RateAuthModalProps {
   visible: boolean;
   onClose: () => void;
-  onLoginPress: () => void; // Hasabyma gir düwmesine basylanda hakyky login modaly açar
+  onLoginPress: () => void;
 }
 
-export default function RateAuthModal({ visible, onClose, onLoginPress }: RateAuthModalProps) {
+export default function RateAuthModal({
+  visible,
+  onClose,
+  onLoginPress,
+}: RateAuthModalProps) {
+  const { t } = useLangStore(); // Reactive terjime obýekti
+
   return (
     <Modal
       transparent={true}
@@ -27,10 +34,9 @@ export default function RateAuthModal({ visible, onClose, onLoginPress }: RateAu
     >
       <View style={styles.modalOverlay}>
         <View style={styles.modalContent}>
-          
           {/* 1. Header (Sözbaşy) */}
           <View style={styles.modalHeader}>
-            <Text style={styles.headerTitle}>BAHA BERIŇ</Text>
+            <Text style={styles.headerTitle}>{t.rateAuth.title}</Text>
             <TouchableOpacity activeOpacity={0.7} onPress={onClose}>
               <AntDesign name="close" size={18} color="#94A3B8" />
             </TouchableOpacity>
@@ -38,37 +44,39 @@ export default function RateAuthModal({ visible, onClose, onLoginPress }: RateAu
 
           {/* 2. Modal Body */}
           <View style={styles.modalBody}>
-            
-            {/* Sarymtyl Duýduryş Gutusy (Birebir Görnüşiňiz) */}
+            {/* Sarymtyl Duýduryş Gutusy */}
             <View style={styles.warningBox}>
-              <Text style={styles.warningText}>
-                Teswir ýazmak üçin hasabyňyza giriň.
-              </Text>
+              <Text style={styles.warningText}>{t.rateAuth.warning}</Text>
             </View>
 
             {/* Hasabyma Gir Düwmesi */}
-            <TouchableOpacity 
-              style={styles.loginButton} 
+            <TouchableOpacity
+              style={styles.loginButton}
               activeOpacity={0.85}
               onPress={() => {
-                onClose(); // Bu modaly ýapýar
-                onLoginPress(); // Hakyky telefon belgi soralýan modaly açýar
+                onClose();
+                onLoginPress();
               }}
             >
               <View style={styles.btnRow}>
-                <FontAwesome name="caret-right" size={14} color="#FFFFFF" style={{ marginRight: 6 }} />
-                <Text style={styles.loginButtonText}>Hasabyma gir</Text>
+                <FontAwesome
+                  name="caret-right"
+                  size={14}
+                  color="#FFFFFF"
+                  style={{ marginRight: 6 }}
+                />
+                {/* Senior Dokunşy: Global auth logini ulanýarys */}
+                <Text style={styles.loginButtonText}>{t.auth.login}</Text>
               </View>
             </TouchableOpacity>
-
           </View>
-
         </View>
       </View>
     </Modal>
   );
 }
 
+// Seniň original kemsiz dizaýn stilleriň (CSS) 100% goraldy
 const styles = StyleSheet.create({
   modalOverlay: {
     flex: 1,
@@ -107,7 +115,7 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
   },
   warningBox: {
-    backgroundColor: "#FFFBEB", // Ýumşak sary fon
+    backgroundColor: "#FFFBEB",
     paddingVertical: 18,
     paddingHorizontal: 14,
     borderRadius: 2,
@@ -119,13 +127,13 @@ const styles = StyleSheet.create({
   },
   warningText: {
     fontSize: 13.5,
-    color: "#B45309", // Goýy sary/mämişi tekst
+    color: "#B45309",
     fontWeight: "500",
     textAlign: "center",
     lineHeight: 18,
   },
   loginButton: {
-    backgroundColor: "#CC0000", // Sumbar Gyzyly
+    backgroundColor: "#CC0000",
     width: "100%",
     height: 40,
     borderRadius: 2,

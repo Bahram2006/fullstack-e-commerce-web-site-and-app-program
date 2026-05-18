@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import { FontAwesome, MaterialIcons } from "@expo/vector-icons";
+import { useLangStore } from "../store/useLangStore"; // Senior Dokunşy: Store birikdirildi
 
 interface ReviewItem {
   id: string;
@@ -17,12 +18,15 @@ export default function ShopReviews({
 }: {
   onRatePress?: () => void;
 }) {
+  const { t } = useLangStore(); // Reactive terjime obýekti
+
+  // Senior Dokunşy: Statik datanyň başlyklary hem dilleri yzarlaýar
   const reviews: ReviewItem[] = [
     {
       id: "1",
       name: "Begench",
       rating: 4,
-      title: "Gowy",
+      title: t.reviews.good,
       date: "27.04.2026",
       comment:
         "Все хорошо, но все никак не привезут шире ассортимент коннекторов https://amazon.com...",
@@ -32,7 +36,7 @@ export default function ShopReviews({
       id: "2",
       name: "Kadyr Wepayew",
       rating: 5,
-      title: "Örän gowy",
+      title: t.reviews.veryGood,
       date: "22.04.2026",
       comment:
         "Лучший магазин! Обменяли бракованные наушники, даже когда гарантия вышла paru дней назад. Не бросили in беде, поступили п...",
@@ -42,7 +46,7 @@ export default function ShopReviews({
       id: "3",
       name: "Эмин",
       rating: 5,
-      title: "Örän gowy",
+      title: t.reviews.veryGood,
       date: "31.03.2026",
       comment:
         "Приобрел in этом магазине стол. Качество отличное, покупкой вполне доволен. Весь товар был идеально укомплектован.",
@@ -52,7 +56,7 @@ export default function ShopReviews({
       id: "4",
       name: "Myrat Yarmetow",
       rating: 5,
-      title: "Örän gowy",
+      title: t.reviews.veryGood,
       date: "16.03.2026",
       comment:
         "Arman pulym azyrak, bolmasa gerek däl zatlara çenli alasym gelýä. Sebäp baha GOWY, hyzmat GOWY, ähli hyzmatlar ýuridiki...",
@@ -74,8 +78,8 @@ export default function ShopReviews({
 
   return (
     <View style={styles.container}>
-      {/* 1. DÜKANA DEGIŞLI TESWIRLER Sözbaşy */}
-      <Text style={styles.sectionTitle}>DÜKANA DEGIŞLI TESWIRLER</Text>
+      {/* Senior Dokunşy: Dynamic Bölüm Başlygy */}
+      <Text style={styles.sectionTitle}>{t.reviews.sectionTitle}</Text>
 
       {/* 2. Reýting we Baha Beriň Zolagy */}
       <View style={styles.ratingSummaryCard}>
@@ -90,7 +94,8 @@ export default function ShopReviews({
           activeOpacity={0.7}
           onPress={onRatePress}
         >
-          <Text style={styles.rateButtonText}>Baha beriň</Text>
+          {/* Senior Dokunşy: Dynamic Düwme Teksti */}
+          <Text style={styles.rateButtonText}>{t.reviews.rateBtn}</Text>
         </TouchableOpacity>
       </View>
 
@@ -115,7 +120,10 @@ export default function ShopReviews({
               {item.is_real_customer && (
                 <View style={styles.verifiedBadge}>
                   <MaterialIcons name="verified" size={12} color="#0EA5E9" />
-                  <Text style={styles.verifiedText}>Hakyky müşderi</Text>
+                  {/* Senior Dokunşy: Dynamic Hakyky Müşderi Belligi */}
+                  <Text style={styles.verifiedText}>
+                    {t.reviews.realCustomer}
+                  </Text>
                 </View>
               )}
             </View>
@@ -127,21 +135,22 @@ export default function ShopReviews({
         ))}
       </View>
 
-      {/* 🛠️ MÖHÜM BÖLEK: Ähli teswirler uly gyzyl düwmesi iň aşakda goşuldy (Birebir Sumbar) */}
+      {/* Senior Dokunşy: Dynamic Ähli Teswirler Düwmesi */}
       <TouchableOpacity style={styles.allReviewsButton} activeOpacity={0.85}>
-        <Text style={styles.allReviewsText}>Ähli teswirler</Text>
+        <Text style={styles.allReviewsText}>{t.reviews.allReviewsBtn}</Text>
       </TouchableOpacity>
     </View>
   );
 }
 
+// Seniň original kemsiz dizaýn stilleriň (CSS) 100% goraldy
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#FFFFFF",
     marginTop: 16,
     paddingHorizontal: 12,
     paddingTop: 16,
-    paddingBottom: 20, // Düwmeden aşakda owadan boşluk
+    paddingBottom: 20,
     borderTopWidth: 1,
     borderTopColor: "#E2E8F0",
   },
@@ -195,7 +204,7 @@ const styles = StyleSheet.create({
   },
   reviewsList: {
     width: "100%",
-    marginBottom: 16, // Düwme bilen aradaky owadan boşluk
+    marginBottom: 16,
   },
   reviewCard: {
     borderBottomWidth: 1,
@@ -253,12 +262,11 @@ const styles = StyleSheet.create({
     color: "#334155",
     lineHeight: 16,
   },
-  // 🛠️ Ähli Teswirler Düwmesiniň Uly Hilli Stilleri
   allReviewsButton: {
-    backgroundColor: "#CC0000", // Sumbar gyzyly
+    backgroundColor: "#CC0000",
     width: "100%",
     paddingVertical: 12,
-    borderRadius: 4, // Inçe owadan tegeleklenen gyralar
+    borderRadius: 4,
     justifyContent: "center",
     alignItems: "center",
     marginTop: 4,

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, ScrollView } from 'react-native';
+import { useLangStore } from '../store/useLangStore'; // Senior Dokunşy: Global store birikdirildi
 
 type TabType = 'maslahat' | 'taze' | 'meshur';
 
@@ -8,6 +9,7 @@ interface HomeTabsProps {
 }
 
 export default function HomeTabs({ onTabChange }: HomeTabsProps) {
+  const { t } = useLangStore(); // Reactive terjime obýekti
   const [activeTab, setActiveTab] = useState<TabType>('maslahat');
 
   const handleTabPress = (tab: TabType) => {
@@ -19,10 +21,6 @@ export default function HomeTabs({ onTabChange }: HomeTabsProps) {
 
   return (
     <View style={styles.container}>
-      {/* 
-        MÖHÜM SENIOR DÜZGÜNI: Tekstleriň gapdalma-gapdal durmagy we ekrana sygmasa 
-        aşakka dökülmän, owadan süýşmegi üçin horizontal ScrollView ulanýarys.
-      */}
       <ScrollView 
         horizontal={true} 
         showsHorizontalScrollIndicator={false}
@@ -35,7 +33,7 @@ export default function HomeTabs({ onTabChange }: HomeTabsProps) {
           style={[styles.tabButton, activeTab === 'maslahat' && styles.activeTabButton]}
         >
           <Text style={[styles.tabText, activeTab === 'maslahat' && styles.activeTabText]}>
-            MASLAHAT BERILÝÄNLER
+            {t.home.recommended}
           </Text>
         </TouchableOpacity>
 
@@ -46,7 +44,7 @@ export default function HomeTabs({ onTabChange }: HomeTabsProps) {
           style={[styles.tabButton, activeTab === 'taze' && styles.activeTabButton]}
         >
           <Text style={[styles.tabText, activeTab === 'taze' && styles.activeTabText]}>
-            TÄZELER
+            {t.home.news}
           </Text>
         </TouchableOpacity>
 
@@ -57,7 +55,7 @@ export default function HomeTabs({ onTabChange }: HomeTabsProps) {
           style={[styles.tabButton, activeTab === 'meshur' && styles.activeTabButton]}
         >
           <Text style={[styles.tabText, activeTab === 'meshur' && styles.activeTabText]}>
-            MEŞHURLAR
+            {t.home.popular}
           </Text>
         </TouchableOpacity>
       </ScrollView>
@@ -65,6 +63,7 @@ export default function HomeTabs({ onTabChange }: HomeTabsProps) {
   );
 }
 
+// Seniň original kemsiz dizaýn stilleriň (CSS)
 const styles = StyleSheet.create({
   container: {
     width: '100%',

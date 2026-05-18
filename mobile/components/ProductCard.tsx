@@ -10,6 +10,7 @@ import {
 import { Feather, Ionicons, FontAwesome } from "@expo/vector-icons";
 import { useCompareStore } from "../store/useCompareStore";
 import { useQuickViewStore } from "../store/useQuickViewStore";
+import { useLangStore } from "../store/useLangStore"; // Senior Dokunşy: Store birikdirildi
 
 const { width } = Dimensions.get("window");
 const cardWidth = (width - 34) / 2;
@@ -33,6 +34,7 @@ export default function ProductCard({
   onAddToCart,
   onHeartPress,
 }: ProductProps) {
+  const { t } = useLangStore(); // Reactive terjime obýekti
   const { compareItems, toggleCompare } = useCompareStore();
   const { openQuickView } = useQuickViewStore();
 
@@ -76,7 +78,7 @@ export default function ProductCard({
         <TouchableOpacity
           style={styles.iconAction}
           activeOpacity={0.7}
-          onPress={onHeartPress} // 🛠️ FIKS: Ýürekjik düwmesi AuthModal açar ýaly kemsiz birikdirildi!
+          onPress={onHeartPress}
         >
           <Ionicons name="heart-outline" size={17} color="#DC2626" />
         </TouchableOpacity>
@@ -111,13 +113,15 @@ export default function ProductCard({
           activeOpacity={0.85}
           onPress={onAddToCart}
         >
-          <Text style={styles.addToCartText}>SEBEDE GOŞ</Text>
+          {/* Senior Dokunşy: Dynamic Düwme Teksti */}
+          <Text style={styles.addToCartText}>{t.productCard.addToCart}</Text>
         </TouchableOpacity>
       </View>
     </TouchableOpacity>
   );
 }
 
+// Seniň original kemsiz dizaýn stilleriň (CSS)
 const styles = StyleSheet.create({
   cardContainer: {
     width: cardWidth,

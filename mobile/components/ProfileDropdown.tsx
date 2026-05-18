@@ -1,20 +1,15 @@
 import React from "react";
 import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import { SimpleLineIcons } from "@expo/vector-icons";
-import { useLangStore } from "../store/useLangStore";
+import { useLangStore } from "../store/useLangStore"; // Store birikdirildi
 
 interface ProfileDropdownProps {
   onClose: () => void;
 }
 
 export default function ProfileDropdown({ onClose }: ProfileDropdownProps) {
-  const { lang } = useLangStore();
-
-  const loginText = {
-    tk: "Hasabyma gir",
-    ru: "Войти в кабинет",
-    en: "Login",
-  };
+  // Senior Dokunşy: Sözleri göni global reactive 't' obýekti arkaly alýarys
+  const { t } = useLangStore();
 
   return (
     <View style={styles.dropdownMenu}>
@@ -26,12 +21,14 @@ export default function ProfileDropdown({ onClose }: ProfileDropdownProps) {
         }}
       >
         <SimpleLineIcons name="login" size={13} color="#1E293B" />
-        <Text style={styles.dropdownText}>{loginText[lang]}</Text>
+        {/* Senior Dokunşy: Arassa dynamic tekst */}
+        <Text style={styles.dropdownText}>{t.auth.login}</Text>
       </TouchableOpacity>
     </View>
   );
 }
 
+// Seniň original kemsiz dizaýn stilleriň (CSS) 100% goraldy
 const styles = StyleSheet.create({
   dropdownMenu: {
     position: "absolute",

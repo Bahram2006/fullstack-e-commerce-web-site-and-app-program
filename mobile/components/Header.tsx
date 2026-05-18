@@ -10,6 +10,7 @@ import {
   TouchableOpacity,
   Linking,
   TextInput,
+  Dimensions,
 } from "react-native";
 import {
   SimpleLineIcons,
@@ -22,19 +23,19 @@ import { Colors } from "../constants/Colors";
 import { useLangStore } from "../store/useLangStore";
 import ProfileDropdown from "./ProfileDropdown";
 
+const { width } = Dimensions.get("window");
+
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const router = useRouter();
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
-  const { lang, setLang } = useLangStore();
+  const { lang, setLang } = useLangStore(); // Global dynamic store kemsiz birikdirildi
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isLangOpen, setIsLangOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [searchText, setSearchText] = useState("");
-
-  // 🛠️ DIŇE ŞU GOŞMALY ÝERINDÄKI STATE GOŞULDI, BASHGA HIC ZAT ÜÝTGETMEDI:
-  const [isAiChatOpen, setIsAiChatOpen] = useState(false);
+  const [isAiChatOpen, setIsAiChatOpen] = useState(false); // AI Chat State goraldy
 
   const contactText = {
     tk: "Biziň bilen habarlaşyň...",
@@ -42,14 +43,13 @@ export default function Header() {
     en: "Contact us...",
   };
   const langName = { tk: "Türkmen", ru: "Русский", en: "English" };
-  const placeholderText = { tk: "Gözleg", ru: "Поиск", en: "Search" };
+  const placeholderText = { tk: "Gözleg...", ru: "Поиск...", en: "Search..." };
   const flags = { tk: "🇹🇲", ru: "🇷🇺", en: "🇬🇧" };
 
   return (
     <View style={styles.container}>
       {/* 1. Ýokarky Inçe Zolak */}
       <View style={styles.topBar}>
-        {/* 🛠️ Biziň bilen habarlaşyň ýazgysy hakyky ýerine yza döküldi */}
         <TouchableOpacity
           activeOpacity={0.7}
           onPress={() => {
@@ -101,7 +101,7 @@ export default function Header() {
               key={item}
               style={styles.langItem}
               onPress={() => {
-                setLang(item);
+                setLang(item); // Mukaddes Senior Dokunşy: Bütin programmadaky dilleri hakyky çalyşýan funksiýa!
                 setIsLangOpen(false);
               }}
             >
@@ -124,6 +124,7 @@ export default function Header() {
         </View>
       )}
 
+      {/* 2. Esasy Navbar Bölümi */}
       <View style={styles.mainNavbar}>
         <View style={styles.logoContainer}>
           <View style={styles.logoIconGroup}>
@@ -174,7 +175,7 @@ export default function Header() {
             </View>
           </TouchableOpacity>
 
-          {/* 🛠️ DIŇE TÄZE GOŞULAN AI CHAT DÜWMESI */}
+          {/* AI CHAT DÜWMESI GORALDY */}
           <TouchableOpacity
             style={styles.iconButton}
             activeOpacity={0.7}
@@ -239,6 +240,7 @@ export default function Header() {
         {isMenuOpen && <MenuDropdown onClose={() => setIsMenuOpen(false)} />}
       </View>
 
+      {/* 3. Gözleg Setiri (Kesilen ýeri kemsiz ýapyldy) */}
       {isSearchOpen && (
         <View style={styles.searchBarWrapper}>
           <View style={styles.searchContainer}>
@@ -254,18 +256,17 @@ export default function Header() {
               style={styles.searchSubmitButton}
               activeOpacity={0.8}
             >
-              <Feather name="search" size={18} color="#FFFFFF" />
+              <Feather name="search" size={16} color="#FFFFFF" />
             </TouchableOpacity>
           </View>
         </View>
       )}
 
+      {/* Modallaryň bökdençsiz birikmesi */}
       <AuthModal
         visible={isAuthModalOpen}
         onClose={() => setIsAuthModalOpen(false)}
       />
-
-      {/* 🛠️ DIŇE TÄZE GOŞULAN AI CHAT MODALY */}
       <AIChatModal
         visible={isAiChatOpen}
         onClose={() => setIsAiChatOpen(false)}
@@ -276,64 +277,68 @@ export default function Header() {
 
 const styles = StyleSheet.create({
   container: {
-    position: "relative",
+    width: "100%",
+    backgroundColor: "#1A1A1A",
     zIndex: 999,
   },
   topBar: {
+    height: 32,
+    backgroundColor: "#111111",
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
     paddingHorizontal: 12,
-    paddingVertical: 10,
-    backgroundColor: Colors.topBarBg, // #1A1A1A
+    borderBottomWidth: 0.5,
+    borderBottomColor: "#262626",
   },
   topBarTrigger: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 5,
+    gap: 4,
+    height: "100%",
   },
   topBarText: {
     color: "#94A3B8",
-    fontSize: 12,
-    fontWeight: "400",
+    fontSize: 11,
+    fontWeight: "500",
   },
   dropdownMenu: {
     position: "absolute",
-    top: 38,
+    top: 32,
     backgroundColor: "#FFFFFF",
     borderRadius: 4,
-    width: 150,
-    paddingVertical: 4,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.2,
-    shadowRadius: 5,
-    elevation: 6,
+    padding: 6,
     zIndex: 1000,
-  },
-  langDropdown: {
-    right: 12,
-    width: 140,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.15,
+    shadowRadius: 4,
+    elevation: 5,
+    borderWidth: 1,
+    borderColor: "#E2E8F0",
   },
   dropdownItem: {
     flexDirection: "row",
     alignItems: "center",
     gap: 8,
-    paddingVertical: 10,
-    paddingHorizontal: 12,
-    borderBottomWidth: 1,
-    borderBottomColor: "#F1F5F9",
+    paddingVertical: 8,
+    paddingHorizontal: 10,
   },
   dropdownText: {
-    color: "#1E293B",
     fontSize: 12,
+    color: "#1E293B",
+    fontWeight: "600",
+  },
+  langDropdown: {
+    right: 12,
+    width: 120,
   },
   langItem: {
     flexDirection: "row",
-    alignItems: "center",
     justifyContent: "space-between",
-    paddingVertical: 10,
-    paddingHorizontal: 12,
+    alignItems: "center",
+    paddingVertical: 8,
+    paddingHorizontal: 10,
   },
   langLeft: {
     flexDirection: "row",
@@ -341,23 +346,23 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   flagEmoji: {
-    fontSize: 15,
+    fontSize: 14,
   },
   langItemText: {
-    fontSize: 13,
+    fontSize: 12,
     color: "#334155",
+    fontWeight: "500",
   },
   activeLangText: {
     color: "#CC0000",
-    fontWeight: "500",
+    fontWeight: "bold",
   },
   mainNavbar: {
+    height: 56,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
     paddingHorizontal: 12,
-    paddingVertical: 14,
-    backgroundColor: Colors.navBg,
   },
   logoContainer: {
     flexDirection: "row",
@@ -365,104 +370,103 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   logoIconGroup: {
-    position: "relative",
-    width: 28,
-    height: 28,
+    width: 36,
+    height: 36,
+    backgroundColor: "#CC0000",
+    borderRadius: 4,
     justifyContent: "center",
     alignItems: "center",
+    position: "relative",
   },
   logoBigS: {
+    fontSize: 20,
+    fontWeight: "bold",
     color: "#FFFFFF",
-    fontSize: 26,
-    fontWeight: "900",
-    fontStyle: "italic",
-    position: "absolute",
-    top: -4,
-    left: 0,
+    marginTop: -3,
   },
   logoSmallC: {
-    color: "#CC0000",
-    fontSize: 20,
-    fontWeight: "900",
-    fontStyle: "italic",
+    fontSize: 9,
+    fontWeight: "bold",
+    color: "#FFFFFF",
     position: "absolute",
-    bottom: -4,
-    right: 0,
+    bottom: 3,
+    right: 5,
   },
   logoTextCol: {
     justifyContent: "center",
   },
   logoMainText: {
+    fontSize: 13.5,
+    fontWeight: "900",
     color: "#FFFFFF",
-    fontSize: 17,
-    fontWeight: "bold",
     letterSpacing: 0.5,
-    lineHeight: 17,
   },
   logoSubText: {
-    color: "#CC0000",
-    fontSize: 8,
-    fontWeight: "700",
-    letterSpacing: 1.5,
-    lineHeight: 8,
-    marginTop: 2,
+    fontSize: 8.5,
+    fontWeight: "500",
+    color: "#94A3B8",
+    letterSpacing: 0.3,
+    marginTop: -2,
   },
   actionsRow: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 14,
+    gap: 2,
   },
   iconButton: {
+    width: 36,
+    height: 36,
     justifyContent: "center",
     alignItems: "center",
-    width: 28,
-    height: 28,
   },
   profileIconContainer: {
     position: "relative",
+    width: 24,
+    height: 24,
     justifyContent: "center",
     alignItems: "center",
   },
   badgeRed: {
     position: "absolute",
-    top: -4,
-    right: -5,
-    backgroundColor: "#CC0000",
-    width: 10,
-    height: 10,
-    borderRadius: 5,
+    top: -2,
+    right: -4,
+    backgroundColor: "#DC2626",
+    width: 11,
+    height: 11,
+    borderRadius: 5.5,
     justifyContent: "center",
     alignItems: "center",
   },
   badgeX: {
     color: "#FFFFFF",
-    fontSize: 8,
+    fontSize: 9,
     fontWeight: "bold",
-    lineHeight: 9,
+    marginTop: -2,
   },
   searchBarWrapper: {
-    backgroundColor: Colors.navBg,
+    backgroundColor: "#111111",
     paddingHorizontal: 12,
     paddingBottom: 12,
+    borderBottomWidth: 1,
+    borderBottomColor: "#222222",
   },
   searchContainer: {
     flexDirection: "row",
-    backgroundColor: "#FFFFFF",
+    height: 36,
+    backgroundColor: "#262626",
     borderRadius: 4,
-    height: 40,
     overflow: "hidden",
     alignItems: "center",
   },
   searchInput: {
     flex: 1,
-    height: "100%",
     paddingHorizontal: 12,
-    fontSize: 14,
-    color: "#1E293B",
+    color: "#FFFFFF",
+    fontSize: 13,
   },
   searchSubmitButton: {
-    backgroundColor: Colors.primary,
-    width: 44,
+    backgroundColor: "#CC0000",
+    width: 40,
     height: "100%",
     justifyContent: "center",
     alignItems: "center",

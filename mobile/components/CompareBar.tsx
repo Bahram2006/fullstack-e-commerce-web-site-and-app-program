@@ -2,11 +2,13 @@ import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, Image, Dimensions } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import { useCompareStore } from '../store/useCompareStore';
+import { useLangStore } from '../store/useLangStore'; // Senior Dokunşy: Store birikdirildi
 
 const { width } = Dimensions.get('window');
 
 export default function CompareBar() {
-  const { compareItems, isCompareBarOpen, clearCompare, setCompareBarOpen } = useCompareStore();
+  const { t } = useLangStore(); // Reactive terjime obýekti
+  const { compareItems, isCompareBarOpen, setCompareBarOpen } = useCompareStore();
 
   // Panel ýapyk bolsa ýa-da hiç hili haryt saýlanmadyk bolsa görkezmeýäris
   if (!isCompareBarOpen || compareItems.length === 0) return null;
@@ -17,8 +19,8 @@ export default function CompareBar() {
       {/* Ýokarky Maglumat Zolagy */}
       <View style={styles.mainRow}>
         <View style={styles.textBlock}>
-          <Text style={styles.infoText}>Haryt deňeşdirmek üçin goşuldy.</Text>
-          <Text style={styles.infoTextSub}>Siz diňe 4 sany haryt goşup bilýäniňiz.</Text>
+          <Text style={styles.infoText}>{t.compare.addedText}</Text>
+          <Text style={styles.infoTextSub}>{t.compare.limitText}</Text>
         </View>
 
         {/* Goşulan Harytlaryň Kiçijik Suratlary (Max 4 sany) */}
@@ -37,7 +39,7 @@ export default function CompareBar() {
       {/* Aşaky Düwmeler Setiri */}
       <View style={styles.buttonRow}>
         <TouchableOpacity style={styles.compareButton} activeOpacity={0.8}>
-          <Text style={styles.compareButtonText}>Harytlary deňeşdirmek</Text>
+          <Text style={styles.compareButtonText}>{t.compare.btnText}</Text>
         </TouchableOpacity>
 
         {/* Ýapmak (X) Düwmesi */}
@@ -54,17 +56,18 @@ export default function CompareBar() {
   );
 }
 
+// Seniň original kemsiz dizaýn stilleriň (CSS)
 const styles = StyleSheet.create({
   barContainer: {
     position: 'absolute',
-    bottom: 0, // Ekranyň iň aşagynda absolýut durar (Senior Overlay Rule)
+    bottom: 0,
     left: 0,
     right: 0,
-    backgroundColor: '#1E1E24', // Hakyky saýtdaky ýaly goýy gara/indigo reňk
+    backgroundColor: '#1E1E24',
     padding: 14,
     borderTopLeftRadius: 8,
     borderTopRightRadius: 8,
-    zIndex: 9999, // Hemme zadyň iň üstünde durmagy üçin
+    zIndex: 9999,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: -4 },
     shadowOpacity: 0.2,
@@ -117,7 +120,7 @@ const styles = StyleSheet.create({
   compareButton: {
     flex: 1,
     borderWidth: 1,
-    borderColor: '#CC0000', // Gyzyl ramka
+    borderColor: '#CC0000',
     borderRadius: 4,
     paddingVertical: 10,
     justifyContent: 'center',

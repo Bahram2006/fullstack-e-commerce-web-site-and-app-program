@@ -13,6 +13,7 @@ import {
   FlatList
 } from "react-native";
 import { Feather, FontAwesome, Ionicons } from "@expo/vector-icons";
+import { useLangStore } from "../store/useLangStore";
 
 const { width } = Dimensions.get("window");
 
@@ -44,7 +45,8 @@ interface FooterProps {
 }
 
 export default function Footer({ onComplainPress }: FooterProps) {
-    const [currentIndex, setCurrentIndex] = useState(0);
+  const { t } = useLangStore();
+  const [currentIndex, setCurrentIndex] = useState(0);
   const flatListRef = useRef<FlatList>(null);
 
   useEffect(() => {
@@ -67,10 +69,10 @@ export default function Footer({ onComplainPress }: FooterProps) {
   const router = useRouter();
   const [email, setEmail] = useState("");
 
-  return (
+    return (
     <View style={styles.container}>
       {/* 1. BRENDLERIŇ SÜÝŞÝÄN SLIDERI */}
-            <View style={styles.brandSliderWrapper}>
+      <View style={styles.brandSliderWrapper}>
         <FlatList
           ref={flatListRef}
           data={brandSliders}
@@ -115,9 +117,8 @@ export default function Footer({ onComplainPress }: FooterProps) {
               color="#94A3B8"
               style={styles.iconStyle}
             />
-            <Text style={styles.contactText}>
-              Türkmenistan, Aşgabat, köç. A.Nyýazow (Hudaýberdiýew), jaý 99
-            </Text>
+            {/* Senior Dokunşy: Dynamic Salgy */}
+            <Text style={styles.contactText}>{t.footer.address}</Text>
           </View>
 
           <TouchableOpacity
@@ -175,8 +176,9 @@ export default function Footer({ onComplainPress }: FooterProps) {
           </View>
         </View>
 
-                <Text style={styles.aboutShortText}>
-          Sumbar Computer - Türkmenistanda kompýuter we periferiýa enjamlary dükany
+        {/* Senior Dokunşy: Dynamic Düşündiriş */}
+        <Text style={styles.aboutShortText}>
+          {t.footer.shortAbout}
         </Text>
 
         {/* 🛠️ INFORMATIW BAGLANYŞYKLAR (Ähli düwmeler 100% kemsiz sazlandy) */}
@@ -188,7 +190,7 @@ export default function Footer({ onComplainPress }: FooterProps) {
               style={styles.linkItemBtn}
               onPress={() => router.push("/about")}
             >
-              <Text style={styles.linkItemText}>Biz barada</Text>
+              <Text style={styles.linkItemText}>{t.footer.about}</Text>
             </TouchableOpacity>
 
             <TouchableOpacity 
@@ -196,7 +198,7 @@ export default function Footer({ onComplainPress }: FooterProps) {
               style={styles.linkItemBtn}
               onPress={() => router.push("/warranty")}
             >
-              <Text style={styles.linkItemText}>Kepillilik</Text>
+              <Text style={styles.linkItemText}>{t.footer.warranty}</Text>
             </TouchableOpacity>
 
             <TouchableOpacity 
@@ -204,7 +206,7 @@ export default function Footer({ onComplainPress }: FooterProps) {
               style={styles.linkItemBtn}
               onPress={() => router.push("/gallery")}
             >
-              <Text style={styles.linkItemText}>Galereýa</Text>
+              <Text style={styles.linkItemText}>{t.footer.gallery}</Text>
             </TouchableOpacity>
 
             <TouchableOpacity 
@@ -212,7 +214,7 @@ export default function Footer({ onComplainPress }: FooterProps) {
               style={styles.linkItemBtn}
               onPress={() => router.push("/privacy")}
             >
-              <Text style={styles.linkItemText}>Gizlinlik syýasaty</Text>
+              <Text style={styles.linkItemText}>{t.footer.privacy}</Text>
             </TouchableOpacity>
           </View>
 
@@ -223,7 +225,7 @@ export default function Footer({ onComplainPress }: FooterProps) {
               style={styles.linkItemBtn}
               onPress={() => router.push("/service")}
             >
-              <Text style={styles.linkItemText}>Tehniki hyzmat</Text>
+              <Text style={styles.linkItemText}>{t.footer.service}</Text>
             </TouchableOpacity>
 
             <TouchableOpacity 
@@ -231,7 +233,7 @@ export default function Footer({ onComplainPress }: FooterProps) {
               style={styles.linkItemBtn}
               onPress={() => router.push("/delivery")}
             >
-              <Text style={styles.linkItemText}>Eltip bermek we töleg</Text>
+              <Text style={styles.linkItemText}>{t.footer.delivery}</Text>
             </TouchableOpacity>
 
             <TouchableOpacity 
@@ -239,7 +241,7 @@ export default function Footer({ onComplainPress }: FooterProps) {
               style={styles.linkItemBtn}
               onPress={() => router.push("/brands")}
             >
-              <Text style={styles.linkItemText}>Brendler</Text>
+              <Text style={styles.linkItemText}>{t.footer.brands}</Text>
             </TouchableOpacity>
 
             <TouchableOpacity 
@@ -247,7 +249,7 @@ export default function Footer({ onComplainPress }: FooterProps) {
               style={styles.linkItemBtn}
               onPress={() => router.push("/bonus")}
             >
-              <Text style={styles.linkItemText}>Bal toplamak ulgamy</Text>
+              <Text style={styles.linkItemText}>{t.footer.bonus}</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -256,6 +258,7 @@ export default function Footer({ onComplainPress }: FooterProps) {
         {/* 🛠️ TÄZE GOŞULAN BÖLEKLER (BIREBIR GÖRSELŇIZE GÖRÄ) */}
 
         {/* E-poçta Abuna Ulgamy */}
+        {/* Geljekde "Täzeliklere abuna boluň" ýazgysyny hem dynamic edip bilersiňiz */}
         <Text style={styles.sectionHeading}>Täzeliklere abuna boluň</Text>
         <TextInput
           style={styles.emailInput}
@@ -273,15 +276,15 @@ export default function Footer({ onComplainPress }: FooterProps) {
         <TouchableOpacity
           style={styles.complainButton}
           activeOpacity={0.8}
-          onPress={onComplainPress} // 🛠️ DIŇE ŞU SETIR GOŞULER!
+          onPress={onComplainPress}
         >
-          <Text style={styles.complainButtonText}>Nägilelik bildirmek</Text>
+          <Text style={styles.complainButtonText}>{t.footer.complain}</Text>
         </TouchableOpacity>
 
         {/* Programmany Ýükläň */}
         <Text style={styles.sectionHeading}>Programmany ýükläň:</Text>
         <View style={styles.appsRow}>
-          {/* App Store Düwmesi (Wagtlaýyn Öwadan Text/Icon Gurluşy) */}
+          {/* App Store Düwmesi */}
           <TouchableOpacity style={styles.appStoreBtn} activeOpacity={0.8}>
             <FontAwesome name="apple" size={16} color="#FFFFFF" />
             <View style={styles.appBtnTexts}>
@@ -299,11 +302,6 @@ export default function Footer({ onComplainPress }: FooterProps) {
             </View>
           </TouchableOpacity>
         </View>
-
-        {/* Inçe separator we Iň Aşaky Copyright Ýazgysy */}
-        <View style={styles.footerDivider} />
-        <Text style={styles.copyrightText}>© 2026 sumbar-computer.com</Text>
-        <Text style={styles.copyrightTextSub}>Ähli hukuklary goraglydyr.</Text>
       </View>
     </View>
   );
