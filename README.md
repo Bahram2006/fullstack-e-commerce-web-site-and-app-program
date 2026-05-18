@@ -16,7 +16,7 @@ An advanced, modern, and highly scalable full-stack e-commerce solution featurin
 
 | Dashboard Overview | Product Management | Order Tracking |
 | :---: | :---: | :---: |
-| <img src="./screenshoots/admin 1.png" width="100%" alt="Admin 1"/> | <img src="./screenshoots/admin 2.png" width="100%" alt="Admin 2"/> | <img src="./screenshoots/admin 3.png" width="100%" alt="Admin 3"/> |
+| <img src="./screenshoots/admin 1.png" width="100%" alt="Admin1"/> | <img src="./screenshoots/admin2.png" width="100%" alt="Admin 2"/> | <img src="./screenshoots/admin3.png" width="100%" alt="Admin 3"/> |
 
 ### 📱 Cross-Platform Mobile Application
 
