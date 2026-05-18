@@ -203,7 +203,6 @@ export default function AuthModal({ visible, onClose }: AuthModalProps) {
                 </View>
               </View>
             )}
-            
             <TouchableOpacity
               style={[
                 styles.submitButton,
