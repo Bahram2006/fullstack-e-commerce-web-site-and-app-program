@@ -9,6 +9,7 @@ import {
   Dimensions,
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
+import { useLangStore } from "../store/useLangStore"; // Senior Dokunşy: Store birikdirildi
 
 const { width } = Dimensions.get("window");
 
@@ -18,6 +19,7 @@ interface AuthModalProps {
 }
 
 export default function AuthModal({ visible, onClose }: AuthModalProps) {
+  const { t } = useLangStore(); // Reactive terjime obýekti
   const [phoneNumber, setPhoneNumber] = useState("");
 
   return (
@@ -28,11 +30,9 @@ export default function AuthModal({ visible, onClose }: AuthModalProps) {
       onRequestClose={onClose}
     >
       <View style={styles.modalOverlay}>
-        
         <View style={styles.modalContent}>
-          
           <View style={styles.modalHeader}>
-            <Text style={styles.headerTitle}>HASABYMA GIR</Text>
+            <Text style={styles.headerTitle}>{t.auth.login}</Text>
             <TouchableOpacity activeOpacity={0.7} onPress={onClose}>
               <AntDesign name="close" size={18} color="#94A3B8" />
             </TouchableOpacity>
@@ -40,7 +40,8 @@ export default function AuthModal({ visible, onClose }: AuthModalProps) {
 
           <View style={styles.modalBody}>
             <Text style={styles.inputLabel}>
-              Telefon belgiňiz <Text style={styles.requiredStar}>*</Text>
+              {t.auth.phoneLabel}
+              <Text style={styles.requiredStar}>*</Text>
             </Text>
 
             <View style={styles.inputGroup}>
@@ -60,14 +61,13 @@ export default function AuthModal({ visible, onClose }: AuthModalProps) {
               />
             </View>
           </View>
-
         </View>
-
       </View>
     </Modal>
   );
 }
 
+// Seniň original kemsiz dizaýn stilleriň (CSS)
 const styles = StyleSheet.create({
   modalOverlay: {
     flex: 1,

@@ -182,5 +182,9 @@
     "systemError": "Sorry, I didn't understand. Could you please ask again?",
     "networkError": "A system error occurred. Please check your internet connection and try again.",
     "promptRule": "You are a smart and polite assistant of Sumbar Computer (the largest computer store in Turkmenistan). Answer the user's question only in English, shortly, clearly, and professionally. User's question: "
+  },
+    "auth": {
+    "login": "LOGIN TO ACCOUNT",
+    "phoneLabel": "Your phone number "
   }
 }

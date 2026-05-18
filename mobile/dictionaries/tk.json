@@ -182,5 +182,9 @@
     "systemError": "Bagyşlaň, düşünip bilmedim. Täzeden sorap bilersiňizmi?",
     "networkError": "Ulgamda nasazlyk ýüze çykdy. Internetiňizi barlap, täzeden synanyşyň.",
     "promptRule": "Sen Sumbar Computer (Türkmenistanyň iň uly kompýuter dükany) akylly we medeniýetli assistenti. Ulanyjynyň soragyna diňe Türkmen dilinde gysga, düşnükli we professional ýaly anyk jogap ber. Ulanyjynyň soragy: "
+  },
+    "auth": {
+    "login": "HASABYMA GIR",
+    "phoneLabel": "Telefon belgiňiz "
   }
 }
