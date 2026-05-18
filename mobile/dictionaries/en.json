@@ -129,5 +129,50 @@
     "p2_content": "A huge batch of XIAOMI products has arrived! Also, all sections have been updated, especially laptops, storage devices, processors, home goods, home appliances, and many other items.\nDear friends, hurry to our shop for new shopping! We will be very glad to see you. 🤩",
     "s1_title": "App Update v1.5.3",
     "s1_content": "The application software has been updated."
+  },
+    "privacy": {
+    "title": "PRIVACY POLICY",
+    "sub1": "1. Collection of Information",
+    "p1_1": "We collect information when you register on the site, log into your account, and fill out the delivery form. The information includes your registration phone number, e-mail (if subscribed to notifications), and delivery address.",
+    "p1_2": "In addition, we automatically register your computer and browser, including your IP, as well as the address of the page requested on our site.",
+    "sub2": "2. Use of Information",
+    "p2_1": "The information we collect from you is used for the following purposes:",
+    "usageItems": [
+      "Providing services that meet your personal needs;",
+      "Offering personalized advertising;",
+      "Improving our website;",
+      "Improving the user support system;",
+      "Contacting you via phone number and email."
+    ],
+    "sub3": "3. Protection of Personal Data",
+    "p3_1": "We are the sole owners of the information collected on this site. Your personal data will not be sold or transferred to third parties for any reason.",
+    "sub4": "4. Disclosure of Information to Third Parties",
+    "p4_1": "We do not provide, share, or sell personal information to third-party companies.",
+    "p4_2": "We are ready to share information to prevent crimes or assist in investigations as required by law, if there are suspicions of fraud or actions physically threatening human safety.",
+    "p4_3": "Non-confidential and non-personal information may be provided to other companies for marketing, advertising, etc. purposes.",
+    "sub5": "5. Data Protection",
+    "p5_1": "We use various security measures to ensure the safety of your personal data. Modern encryption is at your service. Only employees working on a specific task (e.g., technical support or site maintenance) have access to personal data. The servers and computers storing confidential data are located in a secure environment.",
+    "sub6": "6. Use of 'Cookies'",
+    "p6_1": "Our 'Cookies' are used to improve site access and identify repeat visits. In addition, they allow tracking the most interesting requests. 'Cookies' do not provide any confidential information.",
+    "notice": "By using the services of our website, you automatically agree to our privacy policy."
+  },
+    "service": {
+    "title": "TECHNICAL SERVICE",
+    "p1": " – is a professional computer service center located in the center of Ashgabat. For more than 10 years, we have been offering our services to individuals and large organizations.",
+    "subHeading": "Our services are as follows:",
+    "servicesList": [
+      "Full service of computer equipment (repair, firmware, software);",
+      "Diagnostics, troubleshooting, and fixing various computers and laptops;",
+      "Repair and maintenance of office equipment (printers, faxes, etc.);",
+      "Refilling inkjet and laser printers."
+    ],
+    "phoneLabel": "Phone: "
+  },
+    "warranty": {
+    "title": "WARRANTY",
+    "subHeading": "Warranty conditions:",
+    "p1": "The warranty conditions specified below apply to both the consumer and the performer. These conditions form the organizational-legal, socio-economic basis of state policy and the foundations of the Law of Turkmenistan on Consumer Protection.",
+    "romanHeading": "I. Warranty obligations",
+    "item1": "In the absence of a warranty period specified by the manufacturer, and except for components for which no warranty is provided during the service life (consumables, cartridges, CD-DVD discs, bags, metal and plastic products, stands, fasteners, cables, tools, goods without electronic components, as well as software, any operating system, programs, etc.), the performer determines the warranty period for the goods."
   }
 }

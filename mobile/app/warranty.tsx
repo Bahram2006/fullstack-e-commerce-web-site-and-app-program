@@ -1,50 +1,59 @@
 import React from "react";
-import { StyleSheet, View, Text, ScrollView, StatusBar, Image, Dimensions } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Text,
+  ScrollView,
+  StatusBar,
+  Image,
+  Dimensions,
+} from "react-native";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { Colors } from "../constants/Colors";
+import { useLangStore } from "../store/useLangStore"; // Senior Dokunşy: Global store integrasiýasy
 
 const { width } = Dimensions.get("window");
-const imageWidth = width - 56; 
+const imageWidth = width - 56;
 
 export default function WarrantyScreen() {
+  const { t } = useLangStore(); // Reactive terjime obýekti
+
   return (
     <View style={styles.safeContainer}>
-      <StatusBar barStyle="light-content" backgroundColor="#1A1A1A" translucent={false} />
+      <StatusBar
+        barStyle="light-content"
+        backgroundColor="#1A1A1A"
+        translucent={false}
+      />
 
       <Header />
 
-      <ScrollView 
-        style={styles.container} 
+      <ScrollView
+        style={styles.container}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.scrollContent}
       >
         <View style={styles.textCard}>
-          
-          <Text style={styles.pageTitle}>KEPILLILIK</Text>
+          <Text style={styles.pageTitle}>{t.warranty.title}</Text>
 
-          <Text style={styles.subHeadingText}>Kepilligiň şertleri:</Text>
+          <Text style={styles.subHeadingText}>{t.warranty.subHeading}</Text>
 
-          <Text style={styles.paragraphText}>
-            Aşakda görkezilen kepillikli şertler sarp edijä we şol bir wagtda ýerine ýetirijä hem degişlidir. Bu şertler Türkmenistanyň döwlet syýasatynyň guramaçylyk-hukuk, durmuş-ykdysady esaslaryny we sarp edijileri goramak babatyndaky kanunyň esaslaryny düzýär.
-          </Text>
+          <Text style={styles.paragraphText}>{t.warranty.p1}</Text>
 
-          <Text style={styles.romanHeadingText}>I. Kepilligiň borçnamalary</Text>
+          <Text style={styles.romanHeadingText}>{t.warranty.romanHeading}</Text>
 
           <View style={styles.numberedItemRow}>
             <Text style={styles.itemNumber}>1.</Text>
-            <Text style={styles.itemText}>
-              Öndüriji tarapyndan kesgitlenen kepillik möhleti bolmadyk ýagdaýynda, şeýle hem gulluk möhleti döwründe kepillik berilmeýän komponentli harytlardan başgalaryna (sarp ediş materiallary, kartrijler, CD-DVD diskleri, sumkalar, metal we plastmassa önümleri, podstawkalar, berkidijiler, kabeller, gurallar, elektron komponentleri bolmadyk harytlar, şeýle hem programma üpjünçiligi, islendik operasion ulgamy, programmalar we ş.m.) ýerine ýetiriji harytlara kepilligiň möhletini kesgitleýär.
-            </Text>
+            <Text style={styles.itemText}>{t.warranty.item1}</Text>
           </View>
 
           <View style={styles.warrantyImageContainer}>
-            <Image 
+            <Image
               source={require("../assets/assets/Footer_sliders/about/warranty.jpg")}
-              style={styles.warrantyImage} 
+              style={styles.warrantyImage}
             />
           </View>
-
         </View>
 
         <Footer />
@@ -53,6 +62,7 @@ export default function WarrantyScreen() {
   );
 }
 
+// Seniň original kemsiz dizaýn stilleriň (CSS)
 const styles = StyleSheet.create({
   safeContainer: {
     flex: 1,

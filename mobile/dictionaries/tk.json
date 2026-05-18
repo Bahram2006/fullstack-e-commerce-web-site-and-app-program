@@ -129,5 +129,50 @@
     "p2_content": "XIAOMI önümleriniň uly tapgyry geldi! Şeýle hem ähli bölümlerde, aýratyn-da noutbuklar, maglumat saklaýjy enjamlar, prosessorlar, öý goşlary, durmuş tehnikasy we başga-da köp sanly harytlarymyz täzelendi.\nGadyrly dostlar, täze söwdar üçin biziň dükanymyza howlugyň! Sizi aramyzda görmäge diýseň şat bolarys. 🤩",
     "s1_title": "Programma täzelenmesi v1.5.3",
     "s1_content": "Programma üpjünçiligi täzelendi."
+  },
+    "privacy": {
+    "title": "GIZLINLIK SYÝASATY",
+    "sub1": "1. Maglumatlary ýygnamak",
+    "p1_1": "Saýtda hasaba alnanyňyzda, hasabyňyza gireniňizde we eltip bermek Extraction görnüşi dolduranyňyzda, biz maglumat ýygnaýarys. Maglumat hasaba alyş telefon belgiňizi, e-mail (habarnamalara ýazylan bolsaňyz), eltip bermek salgysyny öz içine alýar.",
+    "p1_2": "Mundan başga-da, biz kompýuteriňizi we brauzeriňizi, şol sanda IP-ňizi, şeýle hem saýtymyzda talap edilýän sahypanyň salgysyny awtomatiki ýagdaýda hasaba alýarys.",
+    "sub2": "2. Maglumatlary ulanmak",
+    "p2_1": "Sizden ýygnaýan maglumatlarymyz şu aşakdakylar üçün ulanylýar:",
+    "usageItems": [
+      "Şahsy zerurlyklaryňyza laýyk gelýän hyzmatlary etmek;",
+      "Şahsylaşdyrylan mahabaty teklip etmek;",
+      "Saýtymyzy gowulandyrmak;",
+      "Ulanyjylaryň goldaw ulgamyny gowulandyrmak;",
+      "Telefon belgisi we elektron poçta arkaly siz bilen habarlaşmak."
+    ],
+    "sub3": "3. Şahsy maglumatlary goramak",
+    "p3_1": "Biz bu saýtymyzda toplanan maglumatlaryň ýeke-täk eýesi bolup durýarys. Şahsy maglumatlaryňyz satylmaz ýa-da islendik sebäp bilen üçünji taraplara geçirilmez.",
+    "sub4": "4. Maglumatlary üçünji taraplara aýan etmek",
+    "p4_1": "Biz üçünji tarap kompaniýalara şahsy maglumatlary bermeýäris, paýlaşmaýarys ýa-da satmaýarys.",
+    "p4_2": "Eger kezzaplykda şübheler, adamlaryň howpsuzlygyna fiziki taýdan howp salýan hereketlerde şübheler bar bolsa, kanunlarda talap edilýän ýagdaýda, jenaýatyň öňüni almak ýa-da derňewe kömek etmek üçün maglumatlary paýlaşmaga taýýardyrys.",
+    "p4_3": "Marketing, mahabat we ş.m. maksatlary üçin beýleki kompaniýalara gizlin däl we şahsy däl maglumatlar berlip bilner.",
+    "sub5": "5. Maglumatlary goramak",
+    "p5_1": "Şahsy maglumatlaryňyzyň saklanmagyny üpjün etmek üçin dürli howpsuzlyk serişdelerini ulanýarys. Döwrebap şifrlemek siziň hyzmatyňyzda. Diňe belli bir tabşyryk bilen işleýän işgärleriň (mysal üçin, tehniki goldaw ýa-da saýty ulanmak) şahsy maglumatlara elýeterliligi bar. Gizlin maglumatlaryň saklanýan serwerleri we kompýuterleri howpsuz gurşawda ýerleşýär.",
+    "sub6": "6. “Cookie” faýllaryny ulanmak",
+    "p6_1": "“Cookie” faýllarymyz saýta elýeterliligi gowulandyrmak we gaýtalanýan saparlary kesgitlemek üçin ulanylýar. Mundan başga-da, olar iň gyzykly talaplary yzarlamaga mümkinçilik berýär. “Cookie” faýllar hiç hili gizlin maglumat bermeýärler.",
+    "notice": "Saýtymyzyň hyzmatlarindan ulanmak bilen Siz gizlinlik syýasatymyz bilen awtomatiki razylaşýarsyňyz."
+  },
+    "service": {
+    "title": "TEHNIKI HYZMAT",
+    "p1": " – Aşgabadyň merkezinde ýerleşýän professional kompýuter hyzmat merkezidir. 10 ýyldan gowrak wagt bäri hyzmatlarymyzy şahsyýetlere we iri guramalara hödürleýäris.",
+    "subHeading": "Bizin hyzmatlarymyz şular:",
+    "servicesList": [
+      "Kompýuter enjamlarynyň doly hyzmaty (abatlamak, proşiwka, programma üpjünçiligi);",
+      "Dürli kompýuterleriň we noutbuklaryň diagnostikasy, gözlemek we näsazlyklaryny düzetmek;",
+      "Ofis enjamlaryny (printerler, fakslar we ş.m.) abatlamak we profilaktika etmek;",
+      "Struýnýý we lazer printerleri zaprawka etmek."
+    ],
+    "phoneLabel": "Telefon: "
+  },
+    "warranty": {
+    "title": "KEPILLILIK",
+    "subHeading": "Kepilligiň şertleri:",
+    "p1": "Aşakda görkezilen kepillikli şertler sarp edijä we şol bir wagtda ýerine ýetirijä hem degişlidir. Bu şertler Türkmenistanyň döwlet syýasatynyň guramaçylyk-hukuk, durmuş-ykdysady esaslaryny we sarp edijileri goramak babatyndaky kanunyň esaslaryny düzýär.",
+    "romanHeading": "I. Kepilligiň borçnamalary",
+    "item1": "Öndüriji tarapyndan kesgitlenen kepillik möhleti bolmadyk ýagdaýynda, şeýle hem gulluk möhleti döwründe kepillik berilmeýän komponentli harytlardan başgalaryna (sarp ediş materiallary, kartrijler, CD-DVD diskleri, sumkalar, metal we plastmassa önümleri, podstawkalar, berkidijiler, kabeller, gurallar, elektron komponentleri bolmadyk harytlar, şeýle hem programma üpjünçiligi, islendik operasion ulgamy, programmalar we ş.m.) ýerine ýetiriji harytlara kepilligiň möhletini kesgitleýär."
   }
 }

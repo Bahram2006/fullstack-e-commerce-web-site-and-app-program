@@ -3,21 +3,16 @@ import { StyleSheet, View, Text, ScrollView, StatusBar, Image, Dimensions, Touch
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { Colors } from "../constants/Colors";
+import { useLangStore } from "../store/useLangStore"; // Senior Dokunşy: Global store integrasiýasy
 
 const { width } = Dimensions.get("window");
-const imageWidth = width - 56; // Konteyneriň padding-ine laýyk surat giňligi
+const imageWidth = width - 56;
 
 export default function ServiceScreen() {
-  // Bizin hyzmatlarymyz nokatly sanaw sanawy
-  const servicesList = [
-    "Kompýuter enjamlarynyň doly hyzmaty (abatlamak, proşiwka, programma üpjünçiligi);",
-    "Dürli kompýuterleriň we noutbuklaryň diagnostikasy, gözlemek we näsazlyklaryny düzetmek;",
-    "Ofis enjamlaryny (printerler, fakslar we ş.m.) abatlamak we profilaktika etmek;",
-    "Struýnýý we lazer printerleri zaprawka etmek."
-  ];
+  const { t } = useLangStore(); // Reactive terjime obýekti
 
-  // Nokatly sanaw gurýan professional funksiýa
   const renderBulletList = (items: string[]) => {
+    if (!items) return null;
     return items.map((item, index) => (
       <View key={index} style={styles.bulletItemRow}>
         <Text style={styles.bulletDot}>•</Text>
@@ -30,7 +25,6 @@ export default function ServiceScreen() {
     <View style={styles.safeContainer}>
       <StatusBar barStyle="light-content" backgroundColor="#1A1A1A" translucent={false} />
 
-      {/* Ýokarky Navbar */}
       <Header />
 
       <ScrollView 
@@ -40,15 +34,16 @@ export default function ServiceScreen() {
       >
         <View style={styles.textCard}>
           
-          <Text style={styles.pageTitle}>TEHNIKI HYZMAT</Text>
+          <Text style={styles.pageTitle}>{t.service.title}</Text>
 
           <Text style={styles.paragraphText}>
-            <Text style={styles.boldRedText}>Service Sumbar Computer</Text> – Aşgabadyň merkezinde ýerleşýän professional kompýuter hyzmat merkezidir. 10 ýyldan gowrak wagt bäri hyzmatlarymyzy şahsyýetlere we iri guramalara hödürleýäris.
+            <Text style={styles.boldRedText}>Service Sumbar Computer</Text>
+            {t.service.p1}
           </Text>
 
-          <Text style={styles.subHeadingText}>Bizin hyzmatlarymyz şular:</Text>
+          <Text style={styles.subHeadingText}>{t.service.subHeading}</Text>
 
-          <View style={styles.listWrapper}>{renderBulletList(servicesList)}</View>
+          <View style={styles.listWrapper}>{renderBulletList(t.service.servicesList)}</View>
 
           <TouchableOpacity 
             activeOpacity={0.7} 
@@ -56,7 +51,7 @@ export default function ServiceScreen() {
             style={styles.phoneClickZone}
           >
             <Text style={styles.phoneText}>
-              Telefon: <Text style={styles.boldPhoneNum}>+993 (62) 23-37-59</Text>
+              {t.service.phoneLabel}<Text style={styles.boldPhoneNum}>+993 (62) 23-37-59</Text>
             </Text>
           </TouchableOpacity>
 
@@ -69,13 +64,13 @@ export default function ServiceScreen() {
 
         </View>
 
-        {/* Aşaky Footer */}
         <Footer />
       </ScrollView>
     </View>
   );
 }
 
+// Seniň original kemsiz dizaýn stilleriň (CSS)
 const styles = StyleSheet.create({
   safeContainer: {
     flex: 1,
@@ -166,7 +161,7 @@ const styles = StyleSheet.create({
   },
   serviceImage: {
     width: imageWidth,
-    height: imageWidth * 0.72, // Owadan proporsional beýiklik
+    height: imageWidth * 0.72,
     borderRadius: 4,
     resizeMode: "cover",
     backgroundColor: "#F1F5F9",
