@@ -55,7 +55,6 @@ export default function AIChatModal({ visible, onClose }: AIChatModalProps) {
     setLoading(true);
 
     try {
-      // 🛠️ SENIOR REST API ÇÖZGÜDI: Köne w1beta däl-de, Google-uň hakyky resmi v1 durnukly endpointi
       const url = `https://googleapis.com{GEMINI_API_KEY}`;
 
       const prompt = `Sen Sumbar Computer (Türkmenistanyň iň uly kompýuter dükany) akylly we medeniýetli assistenti. Ulanyjynyň soragyna diňe Türkmen dilinde gysga, düşnükli we professional ýaly anyk jogap ber. Ulanyjynyň soragy: ${userMessage.text}`;
@@ -80,7 +79,6 @@ export default function AIChatModal({ visible, onClose }: AIChatModalProps) {
 
       const data = await response.json();
 
-      // Google API-dan gelýän hakyky tekst jogaby
       const aiText = data?.candidates?.[0]?.content?.parts?.[0]?.text;
 
       const aiMessage: Message = {
@@ -119,7 +117,6 @@ export default function AIChatModal({ visible, onClose }: AIChatModalProps) {
           behavior={Platform.OS === "ios" ? "padding" : "height"}
           style={styles.chatContainer}
         >
-          {/* Header */}
           <View style={styles.chatHeader}>
             <View style={styles.headerLeft}>
               <View style={styles.aiDot} />
@@ -130,7 +127,6 @@ export default function AIChatModal({ visible, onClose }: AIChatModalProps) {
             </TouchableOpacity>
           </View>
 
-          {/* Chat History */}
           <ScrollView
             ref={scrollViewRef}
             style={styles.messagesList}
@@ -171,7 +167,6 @@ export default function AIChatModal({ visible, onClose }: AIChatModalProps) {
             )}
           </ScrollView>
 
-          {/* Input Bar */}
           <View style={styles.inputBar}>
             <TextInput
               style={styles.textInput}

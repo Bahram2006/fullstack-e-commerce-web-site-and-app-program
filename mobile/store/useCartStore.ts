@@ -58,7 +58,6 @@ export const useCartStore = create<CartStore>()(
     }),
     {
       name: 'cart-storage',
-      // Webdäki localStorage ýerine telefonda AsyncStorage ulanmagy üpjün edýär
       storage: createJSONStorage(() => AsyncStorage), 
     }
   )
