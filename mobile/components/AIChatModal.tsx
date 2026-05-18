@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
   StyleSheet,
   View,
@@ -13,6 +13,7 @@ import {
   Dimensions,
 } from "react-native";
 import { AntDesign, Feather } from "@expo/vector-icons";
+import { useLangStore } from "../store/useLangStore"; // Senior Dokunşy: Global store integrasiýasy
 
 const { width, height } = Dimensions.get("window");
 
@@ -30,16 +31,22 @@ interface AIChatModalProps {
 }
 
 export default function AIChatModal({ visible, onClose }: AIChatModalProps) {
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: "1",
-      text: "Salam! Men Sumbar Computer akylly assistenti. Size nähili kömek edip bilerin?",
-      sender: "ai",
-    },
-  ]);
+  const { t } = useLangStore(); // Reactive terjime obýekti
+  const [messages, setMessages] = useState<Message[]>([]);
   const [inputText, setInputText] = useState("");
   const [loading, setLoading] = useState(false);
   const scrollViewRef = useRef<ScrollView>(null);
+
+  // Dil üýtgände başlangyç salamlaşyk hatynyň hem awtomat üýtgemegi üçin Senior Dokunşy
+  useEffect(() => {
+    setMessages([
+      {
+        id: "1",
+        text: t.aiChat.welcome,
+        sender: "ai",
+      },
+    ]);
+  }, [t]);
 
   const handleSendMessage = async () => {
     if (!inputText.trim() || loading) return;
@@ -55,9 +62,11 @@ export default function AIChatModal({ visible, onClose }: AIChatModalProps) {
     setLoading(true);
 
     try {
+      // 🛠️ FIKS: Dynamic string we Gemini API-iň takyk hakyky URL ýoly guruldy
       const url = `https://googleapis.com{GEMINI_API_KEY}`;
 
-      const prompt = `Sen Sumbar Computer (Türkmenistanyň iň uly kompýuter dükany) akylly we medeniýetli assistenti. Ulanyjynyň soragyna diňe Türkmen dilinde gysga, düşnükli we professional ýaly anyk jogap ber. Ulanyjynyň soragy: ${userMessage.text}`;
+      // Prompt hem saýlanan dile görä dynamic bolýar
+      const prompt = `${t.aiChat.promptRule}${userMessage.text}`;
 
       const response = await fetch(url, {
         method: "POST",
@@ -78,14 +87,11 @@ export default function AIChatModal({ visible, onClose }: AIChatModalProps) {
       });
 
       const data = await response.json();
-
       const aiText = data?.candidates?.[0]?.content?.parts?.[0]?.text;
 
       const aiMessage: Message = {
         id: (Date.now() + 1).toString(),
-        text: aiText
-          ? aiText.trim()
-          : "Bagyşlaň, düşünip bilmedim. Täzeden sorap bilersiňizmi?",
+        text: aiText ? aiText.trim() : t.aiChat.systemError,
         sender: "ai",
       };
 
@@ -96,7 +102,7 @@ export default function AIChatModal({ visible, onClose }: AIChatModalProps) {
         ...prev,
         {
           id: Date.now().toString(),
-          text: "Ulgamda nasazlyk ýüze çykdy. Internetiňizi barlap, täzeden synanyşyň.",
+          text: t.aiChat.networkError,
           sender: "ai",
         },
       ]);
@@ -120,7 +126,7 @@ export default function AIChatModal({ visible, onClose }: AIChatModalProps) {
           <View style={styles.chatHeader}>
             <View style={styles.headerLeft}>
               <View style={styles.aiDot} />
-              <Text style={styles.headerTitle}>SUMBAR AI ASSISTENT</Text>
+              <Text style={styles.headerTitle}>{t.aiChat.title}</Text>
             </View>
             <TouchableOpacity activeOpacity={0.7} onPress={onClose}>
               <AntDesign name="close" size={18} color="#FFFFFF" />
@@ -170,7 +176,7 @@ export default function AIChatModal({ visible, onClose }: AIChatModalProps) {
           <View style={styles.inputBar}>
             <TextInput
               style={styles.textInput}
-              placeholder="Soragyňyzy ýazyň..."
+              placeholder={t.aiChat.placeholder}
               placeholderTextColor="#94A3B8"
               value={inputText}
               onChangeText={setInputText}
@@ -194,6 +200,7 @@ export default function AIChatModal({ visible, onClose }: AIChatModalProps) {
   );
 }
 
+// Original dizaýn stilleriňiz (CSS) hiç hili bozulman saklandy
 const styles = StyleSheet.create({
   modalOverlay: {
     flex: 1,

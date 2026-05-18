@@ -174,5 +174,13 @@
     "p1": "Aşakda görkezilen kepillikli şertler sarp edijä we şol bir wagtda ýerine ýetirijä hem degişlidir. Bu şertler Türkmenistanyň döwlet syýasatynyň guramaçylyk-hukuk, durmuş-ykdysady esaslaryny we sarp edijileri goramak babatyndaky kanunyň esaslaryny düzýär.",
     "romanHeading": "I. Kepilligiň borçnamalary",
     "item1": "Öndüriji tarapyndan kesgitlenen kepillik möhleti bolmadyk ýagdaýynda, şeýle hem gulluk möhleti döwründe kepillik berilmeýän komponentli harytlardan başgalaryna (sarp ediş materiallary, kartrijler, CD-DVD diskleri, sumkalar, metal we plastmassa önümleri, podstawkalar, berkidijiler, kabeller, gurallar, elektron komponentleri bolmadyk harytlar, şeýle hem programma üpjünçiligi, islendik operasion ulgamy, programmalar we ş.m.) ýerine ýetiriji harytlara kepilligiň möhletini kesgitleýär."
+  },
+    "aiChat": {
+    "welcome": "Salam! Men Sumbar Computer akylly assistenti. Size nähili kömek edip bilerin?",
+    "title": "SUMBAR AI ASSISTENT",
+    "placeholder": "Soragyňyzy ýazyň...",
+    "systemError": "Bagyşlaň, düşünip bilmedim. Täzeden sorap bilersiňizmi?",
+    "networkError": "Ulgamda nasazlyk ýüze çykdy. Internetiňizi barlap, täzeden synanyşyň.",
+    "promptRule": "Sen Sumbar Computer (Türkmenistanyň iň uly kompýuter dükany) akylly we medeniýetli assistenti. Ulanyjynyň soragyna diňe Türkmen dilinde gysga, düşnükli we professional ýaly anyk jogap ber. Ulanyjynyň soragy: "
   }
 }

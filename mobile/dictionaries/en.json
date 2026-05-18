@@ -174,5 +174,13 @@
     "p1": "The warranty conditions specified below apply to both the consumer and the performer. These conditions form the organizational-legal, socio-economic basis of state policy and the foundations of the Law of Turkmenistan on Consumer Protection.",
     "romanHeading": "I. Warranty obligations",
     "item1": "In the absence of a warranty period specified by the manufacturer, and except for components for which no warranty is provided during the service life (consumables, cartridges, CD-DVD discs, bags, metal and plastic products, stands, fasteners, cables, tools, goods without electronic components, as well as software, any operating system, programs, etc.), the performer determines the warranty period for the goods."
+  },
+    "aiChat": {
+    "welcome": "Hello! I am Sumbar Computer smart assistant. How can I help you?",
+    "title": "SUMBAR AI ASSISTANT",
+    "placeholder": "Type your question...",
+    "systemError": "Sorry, I didn't understand. Could you please ask again?",
+    "networkError": "A system error occurred. Please check your internet connection and try again.",
+    "promptRule": "You are a smart and polite assistant of Sumbar Computer (the largest computer store in Turkmenistan). Answer the user's question only in English, shortly, clearly, and professionally. User's question: "
   }
 }
