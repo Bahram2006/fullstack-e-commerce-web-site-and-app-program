@@ -1,0 +1,24 @@
+{
+  "cart": {
+    "title": "SEBEDIM",
+    "emptyText": "Siziň sebediňiz boş",
+    "tipTitle": "Maslahat berilýär:",
+    "tipContent": "Satyn almazdan ozal awtorizasiýa etmek bilen, aşakdaky artykmaçlyklary alarsyňyz:\n1) Siziň sargytlaryňyzyň taryhy profilde saklanar, şeýle hem priloženiýanyň üsti bilen hem görüp bolar;\n2) Siz satyn alanyňyzda yzygiderli maglumatlaryňyzy girizmek zerurlugy bolmaz;\n3) Siz halan önümleriňizi satyn almak küýün aýratyn sanawa goşup bilersiňiz;\n4) Harytlara synlaryňyzy-pikirleriňizi ýazmak, halan harytlaryňyza belgi goýmak mümkinçiligi;\n5) Web sahypasyndan harytlary sebediňize goşanyňyzdan soň, satyn almaklygy priloženiýadan we tersine dowam etdirip bilersiňiz;\n6) Siz ballary toplap olary priloženiýanyň üsti bilen haryt satyn alyp harçlap bilersiňiz.",
+    "loginBtn": "▶ Hasabyma gir",
+    "deliveryLabel": "Eltip bermek üçin ýeriňiz *",
+    "summaryProducts": "Harytlars",
+    "summaryDelivery": "Eltip bermek",
+    "summaryTotal": "Jemi",
+    "orderBtn": "▶ Sargyt et"
+  },
+    "categories": {
+    "pageTitle": "Kategoriýalar Sahypasy"
+  },
+    "home": {
+    "leftBannerPress": "Çep basyldy:",
+    "rightBannerPress": "Sag basyldy:",
+    "selectedTab": "Saýlanan bölüm:",
+    "goToDetails": "jikme-jikligine git",
+    "addedToCart": "sepete goşuldy"
+  }
+}

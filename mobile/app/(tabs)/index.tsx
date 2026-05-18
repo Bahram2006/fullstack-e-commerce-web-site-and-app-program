@@ -21,17 +21,17 @@ import QuickViewModal from "../../components/QuickViewModal";
 import AuthModal from "../../components/AuthModal";
 import ShopReviews from "../../components/ShopReviews";
 import Footer from "@/components/Footer";
-import ComplaintModal from "../../components/ComplaintModal"; // 🛠️ FIKS 1: ComplaintModal importy goşuldy
+import ComplaintModal from "../../components/ComplaintModal";
 import { supabase } from "@/lib/supabase";
 import RateAuthModal from "../../components/RateAuthModal";
+import { useLangStore } from "../../store/useLangStore"; // Senior Dokunşy: Store import edildi
 
 export default function HomeScreen() {
+  const { t } = useLangStore(); // Global dil obýekti
   const [products, setProducts] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [isAuthOpen, setIsAuthOpen] = useState(false);
   const [isRateAuthOpen, setIsRateAuthOpen] = useState(false);
-
-  // 🛠️ FIKS 2: Nasazlyk beren we öçen arza modal state-i doly goşuldy!
   const [isComplaintOpen, setIsComplaintOpen] = useState(false);
 
   const [showScrollTopBtn, setShowScrollTopBtn] = useState(false);
@@ -98,12 +98,12 @@ export default function HomeScreen() {
         <Hero />
 
         <SideBanners
-          onLeftPress={(index: number) => console.log(`Çep basyldy: ${index}`)}
-          onRightPress={(index: number) => console.log(`Sag basyldy: ${index}`)}
+          onLeftPress={(index: number) => console.log(`${t.home.leftBannerPress} ${index}`)}
+          onRightPress={(index: number) => console.log(`${t.home.rightBannerPress} ${index}`)}
         />
 
         <HomeTabs
-          onTabChange={(tab: string) => console.log(`Saýlanan bölüm: ${tab}`)}
+          onTabChange={(tab: string) => console.log(`${t.home.selectedTab} ${tab}`)}
         />
 
         {loading ? (
@@ -121,8 +121,8 @@ export default function HomeScreen() {
                 name={item.name}
                 price={item.price}
                 image_url={item.image_url}
-                onPress={() => console.log(`${item.name} jikme-jikligine git`)}
-                onAddToCart={() => console.log(`${item.name} sepete goşuldy`)}
+                onPress={() => console.log(`${item.name} ${t.home.goToDetails}`)}
+                onAddToCart={() => console.log(`${item.name} ${t.home.addedToCart}`)}
                 onHeartPress={() => setIsAuthOpen(true)}
               />
             ))}
@@ -150,7 +150,6 @@ export default function HomeScreen() {
       <QuickViewModal />
       <AuthModal visible={isAuthOpen} onClose={() => setIsAuthOpen(false)} />
 
-      {/* 🛠️ FIKS 3: ComplaintModal iň aşakda absolýut bökdençsiz goşuldy */}
       <ComplaintModal
         visible={isComplaintOpen}
         onClose={() => setIsComplaintOpen(false)}
@@ -158,7 +157,7 @@ export default function HomeScreen() {
       <RateAuthModal
         visible={isRateAuthOpen}
         onClose={() => setIsRateAuthOpen(false)}
-        onLoginPress={() => setIsAuthOpen(true)} // 🛠️ Basylanda hakyky "HASABYMA GIR" (telefon) modalyny açar!
+        onLoginPress={() => setIsAuthOpen(true)}
       />
     </View>
   );

@@ -1,0 +1,24 @@
+{
+  "cart": {
+    "title": "CART",
+    "emptyText": "Your cart is empty",
+    "tipTitle": "Recommended:",
+    "tipContent": "By authorizing before purchasing, you get the following advantages:\n1) Your order history will be saved in your profile;\n2) You will not have to re-enter your data when purchasing;\n3) You can add products to a separate favorite list;\n4) Ability to write reviews and rate products;\n5) Sync cart between web and app seamlessly;\n6) Collect and spend bonus points for purchases.",
+    "loginBtn": "▶ Login to Account",
+    "deliveryLabel": "Delivery location *",
+    "summaryProducts": "Products",
+    "summaryDelivery": "Delivery",
+    "summaryTotal": "Total",
+    "orderBtn": "▶ Place Order"
+  },
+    "categories": {
+    "pageTitle": "Categories Page"
+  },
+    "home": {
+    "leftBannerPress": "Left pressed:",
+    "rightBannerPress": "Right pressed:",
+    "selectedTab": "Selected tab:",
+    "goToDetails": "go to details",
+    "addedToCart": "added to cart"
+  }
+}
