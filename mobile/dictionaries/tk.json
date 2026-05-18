@@ -67,5 +67,28 @@
     "holidaySub": "Dükan we eltip bermek hyzmaty baýramçylyk günlerinde işlemeýär.",
     "contactUs": "Habarlaşmak üçün:",
     "address": "Dükanymyz A.Nyýazow (Hudayberdiýew, 4 mkr.) köçesi, 99 jaý salgysy boýunça Aşgabat şäheriniň merkezinde ýerleşýär (Hudaýberdiýew köçäniň hem-de Bomako köçäniň çatrygy, AŞTU-nyň garşysy)"
+  },
+    "bonus": {
+    "title": "BAL TOPLAMAK ULGAMY",
+    "p1": " onlaýn dükanynda hasaba alnan ulanyjylar üçin bal sistemasy hereket edýär. Haryt satyn alynanda, satyn alyja indiki satyn almak üçin sarp edip biljek bonus ballary berilýär.",
+    "earningHeading": "Ballary almagyň esasy düzgünleri:",
+    "earningRules": [
+      "Bal toplamak sistemasy şol sistemanyň täsir edýän harytlaryny satyn almak arkaly ballar toplanylýar.",
+      "Satyn almak web sahypasyndan ýa-da programmadan edilmeli. Hasaplama diňe sargyt “Tamamlanan” statusyna eýe bolandan soň, ýagny “eltip bermek we tölemek” üçin ähli şertler ýerine ýetirilenden soň ýüze çykýar. Welaýatlara eltip bermek hyzmatynyň we kuryer gullugyndan pul serişdeleriniň gelip gowuşmagynyň belli bir wagt alýandygyny dykkatyňyza ýetirýäris. Şol sebäpli, ballar sargyt gowşurylan badyna däl-de, biraz wagtdan soňra hasaplanar.",
+      "Ballar diňe satyn almazdan ozal hasaba goşulan (registrasiýa eden) ulanyjylara berilýär. Toplanan ballaryň sanyny ulanyjynyň “Hasabynda” yzarlap bolýar.",
+      "Bal toplamak ulgamy häzirki wagtda arzanladyş yglan edilen önümlere degişli däldir."
+    ],
+    "note": "Bal toplamak programmasy ähli önümlere degişli däl! Satyn alyja satyn almak üçin ballar bilen üpjün edilen önümler, bahanyň gapdalynda degişli nyşan bilen bellik edilendir.",
+    "usingHeading": "Ballary ulanmagyň esasy düzgünleri:",
+    "usingRules": [
+      "Diňe v.1.2.0 ýa-da has ýokary wersiýa bolan programmadan satyn alanyňyzda bal sarp edip bilersiňiz (AppStore ýa-da GooglePlay-dan alyp bilersiňiz).",
+      "Häzirki wagtda arzanladyşyň bardygyna ýa-da ýokdugyna garamazdan, islendik önüme bal sarp edip bilersiňiz.",
+      "Ballary nagt görnüşinde gaýtaryp alyp bolmaýar ýa-da dükanda ulanyp bolmaýar.",
+      "Ballar umumy sargydyň 50% -inden köp bolmaly däldir."
+    ],
+    "exampleHeading": "Hasaplama nusgasy:",
+    "example1": "Meselem 100 bal topladyňyz we 100 manatlyk sargyt satyn almak isleýärsiňiz, 50 manadynyzy bal bilen ýapyp bilersiňiz, galanlary üçin nagt tölemeli bolarsyňyz.",
+    "example2": "100 bal toplap, 200 manatlyk haryt satyn alan bolsaňyz, bu sargyt üçin 100 balyň hemmesini sarp edip bilersiňiz, harydyň galan möçberini harydy alanyňyzda nagt ýa-da kartoçka arkaly onlaýn töleg tölenmeli."
   }
+
 }

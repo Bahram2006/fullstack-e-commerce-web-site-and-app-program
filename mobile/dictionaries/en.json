@@ -67,5 +67,27 @@
     "holidaySub": "The shop and delivery service do not work on holidays.",
     "contactUs": "Contact us:",
     "address": "Our shop is located in the center of Ashgabat city at A. Niyazov (Hudayberdiyev, 4 mkr.) street, building 99 (intersection of Hudayberdiyev and Bomako streets, opposite ASHTU)"
+  },
+    "bonus": {
+    "title": "BONUS SYSTEM",
+    "p1": " a bonus system is available for registered users in the online store. When purchasing a product, the buyer is awarded bonus points that can be spent on the next purchase.",
+    "earningHeading": "Basic rules for earning points:",
+    "earningRules": [
+      "The bonus system allows accumulating points by purchasing eligible products.",
+      "The purchase must be made from the website or the app. Calculation occurs only after the order gets 'Completed' status, i.e., after meeting all delivery and payment conditions. Please note that regional delivery takes some time, so points will be credited shortly after.",
+      "Points are awarded only to users registered before purchasing. The amount of accumulated points can be tracked in the 'Account'.",
+      "The bonus system currently does not apply to discounted items."
+    ],
+    "note": "The bonus program does not apply to all products! Products eligible for points are marked with a corresponding icon next to the price.",
+    "usingHeading": "Basic rules for using points:",
+    "usingRules": [
+      "You can only spend points when purchasing from app version v.1.2.0 or higher (available on AppStore or GooglePlay).",
+      "Currently, you can spend points on any product, regardless of whether there is a discount or not.",
+      "Points cannot be refunded as cash or used directly in the retail store.",
+      "Points must not exceed 50% of the total order amount."
+    ],
+    "exampleHeading": "Calculation example:",
+    "example1": "For example, if you accumulated 100 points and want to buy an order worth 100 manats, you can cover 50 manats with points, and pay the rest in cash.",
+    "example2": "If you accumulated 100 points and bought a product for 200 manats, you can spend all 100 points for this order, and the remaining amount must be paid in cash or by card online upon delivery."
   }
 }

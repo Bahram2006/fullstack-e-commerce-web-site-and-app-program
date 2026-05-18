@@ -3,26 +3,15 @@ import { StyleSheet, View, Text, ScrollView, StatusBar, Dimensions } from "react
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { Colors } from "../constants/Colors";
+import { useLangStore } from "../store/useLangStore"; // Senior Dokunşy
 
 const { width } = Dimensions.get("window");
 
 export default function BonusScreen() {
-  
-  const earningRules = [
-    "Bal toplamak sistemasy şol sistemanyň täsir edýän harytlaryny satyn almak arkaly ballar toplanylýar.",
-    "Satyn almak web sahypasyndan ýa-da programmadan edilmeli. Hasaplama diňe sargyt “Tamamlanan” statusyna eýe bolandan soň, ýagny “eltip bermek we tölemek” üçin ähli şertler ýerine ýetirilenden soň ýüze çykýar. Welaýatlara eltip bermek hyzmatynyň we kuryer gullugyndan pul serişdeleriniň gelip gowuşmagynyň belli bir wagt alýandygyny dykkatyňyza ýetirýäris. Şol sebäpli, ballar sargyt gowşurylan badyna däl-de, biraz wagtdan soňra hasaplanar.",
-    "Ballar diňe satyn almazdan ozal hasaba goşulan (registrasiýa eden) ulanyjylara berilýär. Toplanan ballaryň sanyny ulanyjynyň “Hasabynda” yzarlap bolýar.",
-    "Bal toplamak ulgamy häzirki wagtda arzanladyş yglan edilen önümlere degişli däldir."
-  ];
-
-  const usingRules = [
-    "Diňe v.1.2.0 ýa-da has ýokary wersiýa bolan programmadan satyn alanyňyzda bal sarp edip bilersiňiz (AppStore ýa-da GooglePlay-dan alyp bilersiňiz).",
-    "Häzirki wagtda arzanladyşyň bardygyna ýa-da ýokdugyna garamazdan, islendik önüme bal sarp edip bilersiňiz.",
-    "Ballary nagt görnüşinde gaýtaryp alyp bolmaýar ýa-da dükanda ulanyp bolmaýar.",
-    "Ballar umumy sargydyň 50% -inden köp bolmaly däldir."
-  ];
+  const { t } = useLangStore(); // Global dynamic terjime obýekti
 
   const renderBulletList = (items: string[]) => {
+    if (!items) return null;
     return items.map((item, index) => (
       <View key={index} style={styles.bulletItemRow}>
         <Text style={styles.bulletDot}>•</Text>
@@ -44,33 +33,30 @@ export default function BonusScreen() {
       >
         <View style={styles.textCard}>
           
-          <Text style={styles.pageTitle}>BAL TOPLAMAK ULGAMY</Text>
+          <Text style={styles.pageTitle}>{t.bonus.title}</Text>
 
           <Text style={styles.paragraphText}>
-            <Text style={styles.boldRedText}>Sumbar Computer</Text> onlaýn dükanynda hasaba alnan ulanyjylar üçin bal sistemasy hereket edýär. Haryt satyn alynanda, satyn alyja indiki satyn almak üçin sarp edip biljek bonus ballary berilýär.
+            <Text style={styles.boldRedText}>Sumbar Computer</Text>
+            {t.bonus.p1}
           </Text>
 
-          <Text style={styles.subHeadingText}>Ballary almagyň esasy düzgünleri:</Text>
-          <View style={styles.listWrapper}>{renderBulletList(earningRules)}</View>
+          <Text style={styles.subHeadingText}>{t.bonus.earningHeading}</Text>
+          <View style={styles.listWrapper}>{renderBulletList(t.bonus.earningRules)}</View>
 
           <View style={styles.noteBox}>
             <Text style={styles.noteText}>
-              <Text style={{ fontWeight: "bold" }}>Bellik:</Text> Bal toplamak programmasy ähli önümlere degişli däl! Satyn alyja satyn almak üçin ballar bilen üpjün edilen önümler, bahanyň gapdalynda degişli nyşan bilen bellik edilendir.
+              <Text style={{ fontWeight: "bold" }}>Bellik:</Text> {t.bonus.note}
             </Text>
           </View>
 
           <View style={styles.sectionDivider} />
 
-          <Text style={styles.subHeadingText}>Ballary ulanmagyň esasy düzgünleri:</Text>
-          <View style={styles.listWrapper}>{renderBulletList(usingRules)}</View>
+          <Text style={styles.subHeadingText}>{t.bonus.usingHeading}</Text>
+          <View style={styles.listWrapper}>{renderBulletList(t.bonus.usingRules)}</View>
 
-          <Text style={styles.subHeadingText}>Hasaplama nusgasy:</Text>
-          <Text style={styles.paragraphText}>
-            Meselem 100 bal topladyňyz we 100 manatlyk sargyt satyn almak isleýärsiňiz, 50 manadynyzy bal bilen ýapyp bilersiňiz, galanlary üçin nagt tölemeli bolarsyňyz.
-          </Text>
-          <Text style={styles.paragraphText}>
-            100 bal toplap, 200 manatlyk haryt satyn alan bolsaňyz, bu sargyt üçin 100 balyň hemmesini sarp edip bilersiňiz, harydyň galan möçberini harydy alanyňyzda nagt ýa-da kartoçka arkaly onlaýn töleg tölenmeli.
-          </Text>
+          <Text style={styles.subHeadingText}>{t.bonus.exampleHeading}</Text>
+          <Text style={styles.paragraphText}>{t.bonus.example1}</Text>
+          <Text style={styles.paragraphText}>{t.bonus.example2}</Text>
 
         </View>
 
@@ -80,6 +66,7 @@ export default function BonusScreen() {
   );
 }
 
+// Seniň original kemsiz dizaýn stilleriň
 const styles = StyleSheet.create({
   safeContainer: {
     flex: 1,
