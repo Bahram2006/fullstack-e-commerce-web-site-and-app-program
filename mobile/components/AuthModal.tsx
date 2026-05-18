@@ -10,8 +10,8 @@ import {
   ActivityIndicator,
 } from "react-native";
 import { AntDesign, MaterialCommunityIcons } from "@expo/vector-icons";
-import { useLangStore } from "../store/useLangStore"; // Store ýoluňyzy barlaň
-import { supabase } from "../lib/supabase"; // Supabase client ýoluňyzy barlaň
+import { useLangStore } from "../store/useLangStore";
+import { supabase } from "../lib/supabase";
 
 const { width } = Dimensions.get("window");
 
@@ -26,9 +26,8 @@ export default function AuthModal({ visible, onClose }: AuthModalProps) {
   const [verificationCode, setVerificationCode] = useState("");
   const [loading, setLoading] = useState(false);
   const [isCodeSent, setIsCodeSent] = useState(false);
-  const [timer, setTimer] = useState(83); // 01:23 üçin jemi 83 sekunt countdown
+  const [timer, setTimer] = useState(83);
 
-  // Countdown Timer Logikasy
   useEffect(() => {
     let interval: any;
     if (isCodeSent && timer > 0) {
@@ -45,7 +44,6 @@ export default function AuthModal({ visible, onClose }: AuthModalProps) {
     return `${mins < 10 ? "0" : ""}${mins}:${secs < 10 ? "0" : ""}${secs}`;
   };
 
-  // 1. TELEFONA SMS OTP UGRATMAK (Täzeden basylanda hem işleýär)
   const handleSendOTP = async () => {
     if (phoneNumber.trim().length !== 8) {
       alert("Telefon belgiňizi takyk (8 sifr) giriziň!");
@@ -56,13 +54,12 @@ export default function AuthModal({ visible, onClose }: AuthModalProps) {
       setLoading(true);
       const fullPhoneNumber = `+993${phoneNumber.trim()}`;
 
-      // Supabase Auth SMS OTP ugratmak amaly
       const { error } = await supabase.auth.signInWithOtp({
         phone: fullPhoneNumber,
       });
 
       setIsCodeSent(true);
-      setTimer(83); // 🛠️ FIKS: Wagt noldan täzeden 01:23 bolup başlaýar
+      setTimer(83);
     } catch (error: any) {
       console.log("SMS OTP Provider logs safeguarded.");
       setIsCodeSent(true);
@@ -72,7 +69,6 @@ export default function AuthModal({ visible, onClose }: AuthModalProps) {
     }
   };
 
-  // 2. GELEN SMS KODY TASSYKLAMAK
   const handleVerifyOTP = async () => {
     if (verificationCode.trim().length < 6) {
       alert("Kody takyk giriziň!");
@@ -124,12 +120,10 @@ export default function AuthModal({ visible, onClose }: AuthModalProps) {
 
           {/* Body */}
           <View style={styles.modalBody}>
-            {/* Telefon Label */}
             <Text style={styles.inputLabel}>
               Telefon belgiňiz <Text style={styles.requiredStar}>*</Text>
             </Text>
 
-            {/* Telefon Input Gruby */}
             <View
               style={[
                 styles.inputGroup,
@@ -160,14 +154,12 @@ export default function AuthModal({ visible, onClose }: AuthModalProps) {
               )}
             </View>
 
-            {/* Inçe Düşündiriş Teksti */}
             {isCodeSent && (
               <Text style={styles.codeSentNotifyText}>
                 Код подтверждения отправлен.
               </Text>
             )}
 
-            {/* 🛠️ FIKS: Ýiratman Doly Görkezýän TÄZE CODE MEÝDANÇASY */}
             {isCodeSent && (
               <View style={{ marginTop: 14 }}>
                 <Text style={styles.inputLabelCodeFix}>
@@ -193,7 +185,6 @@ export default function AuthModal({ visible, onClose }: AuthModalProps) {
                   />
                 </View>
 
-                {/* 🛠️ FIKS TIMING ZONE: Wagt barka diňe wagt, gutaranda diňe gök "Täzeden ugrat" çykýar */}
                 <View style={styles.timerRow}>
                   {timer === 0 ? (
                     <TouchableOpacity
@@ -212,8 +203,7 @@ export default function AuthModal({ visible, onClose }: AuthModalProps) {
                 </View>
               </View>
             )}
-
-            {/* Uly Düwme */}
+            
             <TouchableOpacity
               style={[
                 styles.submitButton,
