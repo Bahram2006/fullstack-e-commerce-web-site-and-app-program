@@ -20,5 +20,8 @@
     "selectedTab": "Selected tab:",
     "goToDetails": "go to details",
     "addedToCart": "added to cart"
+  },
+    "profile": {
+    "pageTitle": "Profile Page"
   }
 }

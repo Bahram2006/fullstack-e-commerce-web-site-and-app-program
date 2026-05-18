@@ -20,5 +20,8 @@
     "selectedTab": "Saýlanan bölüm:",
     "goToDetails": "jikme-jikligine git",
     "addedToCart": "sepete goşuldy"
+  },
+    "profile": {
+    "pageTitle": "Profil Sahypasy"
   }
 }

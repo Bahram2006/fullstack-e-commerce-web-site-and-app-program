@@ -20,5 +20,8 @@
     "selectedTab": "Выбранный раздел:",
     "goToDetails": "перейти к деталям",
     "addedToCart": "добавлено в корзину"
+  },
+    "profile": {
+    "pageTitle": "Страница профиля"
   }
 }
