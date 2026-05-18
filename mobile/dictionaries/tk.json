@@ -11,20 +11,20 @@
     "summaryTotal": "Jemi",
     "orderBtn": "▶ Sargyt et"
   },
-    "categories": {
+  "categories": {
     "pageTitle": "Kategoriýalar Sahypasy"
   },
-    "home": {
+  "home": {
     "leftBannerPress": "Çep basyldy:",
     "rightBannerPress": "Sag basyldy:",
     "selectedTab": "Saýlanan bölüm:",
     "goToDetails": "jikme-jikligine git",
     "addedToCart": "sepete goşuldy"
   },
-    "profile": {
+  "profile": {
     "pageTitle": "Profil Sahypasy"
   },
-    "about": {
+  "about": {
     "title": "BIZ BARADA",
     "p1_1": " dükany 2010-njy ýylda esaslandyryldy we korporatiw pudak we hususy müşderiler üçin IT enjamlarynyň ähli toplumynyň ygtybarly üpjün edijisi bolup durýar. Kompýuter enjamlarynyň bölek we lomaý satuw dükany.",
     "p2_1": " şu harytlaryň dürli görnüşlerini hödürleýär: şahsy kompýuterler, aýratyn toplumlaşdyryjylar, noutbuklar, periferiýa gurluşlary, kompýuter esbaplary, printerler, ofis guramaçylykly tehnikasy, öýjükli periferiýa we dünýäniň öňdebaryjy öndürijilerinden başga harytlar.",
@@ -68,7 +68,7 @@
     "contactUs": "Habarlaşmak üçün:",
     "address": "Dükanymyz A.Nyýazow (Hudayberdiýew, 4 mkr.) köçesi, 99 jaý salgysy boýunça Aşgabat şäheriniň merkezinde ýerleşýär (Hudaýberdiýew köçäniň hem-de Bomako köçäniň çatrygy, AŞTU-nyň garşysy)"
   },
-    "bonus": {
+  "bonus": {
     "title": "BAL TOPLAMAK ULGAMY",
     "p1": " onlaýn dükanynda hasaba alnan ulanyjylar üçin bal sistemasy hereket edýär. Haryt satyn alynanda, satyn alyja indiki satyn almak üçin sarp edip biljek bonus ballary berilýär.",
     "earningHeading": "Ballary almagyň esasy düzgünleri:",
@@ -90,9 +90,44 @@
     "example1": "Meselem 100 bal topladyňyz we 100 manatlyk sargyt satyn almak isleýärsiňiz, 50 manadynyzy bal bilen ýapyp bilersiňiz, galanlary üçin nagt tölemeli bolarsyňyz.",
     "example2": "100 bal toplap, 200 manatlyk haryt satyn alan bolsaňyz, bu sargyt üçin 100 balyň hemmesini sarp edip bilersiňiz, harydyň galan möçberini harydy alanyňyzda nagt ýa-da kartoçka arkaly onlaýn töleg tölenmeli."
   },
-    "brands": {
+  "brands": {
     "title": "BRENDLER",
     "officialPartner": "Resmi hyzmatdaş",
     "pressedLog": "basyldy"
+  },
+  "delivery": {
+    "title": "ELTIP BERMEK WE TÖLEG",
+    "methodsHeading": "Eltip bermegiň usullary:",
+    "sub1": "1. Özüň baryp almak:",
+    "p1": "Sargydy dükanyň satyjylaryna deslapdan jaň etmek arkaly A.Nyýazow (Hudayberdiýew) köçesi, 99 jaý salgysyndan özüňiz alyp bilersiňiz.",
+    "sub2": "2. Aşgabat şäheriniň çäklerinde eltip bermek:",
+    "p2_1": "Aşgabat şäheriniň çäklerinde eltip bermek – günüň dowamynda ýa-da ertesi gün (sargyt wagtyna baglylykda) amala aşyrylýar. Sargyt 500 manat möçberden geçýän bolsa, eltip bermek mugt (eltip bermegiň bahasy – 20 manat). Uzak etraplara eltip bermek mugt, ýöne diňe sargyt 1000 manatdan ýokary bolsa (eltip bermegiň bahasy 50 manat).",
+    "p2_2": "Aşgabat şäheri boýunça eltip bermek sagat 09:00 – 19:00 aralygynda amala aşyrylýar.",
+    "workTimeLabel": "Dükanyň iş wagty:",
+    "workTimeValue": " her gün 09:30-dan 18:30-a çenli, ýekşenbe 11:00-dan 19:00-a çenli.",
+    "sub3": "3. Welaýatara eltip bermek:",
+    "p3_1": "Welaýatlara eltip bermek Türkmenistanyň poçta gullugy tarapyndan amala aşyrylýar. Eltip bermegiň möhleti – ortaça 2-5 gün. Baýramçylyk ýa-da dynç günleri sargyt edilen harytlaryň eltip berilmegi üçin has köp wagt gerek bolup biler. Saýtdan Türkmenistanyň islendik ýerine sargyt edeniňizde, eltip bermek mugt, ýöne sargyt 1500 manat möçberinden geçmeli (eltip bermegiň bahasy – 50 manat). Sargyt edilende, maglumatlary takyk doldurmakda üns bermegiňizi haýyş edýäris, eger salgy we şäher gabat gelmese, sargyt gaýtadan resmileşdirilýänçä, haryt iberilmez.",
+    "p3_2": "Eltip bermegiň ýokardaky usullary müşderiniň talaplaryna laýyk gelmeýän bolsa, Müşderi öz usulyny teklip etmäge hukugy bardyr, munda harytlaryň abatlygy we eltip bermek çykdajylary üçin jogapkärçiligi dolulygyna müşderi öz üstüne alýar.",
+    "p3_3": "Sargyt resmileşdirenden soň satyjymyz käbir soraglary anyklamak üçin Siziň bilen telefon arkaly habarlaşar. Günüň dowamynda telefon elýeterli bolmasa, sargyt ýatyrylýar.",
+    "paymentHeading": "Töleg usullary:",
+    "paymentText": "Töleg şu aşakdaky usullar arkaly amala aşyrylyp bilner:",
+    "paymentMethods": [
+      "Nagt hasaplaşygy;",
+      "Bank karty (müşderiniň özi gelip alanda we Aşgabat şäheriniň çäklerinde eltip bermekde terminal arkaly töleg);",
+      "Onlaýn töleg (VPN we dürli proksi-serwerleri ulananyňyzda, onlaýn tölegiň işlemeýändigini ýadyňyzdan çykarmaň);",
+      "Nagt däl töleg (ýuridiki şahslar we kärhanalar üçin bank arkaly pul serişdelerini geçirmek, daşary ýurt kompaniýalar üçin walýuta hasabyna tölemäge mümkinçilik berýäris);"
+    ],
+    "additionalInfo": "Goşmaça maglumat üçin:"
+  },
+    "notifications": {
+    "title": "BILDIRIŞLER",
+    "p1_title": "Täze harytlaryň gelmegi",
+    "p1_content": "UGREEN harytlarynyň täze tapgyry geldi. Dostlar, size ýakymly söwdalary arzuw edýäris! 😊",
+    "n1_title": "Täzelikler",
+    "n1_content": "Hormatly dostlar, Ardesto brendi boýunça täzeligimiz bar! Indi bu brendiň harytlaryny satyn alanyňyzda, size ballar berler. Siz olary indiki söwdaňyzda islendik haryt üçin ulanyp bilersiňiz. 🤙😎",
+    "p2_title": "Täze harytlaryň gelmegi",
+    "p2_content": "XIAOMI önümleriniň uly tapgyry geldi! Şeýle hem ähli bölümlerde, aýratyn-da noutbuklar, maglumat saklaýjy enjamlar, prosessorlar, öý goşlary, durmuş tehnikasy we başga-da köp sanly harytlarymyz täzelendi.\nGadyrly dostlar, täze söwdar üçin biziň dükanymyza howlugyň! Sizi aramyzda görmäge diýseň şat bolarys. 🤩",
+    "s1_title": "Programma täzelenmesi v1.5.3",
+    "s1_content": "Programma üpjünçiligi täzelendi."
   }
 }

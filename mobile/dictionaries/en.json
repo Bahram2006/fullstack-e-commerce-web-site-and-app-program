@@ -11,20 +11,20 @@
     "summaryTotal": "Total",
     "orderBtn": "▶ Place Order"
   },
-    "categories": {
+  "categories": {
     "pageTitle": "Categories Page"
   },
-    "home": {
+  "home": {
     "leftBannerPress": "Left pressed:",
     "rightBannerPress": "Right pressed:",
     "selectedTab": "Selected tab:",
     "goToDetails": "go to details",
     "addedToCart": "added to cart"
   },
-    "profile": {
+  "profile": {
     "pageTitle": "Profile Page"
   },
-    "about": {
+  "about": {
     "title": "ABOUT US",
     "p1_1": " shop was founded in 2010 and is a reliable supplier of a full range of IT equipment for the corporate sector and private clients. Retail and wholesale computer hardware store.",
     "p2_1": " offers a wide range of products: personal computers, components, laptops, peripheral devices, computer accessories, printers, office equipment, and other goods from the world's leading manufacturers.",
@@ -68,7 +68,7 @@
     "contactUs": "Contact us:",
     "address": "Our shop is located in the center of Ashgabat city at A. Niyazov (Hudayberdiyev, 4 mkr.) street, building 99 (intersection of Hudayberdiyev and Bomako streets, opposite ASHTU)"
   },
-    "bonus": {
+  "bonus": {
     "title": "BONUS SYSTEM",
     "p1": " a bonus system is available for registered users in the online store. When purchasing a product, the buyer is awarded bonus points that can be spent on the next purchase.",
     "earningHeading": "Basic rules for earning points:",
@@ -90,10 +90,44 @@
     "example1": "For example, if you accumulated 100 points and want to buy an order worth 100 manats, you can cover 50 manats with points, and pay the rest in cash.",
     "example2": "If you accumulated 100 points and bought a product for 200 manats, you can spend all 100 points for this order, and the remaining amount must be paid in cash or by card online upon delivery."
   },
-    "brands": {
+  "brands": {
     "title": "BRANDS",
     "officialPartner": "Official partner",
     "pressedLog": "pressed"
+  },
+  "delivery": {
+    "title": "DELIVERY AND PAYMENT",
+    "methodsHeading": "Delivery methods:",
+    "sub1": "1. Self-pickup:",
+    "p1": "You can pick up your order yourself from the shop at A. Niyazov (Hudayberdiyev) street, building 99, by calling the shop assistants in advance.",
+    "sub2": "2. Delivery within Ashgabat:",
+    "p2_1": "Delivery within Ashgabat is carried out during the day or the next day (depending on the order time). If the order exceeds 500 manats, delivery is free (delivery cost – 20 manats). Delivery to remote areas is free, but only if the order is over 1000 manats (delivery cost – 50 manats).",
+    "p2_2": "Delivery in Ashgabat is carried out between 09:00 and 19:00.",
+    "workTimeLabel": "Shop working hours:",
+    "workTimeValue": " every day from 09:30 to 18:30, Sunday from 11:00 to 19:00.",
+    "sub3": "3. Interregional delivery (to regions):",
+    "p3_1": "Delivery to regions is carried out by the postal service of Turkmenistan. The delivery time is 2-5 days on average. More time may be required for the delivery of goods ordered on holidays or weekends. When ordering anywhere in Turkmenistan from the website, delivery is free, but the order must exceed 1500 manats (delivery cost – 50 manats). When placing an order, we request you to fill in the data accurately, if the address and city do not match, the goods will not be sent until the order is re-registered.",
+    "p3_2": "If the above delivery methods do not meet the customer's requirements, the Customer has the right to suggest their own method, in which case the customer assumes full responsibility for the safety of the goods and delivery costs.",
+    "p3_3": "After placing an order, our assistant will contact you by phone to clarify some details. If the phone is unavailable during the day, the order will be canceled.",
+    "paymentHeading": "Payment methods:",
+    "paymentText": "Payment can be made through the following methods:",
+    "paymentMethods": [
+      "Cash payment;",
+      "Bank card (payment via terminal upon self-pickup and delivery within Ashgabat);",
+      "Online payment (please note that online payment does not work when using VPN and various proxy servers);",
+      "Non-cash payment (transfer of funds through the bank for legal entities and enterprises, we provide the possibility of payment to a foreign currency account for foreign companies);"
+    ],
+    "additionalInfo": "For additional information:"
+  },
+    "notifications": {
+    "title": "NOTIFICATIONS",
+    "p1_title": "New Arrivals",
+    "p1_content": "A new batch of UGREEN products has arrived. Friends, we wish you pleasant shopping! 😊",
+    "n1_title": "News",
+    "n1_content": "Dear friends, we have news regarding the Ardesto brand! Now, when you buy products of this brand, you will be awarded points. You can spend them on any product in your next purchase. 🤙😎",
+    "p2_title": "New Arrivals",
+    "p2_content": "A huge batch of XIAOMI products has arrived! Also, all sections have been updated, especially laptops, storage devices, processors, home goods, home appliances, and many other items.\nDear friends, hurry to our shop for new shopping! We will be very glad to see you. 🤩",
+    "s1_title": "App Update v1.5.3",
+    "s1_content": "The application software has been updated."
   }
-
 }

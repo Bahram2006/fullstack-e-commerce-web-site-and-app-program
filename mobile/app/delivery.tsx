@@ -13,20 +13,16 @@ import {
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { Colors } from "../constants/Colors";
+import { useLangStore } from "../store/useLangStore"; // Senior Dokunşy: Global store integrasiýasy
 
 const { width } = Dimensions.get("window");
-// Suratlaryň gapdal çetlere kemsiz ýanyşmagy üçin takyk giňlik hasaplamasy
 const imageWidth = width - 56;
 
 export default function DeliveryScreen() {
-  const paymentMethods = [
-    "Nagt hasaplaşygy;",
-    "Bank karty (müşderiniň özi gelip alanda we Aşgabat şäheriniň çäklerinde eltip bermekde terminal arkaly töleg);",
-    "Onlaýn töleg (VPN we dürli proksi-serwerleri ulananyňyzda, onlaýn tölegiň işlemeýändigini ýadyňyzdan çykarmaň);",
-    "Nagt däl töleg (ýuridiki şahslar we kärhanalar üçin bank arkaly pul serişdelerini geçirmek, daşary ýurt kompaniýalar üçin walýuta hasabyna tölemäge mümkinçilik berýäris);",
-  ];
+  const { t } = useLangStore(); // Reactive terjime obýekti
 
   const renderBulletList = (items: string[]) => {
+    if (!items) return null;
     return items.map((item, index) => (
       <View key={index} style={styles.bulletItemRow}>
         <Text style={styles.bulletDot}>•</Text>
@@ -51,71 +47,37 @@ export default function DeliveryScreen() {
         contentContainerStyle={styles.scrollContent}
       >
         <View style={styles.textCard}>
-          <Text style={styles.pageTitle}>ELTIP BERMEK WE TÖLEG</Text>
+          <Text style={styles.pageTitle}>{t.delivery.title}</Text>
 
-          <Text style={styles.mainRedHeading}>Eltip bermegiň usullary:</Text>
+          <Text style={styles.mainRedHeading}>{t.delivery.methodsHeading}</Text>
 
-          <Text style={styles.subHeadingText}>1. Özüň baryp almak:</Text>
-          <Text style={styles.paragraphText}>
-            Sargydy dükanyň satyjylaryna deslapdan jaň etmek arkaly A.Nyýazow
-            (Hudayberdiýew) köçesi, 99 jaý salgysyndan özüňiz alyp bilersiňiz.
-          </Text>
+          <Text style={styles.subHeadingText}>{t.delivery.sub1}</Text>
+          <Text style={styles.paragraphText}>{t.delivery.p1}</Text>
 
-          <Text style={styles.subHeadingText}>
-            2. Aşgabat şäheriniň çäklerinde eltip bermek:
-          </Text>
+          <Text style={styles.subHeadingText}>{t.delivery.sub2}</Text>
+          <Text style={styles.paragraphText}>{t.delivery.p2_1}</Text>
+          <Text style={styles.paragraphText}>{t.delivery.p2_2}</Text>
           <Text style={styles.paragraphText}>
-            Aşgabat şäheriniň çäklerinde eltip bermek – günüň dowamynda ýa-da
-            ertesi gün (sargyt wagtyna baglylykda) amala aşyrylýar. Sargyt 500
-            manat möçberden geçýän bolsa, eltip bermek mugt (eltip bermegiň
-            bahasy – 20 manat). Uzak etraplara eltip bermek mugt, ýöne diňe
-            sargyt 1000 manatdan ýokary bolsa (eltip bermegiň bahasy 50 manat).
-          </Text>
-          <Text style={styles.paragraphText}>
-            Aşgabat şäheri boýunça eltip bermek sagat 09:00 – 19:00 aralygynda
-            amala aşyrylýar.
-          </Text>
-          <Text style={styles.paragraphText}>
-            <Text style={styles.boldLabel}>Dükanyň iş wagty:</Text> her gün
-            09:30-dan 18:30-a çenli, ýekşenbe 11:00-dan 19:00-a çenli.
+            <Text style={styles.boldLabel}>{t.delivery.workTimeLabel}</Text>
+            {t.delivery.workTimeValue}
           </Text>
 
-          <Text style={styles.subHeadingText}>3. Welaýatara eltip bermek:</Text>
-          <Text style={styles.paragraphText}>
-            Welaýatlara eltip bermek Türkmenistanyň poçta gullugy tarapyndan
-            amala aşyrylýar. Eltip bermegiň möhleti – ortaça 2-5 gün.
-            Baýramçylyk ýa-da dynç günleri sargyt edilen harytlaryň eltip
-            berilmegi üçin has köp wagt gerek bolup biler. Saýtdan
-            Türkmenistanyň islendik ýerine sargyt edeniňizde, eltip bermek mugt,
-            ýöne sargyt 1500 manat möçberinden geçmeli (eltip bermegiň bahasy –
-            50 manat). Sargyt edilende, maglumatlary takyk doldurmakda üns
-            bermegiňizi haýyş edýäris, eger salgy we şäher gabat gelmese, sargyt
-            gaýtadan resmileşdirilýänçä, haryt iberilmez.
-          </Text>
-
-          <Text style={styles.paragraphText}>
-            Eltip bermegiň ýokardaky usullary müşderiniň talaplaryna laýyk
-            gelmeýän bolsa, Müşderi öz usulyny teklip etmäge hukugy bardyr,
-            munda harytlaryň abatlygy we eltip bermek çykdajylary üçin
-            jogapkärçiligi dolulygyna müşderi öz üstüne alýar.
-          </Text>
-          <Text style={styles.paragraphText}>
-            Sargyt resmileşdirenden soň satyjymyz käbir soraglary anyklamak üçin
-            Siziň bilen telefon arkaly habarlaşar. Günüň dowamynda telefon
-            elýeterli bolmasa, sargyt ýatyrylýar.
-          </Text>
+          <Text style={styles.subHeadingText}>{t.delivery.sub3}</Text>
+          <Text style={styles.paragraphText}>{t.delivery.p3_1}</Text>
+          <Text style={styles.paragraphText}>{t.delivery.p3_2}</Text>
+          <Text style={styles.paragraphText}>{t.delivery.p3_3}</Text>
 
           <View style={styles.sectionDivider} />
-          <Text style={styles.mainRedHeading}>Töleg usullary:</Text>
-          <Text style={styles.paragraphText}>
-            Töleg şu aşakdaky usullar arkaly amala aşyrylyp bilner:
-          </Text>
+          <Text style={styles.mainRedHeading}>{t.delivery.paymentHeading}</Text>
+          <Text style={styles.paragraphText}>{t.delivery.paymentText}</Text>
           <View style={styles.listWrapper}>
-            {renderBulletList(paymentMethods)}
+            {renderBulletList(t.delivery.paymentMethods)}
           </View>
 
           <View style={styles.sectionDivider} />
-          <Text style={styles.sectionHeadingText}>Goşmaça maglumat üçin:</Text>
+          <Text style={styles.sectionHeadingText}>
+            {t.delivery.additionalInfo}
+          </Text>
 
           <TouchableOpacity
             activeOpacity={0.7}
@@ -159,6 +121,7 @@ export default function DeliveryScreen() {
   );
 }
 
+// Seniň original kemsiz dizaýn stilleriň (CSS)
 const styles = StyleSheet.create({
   safeContainer: { flex: 1, backgroundColor: Colors.background || "#F4F6F9" },
   container: { flex: 1 },
@@ -240,16 +203,14 @@ const styles = StyleSheet.create({
     lineHeight: 18,
     marginBottom: 6,
   },
-
-  // 🛠️ TÄZE SURAT GRUNDA STIllERI
   deliveryGalleryContainer: {
     width: "100%",
-    marginTop: 20,
-    gap: 14, // Suratlar arasyndaky optimal aralyk
+    marginTop: 14,
+    gap: 14,
   },
   galleryImage: {
     width: imageWidth,
-    height: imageWidth * 0.65, // Owadan 16:10 proporsional gutular
+    height: imageWidth * 0.75,
     borderRadius: 4,
     resizeMode: "cover",
     backgroundColor: "#F1F5F9",
