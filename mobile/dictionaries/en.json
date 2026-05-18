@@ -119,7 +119,7 @@
     ],
     "additionalInfo": "For additional information:"
   },
-    "notifications": {
+  "notifications": {
     "title": "NOTIFICATIONS",
     "p1_title": "New Arrivals",
     "p1_content": "A new batch of UGREEN products has arrived. Friends, we wish you pleasant shopping! 😊",
@@ -130,7 +130,7 @@
     "s1_title": "App Update v1.5.3",
     "s1_content": "The application software has been updated."
   },
-    "privacy": {
+  "privacy": {
     "title": "PRIVACY POLICY",
     "sub1": "1. Collection of Information",
     "p1_1": "We collect information when you register on the site, log into your account, and fill out the delivery form. The information includes your registration phone number, e-mail (if subscribed to notifications), and delivery address.",
@@ -156,7 +156,7 @@
     "p6_1": "Our 'Cookies' are used to improve site access and identify repeat visits. In addition, they allow tracking the most interesting requests. 'Cookies' do not provide any confidential information.",
     "notice": "By using the services of our website, you automatically agree to our privacy policy."
   },
-    "service": {
+  "service": {
     "title": "TECHNICAL SERVICE",
     "p1": " – is a professional computer service center located in the center of Ashgabat. For more than 10 years, we have been offering our services to individuals and large organizations.",
     "subHeading": "Our services are as follows:",
@@ -168,14 +168,14 @@
     ],
     "phoneLabel": "Phone: "
   },
-    "warranty": {
+  "warranty": {
     "title": "WARRANTY",
     "subHeading": "Warranty conditions:",
     "p1": "The warranty conditions specified below apply to both the consumer and the performer. These conditions form the organizational-legal, socio-economic basis of state policy and the foundations of the Law of Turkmenistan on Consumer Protection.",
     "romanHeading": "I. Warranty obligations",
     "item1": "In the absence of a warranty period specified by the manufacturer, and except for components for which no warranty is provided during the service life (consumables, cartridges, CD-DVD discs, bags, metal and plastic products, stands, fasteners, cables, tools, goods without electronic components, as well as software, any operating system, programs, etc.), the performer determines the warranty period for the goods."
   },
-    "aiChat": {
+  "aiChat": {
     "welcome": "Hello! I am Sumbar Computer smart assistant. How can I help you?",
     "title": "SUMBAR AI ASSISTANT",
     "placeholder": "Type your question...",
@@ -183,16 +183,16 @@
     "networkError": "A system error occurred. Please check your internet connection and try again.",
     "promptRule": "You are a smart and polite assistant of Sumbar Computer (the largest computer store in Turkmenistan). Answer the user's question only in English, shortly, clearly, and professionally. User's question: "
   },
-    "auth": {
+  "auth": {
     "login": "LOGIN TO ACCOUNT",
     "phoneLabel": "Your phone number "
   },
-    "compare": {
+  "compare": {
     "addedText": "Product added for comparison.",
     "limitText": "You can only add up to 4 products.",
     "btnText": "Compare Products"
   },
-    "complaint": {
+  "complaint": {
     "title": "SUBMIT A COMPLAINT",
     "nameLabel": "Your name ",
     "contactLabel": "Your phone number or email ",
@@ -203,7 +203,7 @@
     "alertSuccess": "Your message has been sent successfully!",
     "alertTest": "Your message has been sent successfully (Test mode)!"
   },
-    "footer": {
+  "footer": {
     "address": "Turkmenistan, Ashgabat, A.Niyazov (Hudayberdiyev) str., building 99",
     "shortAbout": "Sumbar Computer - Computer and peripheral equipment store in Turkmenistan",
     "about": "About us",
@@ -217,12 +217,12 @@
     "complain": "Submit a complaint",
     "copyright": "© 2026 Sumbar Computer. All rights reserved."
   },
-    "home": {
+  "home": {
     "recommended": "RECOMMENDED",
     "news": "NEW ARRIVALS",
     "popular": "POPULAR"
   },
-    "categories_list": {
+  "categories_list": {
     "MONITORLAR": "MONITORS",
     "Monitorlar": "Monitors",
     "Monitorlar üçin berkidijiler we goýujylar": "Mounts and stands for monitors",
@@ -328,19 +328,36 @@
     "Yyladys enjamlary": "Heaters",
     "Ashana enjam": "Kitchen Appliances"
   },
-    "productCard": {
+  "productCard": {
     "addToCart": "ADD TO CART"
   },
-    "rateAuth": {
+  "rateAuth": {
     "title": "RATE PRODUCT",
     "warning": "Please login to your account to write a review."
   },
-    "reviews": {
+  "reviews": {
     "sectionTitle": "SHOP REVIEWS",
     "rateBtn": "Rate store",
     "realCustomer": "Verified customer",
     "allReviewsBtn": "All reviews",
     "good": "Good",
     "veryGood": "Very good"
-  }
+  },
+  "regions": {
+    "ashgabat": "Ashgabat",
+    "arkadag": "Arkadag",
+    "ahal": "Ahal region",
+    "balkan": "Balkan region",
+    "dasoguz": "Dasoguz region",
+    "lebap": "Lebap region",
+    "mary": "Mary region"
+  },
+  "cart_delivery": {
+    "infoText": "Delivery service is carried out within 2-5 days.",
+    "moreInfo": "Read more about delivery and payment.",
+    "freeCondition": "Free delivery for orders over 1,500.00 TMT."
+  },
+  "codeLabel": "Phone verification code ",
+  "codeSent": "Verification code has been sent.",
+  "resendText": "Resend code"
 }

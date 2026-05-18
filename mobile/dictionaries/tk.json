@@ -119,7 +119,7 @@
     ],
     "additionalInfo": "Goşmaça maglumat üçin:"
   },
-    "notifications": {
+  "notifications": {
     "title": "BILDIRIŞLER",
     "p1_title": "Täze harytlaryň gelmegi",
     "p1_content": "UGREEN harytlarynyň täze tapgyry geldi. Dostlar, size ýakymly söwdalary arzuw edýäris! 😊",
@@ -130,7 +130,7 @@
     "s1_title": "Programma täzelenmesi v1.5.3",
     "s1_content": "Programma üpjünçiligi täzelendi."
   },
-    "privacy": {
+  "privacy": {
     "title": "GIZLINLIK SYÝASATY",
     "sub1": "1. Maglumatlary ýygnamak",
     "p1_1": "Saýtda hasaba alnanyňyzda, hasabyňyza gireniňizde we eltip bermek Extraction görnüşi dolduranyňyzda, biz maglumat ýygnaýarys. Maglumat hasaba alyş telefon belgiňizi, e-mail (habarnamalara ýazylan bolsaňyz), eltip bermek salgysyny öz içine alýar.",
@@ -156,7 +156,7 @@
     "p6_1": "“Cookie” faýllarymyz saýta elýeterliligi gowulandyrmak we gaýtalanýan saparlary kesgitlemek üçin ulanylýar. Mundan başga-da, olar iň gyzykly talaplary yzarlamaga mümkinçilik berýär. “Cookie” faýllar hiç hili gizlin maglumat bermeýärler.",
     "notice": "Saýtymyzyň hyzmatlarindan ulanmak bilen Siz gizlinlik syýasatymyz bilen awtomatiki razylaşýarsyňyz."
   },
-    "service": {
+  "service": {
     "title": "TEHNIKI HYZMAT",
     "p1": " – Aşgabadyň merkezinde ýerleşýän professional kompýuter hyzmat merkezidir. 10 ýyldan gowrak wagt bäri hyzmatlarymyzy şahsyýetlere we iri guramalara hödürleýäris.",
     "subHeading": "Bizin hyzmatlarymyz şular:",
@@ -168,14 +168,14 @@
     ],
     "phoneLabel": "Telefon: "
   },
-    "warranty": {
+  "warranty": {
     "title": "KEPILLILIK",
     "subHeading": "Kepilligiň şertleri:",
     "p1": "Aşakda görkezilen kepillikli şertler sarp edijä we şol bir wagtda ýerine ýetirijä hem degişlidir. Bu şertler Türkmenistanyň döwlet syýasatynyň guramaçylyk-hukuk, durmuş-ykdysady esaslaryny we sarp edijileri goramak babatyndaky kanunyň esaslaryny düzýär.",
     "romanHeading": "I. Kepilligiň borçnamalary",
     "item1": "Öndüriji tarapyndan kesgitlenen kepillik möhleti bolmadyk ýagdaýynda, şeýle hem gulluk möhleti döwründe kepillik berilmeýän komponentli harytlardan başgalaryna (sarp ediş materiallary, kartrijler, CD-DVD diskleri, sumkalar, metal we plastmassa önümleri, podstawkalar, berkidijiler, kabeller, gurallar, elektron komponentleri bolmadyk harytlar, şeýle hem programma üpjünçiligi, islendik operasion ulgamy, programmalar we ş.m.) ýerine ýetiriji harytlara kepilligiň möhletini kesgitleýär."
   },
-    "aiChat": {
+  "aiChat": {
     "welcome": "Salam! Men Sumbar Computer akylly assistenti. Size nähili kömek edip bilerin?",
     "title": "SUMBAR AI ASSISTENT",
     "placeholder": "Soragyňyzy ýazyň...",
@@ -183,16 +183,16 @@
     "networkError": "Ulgamda nasazlyk ýüze çykdy. Internetiňizi barlap, täzeden synanyşyň.",
     "promptRule": "Sen Sumbar Computer (Türkmenistanyň iň uly kompýuter dükany) akylly we medeniýetli assistenti. Ulanyjynyň soragyna diňe Türkmen dilinde gysga, düşnükli we professional ýaly anyk jogap ber. Ulanyjynyň soragy: "
   },
-    "auth": {
+  "auth": {
     "login": "HASABYMA GIR",
     "phoneLabel": "Telefon belgiňiz "
   },
-    "compare": {
+  "compare": {
     "addedText": "Haryt deňeşdirmek üçin goşuldy.",
     "limitText": "Siz diňe 4 sany haryt goşup bilýäniňiz.",
     "btnText": "Harytlary deňeşdirmek"
   },
-    "complaint": {
+  "complaint": {
     "title": "NÄGILELIK BILDIRMEK",
     "nameLabel": "Adyňyz ",
     "contactLabel": "Telefon belgiňiz ýa-da e-poçtaňyz ",
@@ -203,7 +203,7 @@
     "alertSuccess": "Hatyňyz üstünlikli ugradyldy!",
     "alertTest": "Hatyňyz üstünlikli ugradyldy (Sinag relowy)!"
   },
-    "footer": {
+  "footer": {
     "address": "Türkmenistan, Aşgabat, köç. A.Nyýazow (Hudaýberdiýew), jaý 99",
     "shortAbout": "Sumbar Computer - Türkmenistanda kompýuter we periferiýa enjamlary dükany",
     "about": "Biz barada",
@@ -217,12 +217,12 @@
     "complain": "Nägilelik bildirmek",
     "copyright": "© 2026 Sumbar Computer. Ähli hukuklar goralan."
   },
-    "home": {
+  "home": {
     "recommended": "MASLAHAT BERILÝÄNLER",
     "news": "TÄZELER",
     "popular": "MEŞHURLAR"
   },
-    "categories_list": {
+  "categories_list": {
     "MONITORLAR": "MONITORLAR",
     "Monitorlar": "Monitorlar",
     "Monitorlar üçin berkidijiler we goýujylar": "Monitorlar üçin berkidijiler we goýujylar",
@@ -328,19 +328,36 @@
     "Yyladys enjamlary": "Ýyladyş enjamlary",
     "Ashana enjam": "Aşhana enjamlary"
   },
-    "productCard": {
+  "productCard": {
     "addToCart": "SEBEDE GOŞ"
   },
-    "rateAuth": {
+  "rateAuth": {
     "title": "BAHA BERIŇ",
     "warning": "Teswir ýazmak üçin hasabyňyza giriň."
   },
-    "reviews": {
+  "reviews": {
     "sectionTitle": "DÜKANA DEGIŞLI TESWIRLER",
     "rateBtn": "Baha beriň",
     "realCustomer": "Hakyky müşderi",
     "allReviewsBtn": "Ähli teswirler",
     "good": "Gowy",
     "veryGood": "Örän gowy"
-  }
+  },
+  "regions": {
+    "ashgabat": "Aşgabat",
+    "arkadag": "Arkadag",
+    "ahal": "Ahal welaýaty",
+    "balkan": "Balkan welaýaty",
+    "dasoguz": "Daşoguz welaýaty",
+    "lebap": "Lebap welaýaty",
+    "mary": "Mary welaýaty"
+  },
+  "cart_delivery": {
+    "infoText": "Eltip bermek hyzmaty 2-5 gün aralygynda ýerine ýetirilýär.",
+    "moreInfo": "Eltip bermek we hasaplaşyk üçin giňişleýin.",
+    "freeCondition": "1 500.00 TMT ýokary eltip bermek mugt."
+  },
+  "codeLabel": "Telefon belginiň kody ",
+  "codeSent": "Tassyklama kody ugradyldy.",
+  "resendText": "Täzeden ugrat"
 }

@@ -10,7 +10,8 @@ import {
 import { Feather, Ionicons, FontAwesome } from "@expo/vector-icons";
 import { useCompareStore } from "../store/useCompareStore";
 import { useQuickViewStore } from "../store/useQuickViewStore";
-import { useLangStore } from "../store/useLangStore"; // Senior Dokunşy: Store birikdirildi
+import { useLangStore } from "../store/useLangStore";
+import { useCartStore } from "../store/useCartStore";
 
 const { width } = Dimensions.get("window");
 const cardWidth = (width - 34) / 2;
@@ -34,6 +35,7 @@ export default function ProductCard({
   onAddToCart,
   onHeartPress,
 }: ProductProps) {
+  const addItem = useCartStore((state) => state.addItem);
   const { t } = useLangStore(); // Reactive terjime obýekti
   const { compareItems, toggleCompare } = useCompareStore();
   const { openQuickView } = useQuickViewStore();
@@ -111,7 +113,13 @@ export default function ProductCard({
         <TouchableOpacity
           style={styles.addToCartButton}
           activeOpacity={0.85}
-          onPress={onAddToCart}
+          onPress={() => {
+            // 3. Seniň öz guran arassa gurluşyňa laýyklykda harydy sebede goşýarys
+            addItem({ id, name, price, image_url: image_url || "" });
+
+            // Eger HomeScreen-den onAddToCart prop gelen bolsa, ony hem işlet
+            if (onAddToCart) onAddToCart();
+          }}
         >
           {/* Senior Dokunşy: Dynamic Düwme Teksti */}
           <Text style={styles.addToCartText}>{t.productCard.addToCart}</Text>

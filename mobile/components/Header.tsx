@@ -3,6 +3,7 @@ import AuthModal from "./AuthModal";
 import { useRouter } from "expo-router";
 import MenuDropdown from "./MenuDropdown";
 import AIChatModal from "./AIChatModal";
+import { useCartStore } from "../store/useCartStore";
 import {
   StyleSheet,
   View,
@@ -26,6 +27,10 @@ import ProfileDropdown from "./ProfileDropdown";
 const { width } = Dimensions.get("window");
 
 export default function Header() {
+  // Senior Dokunşy: Ilki funksiýany store-dan alýarys, soňra ony hasaplaýarys!
+  const getTotalCount = useCartStore((state) => state.getTotalCount);
+  const cartCount = getTotalCount();
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const router = useRouter();
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
@@ -202,12 +207,20 @@ export default function Header() {
             <Ionicons name="notifications-outline" size={21} color="#FFFFFF" />
           </TouchableOpacity>
 
+          {/* 🛠️ SEBET DÜWMESI (Seniň hakyky store-uňdan gelýän cartCount zolagy kemsiz integrasiýa edildi) */}
           <TouchableOpacity
             style={styles.iconButton}
             activeOpacity={0.7}
             onPress={() => router.push("/cart")}
           >
-            <SimpleLineIcons name="bag" size={18} color="#FFFFFF" />
+            <View style={{ position: "relative" }}>
+              <SimpleLineIcons name="bag" size={18} color="#FFFFFF" />
+              {cartCount > 0 && (
+                <View style={styles.cartBadgeRed}>
+                  <Text style={styles.cartBadgeText}>{cartCount}</Text>
+                </View>
+              )}
+            </View>
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -276,6 +289,25 @@ export default function Header() {
 }
 
 const styles = StyleSheet.create({
+  cartBadgeRed: {
+    position: "absolute",
+    top: -6,
+    right: -8,
+    backgroundColor: "#DC2626", // Hakyky Sumbar gyzyly
+    width: 14,
+    height: 14,
+    borderRadius: 7,
+    justifyContent: "center",
+    alignItems: "center",
+    borderWidth: 1,
+    borderColor: "#1A1A1A", // Navbar fony bilen garyşmaz ýaly
+  },
+  cartBadgeText: {
+    color: "#FFFFFF",
+    fontSize: 9,
+    fontWeight: "bold",
+    lineHeight: 10,
+  },
   container: {
     width: "100%",
     backgroundColor: "#1A1A1A",
