@@ -13,46 +13,16 @@ import {
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { Colors } from "../constants/Colors";
+import { useLangStore } from "../store/useLangStore"; // Senior Dokunşy: Global dil integrasiýasy
 
 const { width } = Dimensions.get("window");
-// Suratlaryň gapdal çetlere kemsiz ýanyşmagy üçin giňlik hasaplamasy
-const imageWidth = width - 56; // textCard-yň padding-ine we çetlerine laýyk
+const imageWidth = width - 56; // Seniň takyk hasaplan giňligiň
 
 export default function AboutScreen() {
-  const mainProducts = [
-    "Şahsy kompýuterler, monobloklar;",
-    "Ofis we oýun noutbuklary;",
-    "Oýunçylar üçin toplumlaşdyryjy enjamlar we periferiýa enjamlary;",
-    "Üznüksiz elektrik üpjünçiligi ulgamlary we bloklary;",
-    "Ofis enjamlary we guramaçylykly tehnika;",
-    "Ulgamlaýyn enjamlar;",
-    "Dürli görnüşli periferiýa enjamlary, sarp ediş materiallary we ş.m.",
-  ];
-
-  const corporateItems = [
-    "Kiçi, orta we iri kärhanalar üçin täjirçilik enjamlaryny satyn almakda ýörite meýilleşdirilen bahalar göz öňünde tutulýar;",
-    "Döwlet buýrujysyna öndürijiler bilen bilelikde ylalaşylan ýa-da işlenip düzülen taslamalar üçin aýratyn arzanladyşlar bilen döwlet pudagyna harytlary işjeň üpjün edýäris;",
-  ];
-
-  const retailItems = [
-    "Aňryçäk derejede pes bahalar;",
-    "Hünär derejeli we hoşniýetli menejerler;",
-    "Harytlary Türkmenistanyň ähli ýerine “gapyňyza” eltip bermek.",
-    "Onlaýn dükan (saýt marketpleýs ýa-da ikinji derejeli bazar däl).",
-    "Saýtda döwürleýin arzanladyşlar.",
-    "Kart arkaly töleg (onlaýn we töleg terminaly arkaly).",
-    "Sarp edijileriň hukuklaryny goramak baradaky Türkmenistanyň kanunyna esaslanýan kepillik şertleri.",
-  ];
-
-  const serviceItems = [
-    "Saýtda bolan harytlaryň elmydama elýeterliligini kepillendirýäris.",
-    "Hemişelik müşderiler üçin arzanladyşlar bar, uly sargytlar üçin bahalar goşmaça ara alnyp maslahatlaşylýar;",
-    "Sargydyňyzy gysga wagtda Türkmenistanyň islendik şäherine ibereris.",
-    "Dükanymyzyň hyzmat merkezi (enjamlary abatlamak we hyzmat etmek).",
-    "Ýüze çykan ähli soraglary we islegleri ara alyp maslahatlaşmaga we çözmäge taýýardyrys.",
-  ];
+  const { t } = useLangStore(); // Reactive terjime obýekti
 
   const renderBulletList = (items: string[]) => {
+    if (!items) return null;
     return items.map((item, index) => (
       <View key={index} style={styles.bulletItemRow}>
         <Text style={styles.bulletDot}>•</Text>
@@ -77,66 +47,46 @@ export default function AboutScreen() {
         contentContainerStyle={styles.scrollContent}
       >
         <View style={styles.textCard}>
-          <Text style={styles.pageTitle}>BIZ BARADA</Text>
+          <Text style={styles.pageTitle}>{t.about.title}</Text>
 
           <Text style={styles.paragraphText}>
-            <Text style={styles.boldRedText}>“Sumbar Computer”</Text> dükany
-            2010-njy ýylda esaslandyryldy we korporatiw pudak we hususy
-            müşderiler üçin IT enjamlarynyň ähli toplumynyň ygtybarly üpjün
-            edijisi bolup durýar. Kompýuter enjamlarynyň bölek we lomaý satuw
-            dükany.
+            <Text style={styles.boldRedText}>“Sumbar Computer”</Text>
+            {t.about.p1_1}
           </Text>
 
           <Text style={styles.paragraphText}>
-            <Text style={styles.boldRedText}>“Sumbar Computer”</Text> şu
-            harytlaryň dürli görnüşlerini hödürleýär: şahsy kompýuterler,
-            aýratyn toplumlaşdyryjylar, noutbuklar, periferiýa gurluşlary,
-            kompýuter esbaplary, printerler, ofis guramaçylykly tehnikasy,
-            öýjükli periferiýa we dünýäniň öňdebaryjy öndürijilerinden başga
-            harytlar.
+            <Text style={styles.boldRedText}>“Sumbar Computer”</Text>
+            {t.about.p2_1}
           </Text>
 
-          <Text style={styles.subHeadingText}>SC-niň esasy harytlary:</Text>
+          <Text style={styles.subHeadingText}>{t.about.mainProductsHeading}</Text>
           <View style={styles.listWrapper}>
-            {renderBulletList(mainProducts)}
+            {renderBulletList(t.about.mainProducts)}
           </View>
 
-          <Text style={styles.subHeadingText}>
-            Korporatiw müşderiler üçün enjamlar bilen üpjün etmek we taslamalary
-            durmuşa geçirmek üçin hyzmatlaryň doly toplumy hödürlenýär:
-          </Text>
+          <Text style={styles.subHeadingText}>{t.about.corporateHeading}</Text>
           <View style={styles.listWrapper}>
-            {renderBulletList(corporateItems)}
+            {renderBulletList(t.about.corporateItems)}
           </View>
 
-          <Text style={styles.subHeadingText}>
-            Bölek satuw müşderileri üçin:
-          </Text>
+          <Text style={styles.subHeadingText}>{t.about.retailHeading}</Text>
           <View style={styles.listWrapper}>
-            {renderBulletList(retailItems)}
+            {renderBulletList(t.about.retailItems)}
           </View>
 
-          <Text style={styles.subHeadingText}>
-            Müşderilerimiz üçin hyzmatlaryň doly görnüşi:
-          </Text>
+          <Text style={styles.subHeadingText}>{t.about.serviceHeading}</Text>
           <View style={styles.listWrapper}>
-            {renderBulletList(serviceItems)}
+            {renderBulletList(t.about.serviceItems)}
           </View>
 
           <View style={styles.sectionDivider} />
-          <Text style={styles.sectionHeadingText}>Iş wagty:</Text>
-          <Text style={styles.infoDetailText}>
-            Iş günleri: 9:00-dan 19:00-a çenli.
-          </Text>
-          <Text style={styles.infoDetailText}>
-            Dynç güni: с 11:00-dan 19:00-a çenli.
-          </Text>
-          <Text style={styles.infoDetailTextSub}>
-            Dükan we eltip bermek hyzmaty baýramçylyk günlerinde işlemeýär.
-          </Text>
+          <Text style={styles.sectionHeadingText}>{t.about.workingHours}</Text>
+          <Text style={styles.infoDetailText}>{t.about.weekdays}</Text>
+          <Text style={styles.infoDetailText}>{t.about.weekends}</Text>
+          <Text style={styles.infoDetailTextSub}>{t.about.holidaySub}</Text>
 
           <View style={styles.sectionDivider} />
-          <Text style={styles.sectionHeadingText}>Habarlaşmak üçün:</Text>
+          <Text style={styles.sectionHeadingText}>{t.about.contactUs}</Text>
 
           <TouchableOpacity
             activeOpacity={0.7}
@@ -153,23 +103,16 @@ export default function AboutScreen() {
             onPress={() => Linking.openURL("mailto:sumbar.computer@gmail.com")}
           >
             <Text style={styles.infoDetailText}>
-              <Text style={styles.boldLabel}>e-mail:</Text>{" "}
-              sumbar.computer@gmail.com
+              <Text style={styles.boldLabel}>e-mail:</Text> sumbar.computer@gmail.com
             </Text>
           </TouchableOpacity>
 
           <Text style={styles.infoDetailText}>
-            <Text style={styles.boldLabel}>Instagram:</Text>{" "}
-            sumbarcomputer_official
+            <Text style={styles.boldLabel}>Instagram:</Text> sumbarcomputer_official
           </Text>
 
-          <Text style={styles.addressText}>
-            Dükanymyz A.Nyýazow (Hudayberdiýew, 4 mkr.) köçesi, 99 jaý salgysy
-            boýunça Aşgabat şäheriniň merkezinde ýerleşýär (Hudaýberdiýew
-            köçäniň hem-de Bomako köçäniň çatrygy, AŞTU-nyň garşysy)
-          </Text>
+          <Text style={styles.addressText}>{t.about.address}</Text>
 
-          {/* 🛠️ FIKS: Suratlaryň takyk ýoly we täze .jpg formaty kemsiz birikdirildi */}
           <View style={styles.aboutGalleryContainer}>
             <Image
               source={require("../assets/assets/Footer_sliders/about/about-us-1.jpg")}
@@ -192,6 +135,7 @@ export default function AboutScreen() {
   );
 }
 
+// Seniň kemsiz dizaýn stilleriň (CSS)
 const styles = StyleSheet.create({
   safeContainer: {
     flex: 1,
@@ -303,19 +247,18 @@ const styles = StyleSheet.create({
     marginTop: 12,
     borderWidth: 0.5,
     borderColor: "#E2E8F0",
-    marginBottom: 16, // Aşaky suratlardan öň azajyk boşluk
+    marginBottom: 16,
   },
-  // 🛠️ SURAT GALEREÝASY STIllERI
   aboutGalleryContainer: {
     width: "100%",
     marginTop: 14,
-    gap: 14, // Suratlar arasyndaky owadan inçe boşluk
+    gap: 14,
   },
   galleryImage: {
     width: imageWidth,
-    height: imageWidth * 0.75, // Owadan hilli 4:3 dizaýn proporsiýasy
-    borderRadius: 4, // Çüňkleri inçe tegeleklenen
-    resizeMode: "cover", // Suratyň gyşarman, gutyny kemsiz doldurmagy üçin
+    height: imageWidth * 0.75,
+    borderRadius: 4,
+    resizeMode: "cover",
     backgroundColor: "#F1F5F9",
   },
 });

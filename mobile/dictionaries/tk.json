@@ -23,5 +23,49 @@
   },
     "profile": {
     "pageTitle": "Profil Sahypasy"
+  },
+    "about": {
+    "title": "BIZ BARADA",
+    "p1_1": " dükany 2010-njy ýylda esaslandyryldy we korporatiw pudak we hususy müşderiler üçin IT enjamlarynyň ähli toplumynyň ygtybarly üpjün edijisi bolup durýar. Kompýuter enjamlarynyň bölek we lomaý satuw dükany.",
+    "p2_1": " şu harytlaryň dürli görnüşlerini hödürleýär: şahsy kompýuterler, aýratyn toplumlaşdyryjylar, noutbuklar, periferiýa gurluşlary, kompýuter esbaplary, printerler, ofis guramaçylykly tehnikasy, öýjükli periferiýa we dünýäniň öňdebaryjy öndürijilerinden başga harytlar.",
+    "mainProductsHeading": "SC-niň esasy harytlary:",
+    "mainProducts": [
+      "Şahsy kompýuterler, monobloklar;",
+      "Ofis we oýun noutbuklary;",
+      "Oýunçylar üçin toplumlaşdyryjy enjamlar we periferiýa enjamlary;",
+      "Üznüksiz elektrik üpjünçiligi ulgamlary we bloklary;",
+      "Ofis enjamlary we guramaçylykly tehnika;",
+      "Ulgamlaýyn enjamlar;",
+      "Dürli görnüşli periferiýa enjamlary, sarp ediş materiallary we ş.m."
+    ],
+    "corporateHeading": "Korporatiw müşderiler üçün enjamlar bilen üpjün etmek we taslamalary durmuşa geçirmek üçin hyzmatlaryň doly toplumy hödürlenýär:",
+    "corporateItems": [
+      "Kiçi, orta we iri kärhanalar üçin täjirçilik enjamlaryny satyn almakda ýörite meýilleşdirilen bahalar göz öňünde tutulýar;",
+      "Döwlet buýrujysyna öndürijiler bilen bilelikde ylalaşylan ýa-da işlenip düzülen taslamalar üçin aýratyn arzanladyşlar bilen döwlet pudagyna harytlary işjeň üpjün edýäris;"
+    ],
+    "retailHeading": "Bölek satuw müşderileri üçin:",
+    "retailItems": [
+      "Aňryçäk derejede pes bahalar;",
+      "Hünär derejeli we hoşniýetli menejerler;",
+      "Harytlary Türkmenistanyň ähli ýerine “gapyňyza” eltip bermek.",
+      "Onlaýn dükan (saýt marketpleýs ýa-da ikinji derejeli bazar däl).",
+      "Saýtda döwürleýin arzanladyşlar.",
+      "Kart arkaly töleg (onlaýn we töleg terminaly arkaly).",
+      "Sarp edijileriň hukuklaryny goramak baradaky Türkmenistanyň kanunyna esaslanýan kepillik şertleri."
+    ],
+    "serviceHeading": "Müşderilerimiz üçin hyzmatlaryň doly görnüşi:",
+    "serviceItems": [
+      "Saýtda bolan harytlaryň elmydama elýeterliligini kepillendirýäris.",
+      "Hemişelik müşderiler üçin arzanladyşlar bar, uly sargytlar üçin bahalar goşmaça ara alnyp maslahatlaşylýar;",
+      "Sargydyňyzy gysga wagtda Türkmenistanyň islendik şäherine ibereris.",
+      "Dükanymyzyň hyzmat merkezi (enjamlary abatlamak we hyzmat etmek).",
+      "Ýüze çykan ähli soraglary we islegleri ara alyp maslahatlaşmaga we çözmäge taýýardyrys."
+    ],
+    "workingHours": "Iş wagty:",
+    "weekdays": "Iş günleri: 9:00-dan 19:00-a çenli.",
+    "weekends": "Dynç güni: с 11:00-dan 19:00-a çenli.",
+    "holidaySub": "Dükan we eltip bermek hyzmaty baýramçylyk günlerinde işlemeýär.",
+    "contactUs": "Habarlaşmak üçün:",
+    "address": "Dükanymyz A.Nyýazow (Hudayberdiýew, 4 mkr.) köçesi, 99 jaý salgysy boýunça Aşgabat şäheriniň merkezinde ýerleşýär (Hudaýberdiýew köçäniň hem-de Bomako köçäniň çatrygy, AŞTU-nyň garşysy)"
   }
 }

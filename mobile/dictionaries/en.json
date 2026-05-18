@@ -23,5 +23,49 @@
   },
     "profile": {
     "pageTitle": "Profile Page"
+  },
+    "about": {
+    "title": "ABOUT US",
+    "p1_1": " shop was founded in 2010 and is a reliable supplier of a full range of IT equipment for the corporate sector and private clients. Retail and wholesale computer hardware store.",
+    "p2_1": " offers a wide range of products: personal computers, components, laptops, peripheral devices, computer accessories, printers, office equipment, and other goods from the world's leading manufacturers.",
+    "mainProductsHeading": "Main products of SC:",
+    "mainProducts": [
+      "Personal computers, all-in-ones;",
+      "Office and gaming laptops;",
+      "Components and peripherals for gamers;",
+      "Uninterruptible power supply systems and units;",
+      "Office equipment and organization machinery;",
+      "Network equipment;",
+      "Various types of peripherals, consumables, etc."
+    ],
+    "corporateHeading": "For corporate clients, a full range of services for equipment supply and project implementation is offered:",
+    "corporateItems": [
+      "Special planned prices are considered when purchasing commercial equipment for small, medium, and large enterprises;",
+      "We actively supply goods to the public sector with special discounts for projects co-developed with manufacturers;"
+    ],
+    "retailHeading": "For retail customers:",
+    "retailItems": [
+      "Extremely low prices;",
+      "Professional and friendly managers;",
+      "Delivery of goods 'to your door' all over Turkmenistan.",
+      "Online store (the site is not a marketplace or a secondary market).",
+      "Periodic discounts on the website.",
+      "Card payment (online and via payment terminal).",
+      "Warranty conditions based on the Law of Turkmenistan on Consumer Rights Protection."
+    ],
+    "serviceHeading": "Full range of services for our customers:",
+    "serviceItems": [
+      "We guarantee the constant availability of products on the website.",
+      "Discounts are available for regular customers, prices for large orders are discussed additionally;",
+      "We will deliver your order to any city in Turkmenistan in a short time.",
+      "Service center of our shop (repair and maintenance of equipment).",
+      "We are ready to discuss and solve all questions and requests."
+    ],
+    "workingHours": "Working hours:",
+    "weekdays": "Weekdays: from 9:00 to 19:00.",
+    "weekends": "Weekend: from 11:00 to 19:00.",
+    "holidaySub": "The shop and delivery service do not work on holidays.",
+    "contactUs": "Contact us:",
+    "address": "Our shop is located in the center of Ashgabat city at A. Niyazov (Hudayberdiyev, 4 mkr.) street, building 99 (intersection of Hudayberdiyev and Bomako streets, opposite ASHTU)"
   }
 }
