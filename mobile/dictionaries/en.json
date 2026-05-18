@@ -89,5 +89,11 @@
     "exampleHeading": "Calculation example:",
     "example1": "For example, if you accumulated 100 points and want to buy an order worth 100 manats, you can cover 50 manats with points, and pay the rest in cash.",
     "example2": "If you accumulated 100 points and bought a product for 200 manats, you can spend all 100 points for this order, and the remaining amount must be paid in cash or by card online upon delivery."
+  },
+    "brands": {
+    "title": "BRANDS",
+    "officialPartner": "Official partner",
+    "pressedLog": "pressed"
   }
+
 }

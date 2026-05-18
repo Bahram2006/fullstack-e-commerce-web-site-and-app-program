@@ -1,4 +1,5 @@
 import React from "react";
+import { useLangStore } from "../store/useLangStore";
 import {
   StyleSheet,
   View,
@@ -283,6 +284,8 @@ export default function BrandsScreen() {
     },
   ];
 
+  const { t } = useLangStore();
+    // Senior Dokunşy: return içindäki ähli statik elementler global 't' obýektine baglandy
   return (
     <View style={styles.safeContainer}>
       <StatusBar
@@ -300,27 +303,24 @@ export default function BrandsScreen() {
       >
         {/* Sahypanyň Ak Fon we Uly Sözbaşy Bölümi */}
         <View style={styles.mainWrapper}>
-          <Text style={styles.pageTitle}>BRENDLER</Text>
+          <Text style={styles.pageTitle}>{t.brands.title}</Text>
 
-          {/* 🛠️ SENIOR 2 SÜTUNLY GRID LAYOUT */}
           <View style={styles.brandsGrid}>
             {brandsData.map((item) => (
               <TouchableOpacity
                 key={item.id}
                 style={styles.brandCard}
                 activeOpacity={0.85}
-                onPress={() => console.log(`${item.name} basyldy`)}
+                onPress={() => console.log(`${item.name} ${t.brands.pressedLog}`)}
               >
-                {/* Brendiň Logotip Suraty */}
                 <View style={styles.imageWrapper}>
                   <Image source={item.image} style={styles.brandImage} />
                 </View>
 
-                {/* Hakyky Sumbar "Resmi hyzmatdaş" zolagy */}
                 {item.is_official && (
                   <View style={styles.officialBadge}>
                     <MaterialIcons name="verified" size={13} color="#0EA5E9" />
-                    <Text style={styles.officialText}>Resmi hyzmatdaş</Text>
+                    <Text style={styles.officialText}>{t.brands.officialPartner}</Text>
                   </View>
                 )}
 
@@ -338,6 +338,7 @@ export default function BrandsScreen() {
       </ScrollView>
     </View>
   );
+
 }
 
 const styles = StyleSheet.create({
