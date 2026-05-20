@@ -16,7 +16,6 @@ import Footer from "../components/Footer";
 import { Colors } from "../constants/Colors";
 
 const { width } = Dimensions.get("window");
-// Ekran çetlerini doly örtýän, ortadan ýarym inçe çyzykly 2 sütün giňlik hasaplamasy
 const itemWidth = width / 2;
 
 interface BrandItem {
@@ -28,7 +27,6 @@ interface BrandItem {
 }
 
 export default function BrandsScreen() {
-  // Siziň Brends papkaňyzdaky suratlary takyk we durnukly çagyrýan sanaw (Senior Asset Array)
   const brandsData: BrandItem[] = [
     {
       id: "1",
@@ -285,7 +283,6 @@ export default function BrandsScreen() {
   ];
 
   const { t } = useLangStore();
-    // Senior Dokunşy: return içindäki ähli statik elementler global 't' obýektine baglandy
   return (
     <View style={styles.safeContainer}>
       <StatusBar
@@ -301,7 +298,6 @@ export default function BrandsScreen() {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.scrollContent}
       >
-        {/* Sahypanyň Ak Fon we Uly Sözbaşy Bölümi */}
         <View style={styles.mainWrapper}>
           <Text style={styles.pageTitle}>{t.brands.title}</Text>
 
@@ -324,7 +320,6 @@ export default function BrandsScreen() {
                   </View>
                 )}
 
-                {/* Brend Ady we Haryt Sany */}
                 <Text style={styles.brandNameText}>
                   {item.name}{" "}
                   <Text style={styles.countText}>({item.count})</Text>
@@ -379,8 +374,8 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   brandCard: {
-    width: itemWidth - 13, // Margin we çetleri hasaba alyp takyk deň sütün
-    height: 170, // Suratyňyzdaky ýaly kemsiz inedördül dizaýn beýikligi
+    width: itemWidth - 13,
+    height: 170,
     borderRightWidth: 1,
     borderBottomWidth: 1,
     borderColor: "#E2E8F0",
@@ -423,6 +418,6 @@ const styles = StyleSheet.create({
   countText: {
     fontSize: 12,
     fontWeight: "500",
-    color: "#94A3B8", // Çalrak owadan haryt sany ýazgysy
+    color: "#94A3B8",
   },
 });

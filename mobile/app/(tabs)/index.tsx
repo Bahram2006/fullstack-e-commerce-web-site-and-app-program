@@ -24,10 +24,10 @@ import Footer from "@/components/Footer";
 import ComplaintModal from "../../components/ComplaintModal";
 import { supabase } from "@/lib/supabase";
 import RateAuthModal from "../../components/RateAuthModal";
-import { useLangStore } from "../../store/useLangStore"; // Senior Dokunşy: Store import edildi
+import { useLangStore } from "../../store/useLangStore";
 
 export default function HomeScreen() {
-  const { t } = useLangStore(); // Global dil obýekti
+  const { t } = useLangStore() as any; // Global dil obýekti
   const [products, setProducts] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [isAuthOpen, setIsAuthOpen] = useState(false);

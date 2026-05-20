@@ -21,15 +21,12 @@ export default function CartScreen() {
   const { t } = useLangStore() as any;
   const [isAuthOpen, setIsAuthOpen] = useState(false);
 
-  // 🛠️ DROPDOWN STATE-LERI
   const [isRegionModalOpen, setIsRegionModalOpen] = useState(false);
   const [selectedRegion, setSelectedRegion] = useState("-");
 
-  // 🛠️ ETTRAP / ŞÄHER STATE-LERI
   const [isCityModalOpen, setIsCityModalOpen] = useState(false);
   const [selectedCity, setSelectedCity] = useState("-");
 
-  // 🛠️ SENIOR CORE INTEGRATION: Seniň öz guran arassa sebet amallaryňyz
   const items = useCartStore((state) => state.items);
   const updateQuantity = useCartStore((state) => state.updateQuantity);
   const removeItem = useCartStore((state) => state.removeItem);
@@ -37,7 +34,6 @@ export default function CartScreen() {
 
   const totalPrice = getTotalPrice();
 
-  // Dynamic Welaýat Sanawy (Görseliňizdäki tertipde)
   const regionsList = [
     { key: "-", label: "-" },
     { key: "ashgabat", label: t?.regions?.ashgabat || "Aşgabat" },
@@ -49,7 +45,6 @@ export default function CartScreen() {
     { key: "mary", label: t?.regions?.mary || "Mary welaýaty" },
   ];
 
-  // 🛠️ ASHGABAT ETTRAPLARY (Seniň hakyky görseliňizdäki ýaly)
   const ashgabatCities = [
     { key: "merkezi", label: "Merkezi etraplar" },
     { key: "coganly", label: "Çoganly" },
@@ -59,13 +54,11 @@ export default function CartScreen() {
     { key: "bagyr", label: "Bagyr" },
   ];
 
-  // 🛠️ ARKADAG ŞÄHERI BÖLÜMLERI (Isleseňiz dolduryp bilersiňiz)
   const arkadagCities = [
     { key: "-", label: "-" },
     { key: "arkadag_center", label: "Arkadag şäheri" },
   ];
 
-  // 🛠️ FIKS: Ahal welaýatynyň hakyky bütin etrap we şäherler sanawy (Birebir Görsel)
   const ahalCities = [
     { key: "-", label: "-" },
     { key: "anew", label: "Änew" },
@@ -78,7 +71,6 @@ export default function CartScreen() {
     { key: "tejen", label: "Tejen" },
   ];
 
-  // 🛠️ FIKS: Balkan welaýatynyň hakyky bütin etrap we şäherler sanawy (Birebir Görsel)
   const balkanCities = [
     { key: "-", label: "-" },
     { key: "balkanabat", label: "Balkanabat" },
@@ -92,7 +84,6 @@ export default function CartScreen() {
     { key: "etrek", label: "Etrek" },
   ];
 
-  // 🛠️ FIKS: Daşoguz welaýatynyň hakyky bütin etrap we şäherler sanawy (Birebir Görsel)
   const dasoguzCities = [
     { key: "-", label: "-" },
     { key: "akdepe", label: "Akdepe" },
@@ -107,7 +98,6 @@ export default function CartScreen() {
     { key: "dasoguz_city", label: "Daşoguz" },
   ];
 
-  // 🛠️ FIKS: Lebap welaýatynyň hakyky bütin etrap we şäherler sanawy (Birebir Görsel)
   const lebapCities = [
     { key: "-", label: "-" },
     { key: "gazojak", label: "Gazojak" },
@@ -116,8 +106,8 @@ export default function CartScreen() {
     { key: "danew", label: "Dänew" },
     { key: "koytendag", label: "Köýtendag" },
     { key: "kerki", label: "Kerki" },
-    { key: "sayat1", label: "Saýat" }, // Görseliňizde iki gezek gaýtalanan birinji Saýat
-    { key: "sayat2", label: "Saýat " }, // Görseliňizde iki gezek gaýtalanan ikinji Saýat (inçe boşlukly)
+    { key: "sayat1", label: "Saýat" },
+    { key: "sayat2", label: "Saýat " },
     { key: "turkmenabat", label: "Türkmenabat" },
     { key: "farap", label: "Farap" },
     { key: "halac", label: "Halaç" },
@@ -125,7 +115,6 @@ export default function CartScreen() {
     { key: "carjew", label: "Çärjew" },
   ];
 
-  // Mary welaýatyna degişli etrap/şäher sanawy (Görseliňizdäki ýaly)
   const maryCities = [
     { key: "-", label: "-" },
     { key: "bayramaly", label: "Baýramaly" },
@@ -141,7 +130,6 @@ export default function CartScreen() {
     { key: "turkmengala", label: "Türkmengala" },
   ];
 
-  // 🛠️ SENIOR SHIFT SWITCH: Saýlanan welaýata görä 2-nji sanawy awtomat anyklaýan dynamic logika
   const getCitiesList = () => {
     if (selectedRegion === (t?.regions?.ashgabat || "Aşgabat"))
       return ashgabatCities;
@@ -162,7 +150,6 @@ export default function CartScreen() {
 
   const currentCitiesList = getCitiesList();
 
-  // Dynamic Eltip bermek bahasyny hasaplamak (Senior Shipping Rule)
   const isProvince =
     selectedRegion !== "-" &&
     selectedRegion !== (t?.regions?.ashgabat || "Aşgabat");
@@ -171,13 +158,11 @@ export default function CartScreen() {
 
   return (
     <View style={styles.safeContainer}>
-      {/* 🛠️ FIKS: Ýokarky Navbar bütin ekranlarda görünmeli we iň ýokarda durmaly */}
       <Header />
 
       <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
         <Text style={styles.screenTitle}>{t.cart.title}</Text>
 
-        {/* 🛠️ Dynamic Şert: Eger sebet boş bolsa köne arassa "Boş Sebet" dizaýnyňyz görner */}
         {items.length === 0 ? (
           <View style={styles.emptyContainer}>
             <View style={styles.iconCircle}>
@@ -190,11 +175,9 @@ export default function CartScreen() {
             <Text style={styles.emptyText}>{t.cart.emptyText}</Text>
           </View>
         ) : (
-          /* 🛠️ Suratyňyzdaky ýaly dynamic harytlar sanawy (Birebir Sumbar) */
           <View style={styles.cartItemsList}>
             {items.map((item) => (
               <View style={styles.productCard} key={item.id}>
-                {/* Haryt Suraty */}
                 <Image
                   source={
                     item.image_url
@@ -204,7 +187,6 @@ export default function CartScreen() {
                   style={styles.productImage}
                 />
 
-                {/* Haryt Ady we Bahasy */}
                 <View style={styles.productInfo}>
                   <Text style={styles.productName} numberOfLines={2}>
                     {item.name}

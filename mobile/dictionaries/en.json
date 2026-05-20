@@ -14,12 +14,15 @@
   "categories": {
     "pageTitle": "Categories Page"
   },
-  "home": {
+    "home": {
     "leftBannerPress": "Left pressed:",
     "rightBannerPress": "Right pressed:",
     "selectedTab": "Selected tab:",
     "goToDetails": "go to details",
-    "addedToCart": "added to cart"
+    "addedToCart": "added to cart",
+    "recommended": "RECOMMENDED",
+    "news": "NEW ARRIVALS",
+    "popular": "POPULAR"
   },
   "profile": {
     "pageTitle": "Profile Page"

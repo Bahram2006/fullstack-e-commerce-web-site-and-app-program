@@ -3,12 +3,12 @@ import { StyleSheet, View, Text, ScrollView, StatusBar, Dimensions } from "react
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { Colors } from "../constants/Colors";
-import { useLangStore } from "../store/useLangStore"; // Senior Dokunşy
+import { useLangStore } from "../store/useLangStore";
 
 const { width } = Dimensions.get("window");
 
 export default function BonusScreen() {
-  const { t } = useLangStore(); // Global dynamic terjime obýekti
+  const { t } = useLangStore();
 
   const renderBulletList = (items: string[]) => {
     if (!items) return null;
@@ -66,7 +66,6 @@ export default function BonusScreen() {
   );
 }
 
-// Seniň original kemsiz dizaýn stilleriň
 const styles = StyleSheet.create({
   safeContainer: {
     flex: 1,

@@ -13,13 +13,13 @@ import {
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { Colors } from "../constants/Colors";
-import { useLangStore } from "../store/useLangStore"; // Senior Dokunşy: Global dil integrasiýasy
+import { useLangStore } from "../store/useLangStore";
 
 const { width } = Dimensions.get("window");
-const imageWidth = width - 56; // Seniň takyk hasaplan giňligiň
+const imageWidth = width - 56;
 
 export default function AboutScreen() {
-  const { t } = useLangStore(); // Reactive terjime obýekti
+  const { t } = useLangStore();
 
   const renderBulletList = (items: string[]) => {
     if (!items) return null;
@@ -135,7 +135,6 @@ export default function AboutScreen() {
   );
 }
 
-// Seniň kemsiz dizaýn stilleriň (CSS)
 const styles = StyleSheet.create({
   safeContainer: {
     flex: 1,

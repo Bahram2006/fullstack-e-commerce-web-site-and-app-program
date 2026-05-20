@@ -1,9 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { useLangStore } from '../../store/useLangStore'; // Store adyny we ýoluny barlaň
+import { useLangStore } from '../../store/useLangStore';
 
 export default function ProfileScreen() {
-  // Senior Dokunşy: Sözleri global reactive 't' obýektinden alýarys
   const { t } = useLangStore();
 
   return (

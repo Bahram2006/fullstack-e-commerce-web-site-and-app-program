@@ -14,12 +14,15 @@
   "categories": {
     "pageTitle": "Kategoriýalar Sahypasy"
   },
-  "home": {
+    "home": {
     "leftBannerPress": "Çep basyldy:",
     "rightBannerPress": "Sag basyldy:",
     "selectedTab": "Saýlanan bölüm:",
     "goToDetails": "jikme-jikligine git",
-    "addedToCart": "sepete goşuldy"
+    "addedToCart": "sepete goşuldy",
+    "recommended": "MASLAHAT BERILÝÄNLER",
+    "news": "TÄZELER",
+    "popular": "MEŞHURLAR"
   },
   "profile": {
     "pageTitle": "Profil Sahypasy"

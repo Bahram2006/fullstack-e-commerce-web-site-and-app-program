@@ -14,12 +14,15 @@
   "categories": {
     "pageTitle": "Страница категорий"
   },
-  "home": {
+    "home": {
     "leftBannerPress": "Нажат левый:",
     "rightBannerPress": "Нажат правый:",
     "selectedTab": "Выбранный раздел:",
     "goToDetails": "перейти к деталям",
-    "addedToCart": "добавлено в корзину"
+    "addedToCart": "добавлено в корзину",
+    "recommended": "RECOMMENDED",
+    "news": "NEW ARRIVALS",
+    "popular": "POPULAR"
   },
   "profile": {
     "pageTitle": "Страница профиля"
